@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.E))
         {
-			RaycastHit2D hit = Physics2D.Raycast(rb.position, movement, 10f,LayerMask.GetMask("Wall"));
+			RaycastHit2D hit = Physics2D.Raycast(rb.position, movement, 4f,LayerMask.GetMask("Wall"));
             if (hit.collider !=null)
             {
 				Debug.Log("Поймал" + hit.collider.gameObject);
