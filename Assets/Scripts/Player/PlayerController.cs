@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
 	public float speed = 5f;
 	private Vector2 movement;
-	private Vector2 mousePosition;
 	private Rigidbody2D rb;
 	private bool isDashBtnDown;
 
@@ -20,13 +19,13 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
-		Vector2 lookDirection = movement - rb.position;
-		float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
+		rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);		
+		float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg - 90f;
 		rb.rotation = angle;
 		if (isDashBtnDown)
         {
-			float dashAmount = 5f;
+			float dashAmount = 5f;  //расстояние
+			print(movement.ToString());
 			rb.MovePosition(rb.position + movement * dashAmount);
 			isDashBtnDown = false;
         }
@@ -45,11 +44,18 @@ public class PlayerController : MonoBehaviour
 		movement.x = Input.GetAxis("Horizontal");
 		movement.y = Input.GetAxis("Vertical");
 
+
 		LookAtCursor();
 
 
 		if (Input.GetKeyDown(KeyCode.E))
         {
+			RaycastHit2D hit = Physics2D.Raycast(rb.position, movement, 10f,LayerMask.GetMask("Wall"));
+            if (hit.collider !=null)
+            {
+				Debug.Log("Поймал" + hit.collider.gameObject);
+				return;
+			}
 			isDashBtnDown = true;
         }
 	}
