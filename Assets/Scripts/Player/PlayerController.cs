@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 			float dashAmount = 5f;  //расстояние
 			print(movement.ToString());
 			rb.MovePosition(rb.position + movement * dashAmount);
+			//rb.AddForce(movement * 5000f);
 			isDashBtnDown = false;
         }
 	}
@@ -48,7 +49,7 @@ public class PlayerController : MonoBehaviour
 		LookAtCursor();
 
 
-		if (Input.GetKeyDown(KeyCode.E))
+		if (Input.GetKeyDown(KeyCode.LeftShift))
         {
 			RaycastHit2D hit = Physics2D.Raycast(rb.position, movement, 4f,LayerMask.GetMask("Wall"));
             if (hit.collider !=null)
