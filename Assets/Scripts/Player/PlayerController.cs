@@ -51,7 +51,8 @@ public class PlayerController : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-			RaycastHit2D hit = Physics2D.Raycast(rb.position, movement, 4f,LayerMask.GetMask("Wall"));
+			var distance = 4f;
+			RaycastHit2D hit = Physics2D.Raycast(rb.position, movement, distance, LayerMask.GetMask("Wall"));
             if (hit.collider !=null)
             {
 				Debug.Log("Поймал" + hit.collider.gameObject);
