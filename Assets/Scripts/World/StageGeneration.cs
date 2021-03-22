@@ -7,6 +7,7 @@ public class StageGeneration : MonoBehaviour
     public int RoomsDensity;
     public List<GameObject> RoomsPrefabs;
     public GameObject RoomConnection;
+    public GameObject RoomCon;
 
     private GameObject[,] RoomsMap;
     private int mapX;
@@ -111,14 +112,19 @@ public class StageGeneration : MonoBehaviour
 
     private void MakeConnection(int xSign, int ySign, float maxRoomSize)
     {
-        var connectionX = roomToSpawnFrom.transform.position.x + roomToSpawnFrom.GetComponent<RoomProperties>().Size / 4 * xSign;
-        var connectionY = roomToSpawnFrom.transform.position.y + roomToSpawnFrom.GetComponent<RoomProperties>().Size / 8 * ySign;
-        for (int connectionsCount = 0; connectionsCount < maxRoomSize; connectionsCount++)
+        var minRoomSize = System.Math.Min(roomToSpawn.GetComponent<RoomProperties>().Size,
+            roomToSpawnFrom.GetComponent<RoomProperties>().Size);
+        var roomSize = roomToSpawnFrom.GetComponent<RoomProperties>().Size;
+        var connectionX = roomToSpawnFrom.transform.position.x + (roomSize / 2 - (roomSize - 2) / 4) * xSign;
+        var connectionY = roomToSpawnFrom.transform.position.y + (roomSize / 2 - (roomSize - 2) / 4) / 2 * ySign;
+
+        var connectionLength = maxRoomSize + (maxRoomSize - minRoomSize) / 2 - 1 - RoomsDensity * 2;
+        for (int connectionsCount = 0; connectionsCount < connectionLength; connectionsCount++)
         {
-            connectionX += 0.5f * xSign;
-            connectionY += 0.25f * ySign;
             var connectionPart = Instantiate(RoomConnection, new Vector3(connectionX, connectionY, 0), Quaternion.identity);
             connectionPart.transform.parent = transform;
+            connectionX += 0.5f * xSign;
+            connectionY += 0.25f * ySign;
         }
     }
 
