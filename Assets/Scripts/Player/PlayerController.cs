@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour
 	public float speed = 5f;
 	private Vector2 movement;
 	private Rigidbody2D rb;
-	private bool isDashBtnDown;
-
+	public float dashSpeed = 200000;
+	private float currentCD = 0;
+	private float DashCD = 1f;
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
@@ -19,17 +20,13 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate()
 	{
+
+
+		rb.velocity = Vector2.zero;
+
 		rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);		
 		float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg - 90f;
 		rb.rotation = angle;
-		if (isDashBtnDown)
-        {
-			float dashAmount = 5f;  //расстояние
-			print(movement.ToString());
-			rb.MovePosition(rb.position + movement * dashAmount);
-			//rb.AddForce(movement * 5000f);
-			isDashBtnDown = false;
-        }
 	}
 
 	void LookAtCursor()
@@ -49,16 +46,25 @@ public class PlayerController : MonoBehaviour
 		LookAtCursor();
 
 
-		if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-			var distance = 4f;
-			RaycastHit2D hit = Physics2D.Raycast(rb.position, movement, distance, LayerMask.GetMask("Wall"));
-            if (hit.collider !=null)
-            {
-				Debug.Log("Поймал" + hit.collider.gameObject);
-				return;
+
+		if (currentCD <= 0)
+		{
+			if (Input.GetKeyDown(KeyCode.LeftShift))
+			{
+				Dash();
+				currentCD = DashCD;
+
 			}
-			isDashBtnDown = true;
-        }
+		}
+		else
+		{
+			currentCD -= Time.deltaTime;
+			print("CD DASH");
+		}
+	}
+	public void Dash()
+    {
+		Vector2 mouseDirection = (Input.mousePosition - new Vector3(Screen.width / 2, Screen.height / 2)).normalized;
+		rb.AddForce(mouseDirection * dashSpeed * Time.fixedDeltaTime);
 	}
 }
