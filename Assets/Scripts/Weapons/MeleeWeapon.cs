@@ -13,7 +13,6 @@ public class MeleeWeapon : MonoBehaviour
 
     private void Start()
     {
-        AttackRadius = 2f;
         Damage = 10;
         Durability = 100;
         StartTimeAttack = 1f;
