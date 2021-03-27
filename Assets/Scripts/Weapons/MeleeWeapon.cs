@@ -10,11 +10,10 @@ public class MeleeWeapon : MonoBehaviour
     public float AttackRadius;
     private float TimeBtwnAttack;
     private float StartTimeAttack;
-    public static void Action(Vector2 attackPosition, float attackRadius, MeleeWeapon weapon)
-    {
-    }
+
     private void Start()
     {
+        AttackRadius = 2f;
         Damage = 10;
         Durability = 100;
         StartTimeAttack = 1f;
