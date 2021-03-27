@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69490386dcb2ca4eb8b974b5bbafaa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackPosition: {fileID: 0}
-  AttackRadius: 0
+  AttackPosition: {fileID: 4688711172801049599}
+  AttackRadius: 0.57
 --- !u!50 &4888829740468603512
 Rigidbody2D:
   serializedVersion: 4
@@ -137,6 +137,7 @@ MonoBehaviour:
   amp: 0.25
   freq: 2
   offset: 0
+  isPicked: 0
 --- !u!1 &8179885136982208410
 GameObject:
   m_ObjectHideFlags: 0
