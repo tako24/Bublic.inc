@@ -10,7 +10,7 @@ public class Chest : MonoBehaviour
     private bool IsClose = true;
     public void DropWeapon()
     {
-        GameObject weapon = Instantiate(Weapons[Random.Range(0, Weapons.Count)], transform.position, Quaternion.identity);
+        GameObject weapon = Instantiate(Weapons[Random.Range(0, Weapons.Count)], transform.position, Quaternion.identity) ;
         weapon.transform.position = new Vector3(transform.position.x, transform.position.y - 0.9f, transform.position.z);
 
     }
