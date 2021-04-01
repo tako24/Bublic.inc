@@ -84,10 +84,14 @@ Tilemap:
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 4
-    m_Data: {fileID: 11400000, guid: 853108cc7f98ca543b0b55d22a14236e, type: 2}
+    m_Data: {fileID: 11400000, guid: 1183939c80d15f6469c7704217220f0f, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 4
-    m_Data: {fileID: 21300000, guid: ffdf3561a7d759f4d97d3a04d94060fa, type: 3}
+    m_Data: {fileID: 21300000, guid: fb56c9acc1bf2844781b83715b21b754, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 4
     m_Data:

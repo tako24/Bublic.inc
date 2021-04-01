@@ -213,15 +213,47 @@ Tilemap:
   m_Enabled: 1
   m_Tiles: {}
   m_AnimatedTiles: {}
-  m_TileAssetArray: []
-  m_TileSpriteArray: []
-  m_TileMatrixArray: []
-  m_TileColorArray: []
+  m_TileAssetArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileMatrixArray:
+  - m_RefCount: 0
+    m_Data:
+      e00: -2.5244127e-29
+      e01: -8.250883e+23
+      e02: -8.250249e+23
+      e03: -8.250249e+23
+      e10: 8.16e-43
+      e11: 1.22e-43
+      e12: 1.22e-43
+      e13: 1.22e-43
+      e20: 1.2639522e+35
+      e21: -3.7354474e+19
+      e22: 8.292198e-10
+      e23: -3.7354474e+19
+      e30: 4.5905e-41
+      e31: 8.17e-43
+      e32: 8.16e-43
+      e33: 8.17e-43
+  m_TileColorArray:
+  - m_RefCount: 0
+    m_Data: {r: -3.7351237e+19, g: -3.7351237e+19, b: -3.7351237e+19, a: -3.7351237e+19}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0, y: 0, z: 1}
+  m_Origin: {x: -9, y: -6, z: 0}
+  m_Size: {x: 10, y: 9, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -365,7 +397,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.494101
+  orthographic size: 1.8734276
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -389,7 +421,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 1.03, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -455,8 +487,8 @@ MonoBehaviour:
   RoomsCount: 10
   RoomsDensity: 0
   RoomsPrefabs:
-  - {fileID: 59340669185258195, guid: 01a506b9e5e38b7418c45b8c45c71dca, type: 3}
-  - {fileID: 4877220365986670150, guid: 984e204b301562144b25d243a7a7790a, type: 3}
+  - {fileID: 5057523741982149658, guid: b34dc35ee3a39f54498d38caf078ad6f, type: 3}
+  - {fileID: 5334975429434644614, guid: 6ba0b67000e624749a73b2865a5937bc, type: 3}
   RoomConnection: {fileID: 6092418270242218111, guid: 10f1926137840234e999ef5fe8096d19, type: 3}
   RoomCon: {fileID: 0}
 --- !u!4 &1969262014 stripped
