@@ -6,8 +6,8 @@ public class StageGeneration : MonoBehaviour
     public int RoomsCount;
     public int RoomsDensity;
     public List<GameObject> RoomsPrefabs;
-    public GameObject RoomConnection;
-    public GameObject RoomCon;
+    public GameObject LeftConnection;
+    public GameObject RightConnection;
 
     private GameObject[,] RoomsMap;
     private int mapX;
@@ -36,11 +36,9 @@ public class StageGeneration : MonoBehaviour
         RoomsMap[mapX, mapY] = lastSpawnedRoom;
         
         GenerateStage();
-    }
 
-    void Update()
-    {
-        
+        GameController.CurrentRoom = RoomsMap[RoomsCount - 1, RoomsCount - 1].GetComponent<RoomProperties>();
+        GameController.CurrentRoom.IsCleared = true;
     }
 
     private void GenerateStage()
@@ -121,10 +119,31 @@ public class StageGeneration : MonoBehaviour
         var connectionLength = maxRoomSize + (maxRoomSize - minRoomSize) / 2 - 1 - RoomsDensity * 2;
         for (int connectionsCount = 0; connectionsCount < connectionLength; connectionsCount++)
         {
-            var connectionPart = Instantiate(RoomConnection, new Vector3(connectionX, connectionY, 0), Quaternion.identity);
+            var connectionToSpawn = xSign * ySign == 1 ? RightConnection : LeftConnection;
+            var connectionPart = Instantiate(connectionToSpawn, new Vector3(connectionX, connectionY, 0), Quaternion.identity);
             connectionPart.transform.parent = transform;
             connectionX += 0.5f * xSign;
             connectionY += 0.25f * ySign;
+        }
+
+        switch ((xSign, ySign))
+        {
+            case (1, 1):
+                roomToSpawnFrom.GetComponent<RoomProperties>().SpawnExit(Direction.Up);
+                lastSpawnedRoom.GetComponent<RoomProperties>().SpawnExit(Direction.Down);
+                break;
+            case (-1, -1):
+                roomToSpawnFrom.GetComponent<RoomProperties>().SpawnExit(Direction.Down);
+                lastSpawnedRoom.GetComponent<RoomProperties>().SpawnExit(Direction.Up);
+                break;
+            case (1, -1):
+                roomToSpawnFrom.GetComponent<RoomProperties>().SpawnExit(Direction.Right);
+                lastSpawnedRoom.GetComponent<RoomProperties>().SpawnExit(Direction.Left);
+                break;
+            case (-1, 1):
+                roomToSpawnFrom.GetComponent<RoomProperties>().SpawnExit(Direction.Left);
+                lastSpawnedRoom.GetComponent<RoomProperties>().SpawnExit(Direction.Right);
+                break;
         }
     }
 
