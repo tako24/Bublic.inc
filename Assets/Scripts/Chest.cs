@@ -11,7 +11,7 @@ public class Chest : MonoBehaviour
     public void DropWeapon()
     {
         GameObject weapon = Instantiate(Weapons[Random.Range(0, Weapons.Count)], transform.position, Quaternion.identity) ;
-        //weapon.GetComponent<MeleeWeapon>(); 
+        weapon.GetComponent<MeleeWeapon>().PickUp();
         weapon.transform.position = new Vector3(transform.position.x, transform.position.y - 0.9f, transform.position.z);
 
     }
