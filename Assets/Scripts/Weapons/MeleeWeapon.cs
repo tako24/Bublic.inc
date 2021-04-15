@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class MeleeWeapon : MonoBehaviour, IWeapon
 {
-    public string gunName;
+    public int _index;
+    public string Name { get; }
+    public Texture2D Icon { get; }
     public Transform AttackPosition;
     public int Damage { get; set; }
     public int Durability { get; set; }
@@ -32,7 +34,7 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
             if (Input.GetMouseButtonDown(0))
             {
                 DoDamage();
-                PickUp();
+                //PickUp();
                 TimeBtwnAttack = StartTimeAttack;
 
             }
@@ -44,9 +46,24 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
         }
 
     }
-    public void PickUp()
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+
+        if (Input.GetKey(KeyCode.E) && collision.tag == "Player")
+        {
+            PickUp(collision);
+
+        }
+    }
+    public void PickUp(Collider2D player)
     {
         GetComponent<ObjectNameView>().enabled = false;
+        //player.GetComponent<Inventory>().AddItem(_index);//Если наехал игрок, то он сможет подобрать предмет
+        Destroy(gameObject); //Удаление объекта с карты
+    }
+    public void AddItem(int index)
+    {
+        //hasItems[index] = true;
     }
     public void DoDamage()
     {
