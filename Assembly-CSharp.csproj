@@ -58,19 +58,24 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\World\StageGeneration.cs" />
     <Compile Include="Assets\Scripts\World\RoomProperties.cs" />
+    <Compile Include="Assets\Scripts\World\ExitController.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\World\Direction.cs" />
     <Compile Include="Assets\Scripts\Weapons\MeleeWeapon.cs" />
+    <Compile Include="Assets\Scripts\World\Enemy.cs" />
     <Compile Include="Assets\Scripts\Weapons\RangeWeapon.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\ObjectNameView.cs" />
     <Compile Include="Assets\Scripts\Player\HP.cs" />
-    <Compile Include="Assets\Scripts\Player\Fight.cs" />
-    <Compile Include="Assets\Scripts\Weapons\ObjectsMove.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
-    <Compile Include="Assets\Scripts\World\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Player\Inventory\InventoryCell.cs" />
+    <Compile Include="Assets\Scripts\Player\Inventory\IItem.cs" />
     <Compile Include="Assets\Scripts\World\Chest.cs" />
+    <Compile Include="Assets\Scripts\Player\Fight.cs" />
     <Compile Include="Assets\Scripts\World\GameController.cs" />
-    <Compile Include="Assets\Scripts\World\ExitController.cs" />
+    <Compile Include="Assets\Scripts\Weapons\ObjectsMove.cs" />
+    <Compile Include="Assets\Scripts\Player\Inventory\AssetItem.cs" />
+    <Compile Include="Assets\Scripts\Player\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
