@@ -24,6 +24,22 @@ public class HP : MonoBehaviour
         style.alignment = TextAnchor.MiddleCenter;
         CurrentHP = 100;
         MaxHP = 150;
+<<<<<<< HEAD
+=======
+    }
+    void OnGUI()
+    {
+        GUI.depth = 9999;
+
+        style.normal.textColor = textColor;
+
+
+        Vector3 worldPosition = new Vector3(transform.position.x, transform.position.y + textHeight, transform.position.z);
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
+        screenPosition.y = Screen.height - screenPosition.y;
+
+        GUI.Label(new Rect(screenPosition.x, screenPosition.y, 0, 0), CurrentHP.ToString(), style);
+>>>>>>> parent of f3974db (GridSearchFiles)
     }
     void OnGUI()
     {
@@ -50,7 +66,6 @@ public class HP : MonoBehaviour
         CurrentHP -= damage;
         if (CurrentHP <= 0)
             Die();
-        healthUI.text = CurrentHP.ToString();
     }
     public void Heal(int heal)
     {
@@ -61,12 +76,15 @@ public class HP : MonoBehaviour
         CurrentHP += heal;
         if (CurrentHP > MaxHP)
             CurrentHP = MaxHP;
+<<<<<<< HEAD
         healthUI.text = CurrentHP.ToString();
 =======
         CurrentHP += heal;
         if (CurrentHP > MaxHP)
             CurrentHP = MaxHP;
 >>>>>>> parent of a51ef0a (HPBAR)
+=======
+>>>>>>> parent of f3974db (GridSearchFiles)
     }
     public void Die()
     {

@@ -1,12 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 
 public class StageGeneration : MonoBehaviour
 {
     public int RoomsCount;
     public int RoomsDensity;
-    public AstarPath AstarPath;
     public List<GameObject> RoomsPrefabs;
     public GameObject LeftConnection;
     public GameObject RightConnection;
@@ -23,21 +21,6 @@ public class StageGeneration : MonoBehaviour
 
     void Start()
     {
-        Initialize();
-        
-        GenerateStage();
-
-        AstarPath.Scan();
-
-        foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
-        {
-            enemy.GetComponent<AIDestinationSetter>().target = GameObject.Find("Player 1").transform;
-            enemy.GetComponent<AIPath>().canSearch = false;
-        }
-    }
-
-    private void Initialize()
-    {
         spawnedRooms = new List<GameObject>();
 
         roomToSpawn = RoomsPrefabs[Random.Range(0, RoomsPrefabs.Count)];
@@ -51,11 +34,11 @@ public class StageGeneration : MonoBehaviour
         lastSpawnedRoom.GetComponent<RoomProperties>().MapX = mapX;
         lastSpawnedRoom.GetComponent<RoomProperties>().MapY = mapY;
         RoomsMap[mapX, mapY] = lastSpawnedRoom;
+        
+        GenerateStage();
 
-        GameController.CurrentRoom = RoomsMap[mapX, mapY].GetComponent<RoomProperties>();
+        GameController.CurrentRoom = RoomsMap[RoomsCount - 1, RoomsCount - 1].GetComponent<RoomProperties>();
         GameController.CurrentRoom.IsCleared = true;
-
-        lastSpawnedRoom.transform.Find("Square").gameObject.SetActive(false);
     }
 
     private void GenerateStage()
@@ -118,32 +101,11 @@ public class StageGeneration : MonoBehaviour
 
         lastSpawnedRoom = Instantiate(roomToSpawn, new Vector3(roomToSpawnFrom.transform.position.x + roomDX * xSign,
         roomToSpawnFrom.transform.position.y + roomDY * ySign, 0), Quaternion.identity);
-        GenerateAiNet();
         lastSpawnedRoom.GetComponent<RoomProperties>().MapX = roomToSpawnFrom.GetComponent<RoomProperties>().MapX + mapDX;
         lastSpawnedRoom.GetComponent<RoomProperties>().MapY = roomToSpawnFrom.GetComponent<RoomProperties>().MapY + mapDY;
         mapX += mapDX;
         mapY += mapDY;
         MakeConnection(xSign, ySign, maxRoomSize);
-    }
-
-    private void GenerateAiNet()
-    {
-        var grid = AstarPath.data.AddGraph(typeof(GridGraph)) as GridGraph;
-        grid.inspectorGridMode = InspectorGridMode.IsometricGrid;
-        grid.isometricAngle = 60;
-        grid.collision.use2D = true;
-        grid.rotation = new Vector3(45, 270, 270);
-        var position = lastSpawnedRoom.transform.position;
-        grid.center = new Vector3(position.x, position.y + 0.244f, position.z);
-        switch (roomToSpawn.name)
-        {
-            case "Room 1":
-                grid.SetDimensions(10,10,grid.nodeSize);
-                break;
-            case "Room 2":
-                grid.SetDimensions(7, 7, grid.nodeSize);
-                break;
-        }
     }
 
     private void MakeConnection(int xSign, int ySign, float maxRoomSize)
