@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HP : MonoBehaviour
 {
+<<<<<<< HEAD
     private int _currentHP=100;
     private int _maxHP=150;
 
@@ -35,6 +36,16 @@ public class HP : MonoBehaviour
         screenPosition.y = Screen.height - screenPosition.y;
 
         GUI.Label(new Rect(screenPosition.x, screenPosition.y, 0, 0), _currentHP.ToString(), style);
+=======
+    public Text healthUI;
+    private int CurrentHP;
+    private int MaxHP;
+    private void Start()
+    {
+        CurrentHP = 100;
+        MaxHP = 150;
+        healthUI.text = CurrentHP.ToString();
+>>>>>>> f3974db082ff4360da07b68d1a1416c3679a2308
     }
     public  void TakeDamage(int damage)
     {
@@ -42,12 +53,20 @@ public class HP : MonoBehaviour
         _currentHP -= damage;
         if (_currentHP <= 0)
             Die();
+        healthUI.text = CurrentHP.ToString();
     }
     public  void Heal(int heal)
     {
+<<<<<<< HEAD
         _currentHP += heal;
         if (_currentHP > _maxHP)
             _currentHP = _maxHP;
+=======
+        CurrentHP += heal;
+        if (CurrentHP > MaxHP)
+            CurrentHP = MaxHP;
+        healthUI.text = CurrentHP.ToString();
+>>>>>>> f3974db082ff4360da07b68d1a1416c3679a2308
     }
     public  void Die()
     {
