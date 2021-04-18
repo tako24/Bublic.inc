@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class HP : MonoBehaviour
 {
-    private int _currentHP=100;
-    private int _maxHP=150;
+    private int CurrentHP;
+    private int MaxHP;
 
 
     public Color textColor = Color.white;
@@ -22,6 +22,8 @@ public class HP : MonoBehaviour
         style.richText = true;
         style.normal.textColor = textColor;
         style.alignment = TextAnchor.MiddleCenter;
+        CurrentHP = 100;
+        MaxHP = 150;
     }
     void OnGUI()
     {
@@ -34,21 +36,25 @@ public class HP : MonoBehaviour
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
         screenPosition.y = Screen.height - screenPosition.y;
 
-        GUI.Label(new Rect(screenPosition.x, screenPosition.y, 0, 0), _currentHP.ToString(), style);
+        GUI.Label(new Rect(screenPosition.x, screenPosition.y, 0, 0), CurrentHP.ToString(), style);
     }
+<<<<<<< HEAD
     public Text healthUI;
     private int CurrentHP;
     private int MaxHP;
     public  void TakeDamage(int damage)
+=======
+    public void TakeDamage(int damage)
+>>>>>>> parent of a51ef0a (HPBAR)
     {
-
-        _currentHP -= damage;
-        if (_currentHP <= 0)
+        CurrentHP -= damage;
+        if (CurrentHP <= 0)
             Die();
         healthUI.text = CurrentHP.ToString();
     }
-    public  void Heal(int heal)
+    public void Heal(int heal)
     {
+<<<<<<< HEAD
         _currentHP += heal;
         if (_currentHP > _maxHP)
             _currentHP = _maxHP;
@@ -56,8 +62,13 @@ public class HP : MonoBehaviour
         if (CurrentHP > MaxHP)
             CurrentHP = MaxHP;
         healthUI.text = CurrentHP.ToString();
+=======
+        CurrentHP += heal;
+        if (CurrentHP > MaxHP)
+            CurrentHP = MaxHP;
+>>>>>>> parent of a51ef0a (HPBAR)
     }
-    public  void Die()
+    public void Die()
     {
         Destroy(gameObject);
     }
