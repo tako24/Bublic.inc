@@ -56,12 +56,8 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
             if (Input.GetMouseButtonDown(0))
             {
                 DoDamage();
-<<<<<<< HEAD
-=======
                 PickUp();
->>>>>>> parent of 19d4a1b (Inventory step1)
                 TimeBtwnAttack = StartTimeAttack;
-
             }
         }
         else 
@@ -73,11 +69,8 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
     }
     public void PickUp()
     {
-<<<<<<< HEAD
         enabled = false;
-=======
         GetComponent<ObjectNameView>().enabled = false;
->>>>>>> parent of 19d4a1b (Inventory step1)
     }
     public void DoDamage()
     {
