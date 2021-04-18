@@ -123,8 +123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8011ffa3da6b71d4282f76d94c8a90d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapons: []
-  Canvas: {fileID: 0}
+  Weapons:
+  - {fileID: 5709153087961001685, guid: 07719b70c5d4791438bc1857e8e057c5, type: 3}
+  - {fileID: 7133526249273303227, guid: ba0586dc36a192a43af245160a218bcc, type: 3}
+  - {fileID: 5551399242352178299, guid: b1cfcfcdba97171458460799b82b0aef, type: 3}
+  - {fileID: 2491308433627876336, guid: e09b2f39ac86e6342bf048bc6b1792d9, type: 3}
+  Canvas: {fileID: 2334277465794060597}
 --- !u!1 &2334277465734895503
 GameObject:
   m_ObjectHideFlags: 0

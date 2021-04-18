@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
-public class HP : MonoBehaviour
+public class HPBar : MonoBehaviour
 {
+    [SerializeField] private Slider _slider;
+    [SerializeField] private Gradient _gradient;
+    [SerializeField] private Image _fill;
+
     private int _currentHP;
     private int _maxHP;
 
@@ -12,6 +17,7 @@ public class HP : MonoBehaviour
     public float textHeight = 0.8f;
     public Color shadowColor = new Color(0, 0, 0, 0.5f);
     public Vector2 shadowOffset = new Vector2(1, 1);
+
     GUIStyle style = new GUIStyle();
 
     void OnGUI()
@@ -29,22 +35,30 @@ public class HP : MonoBehaviour
     private void Start()
     {
         _currentHP = 100;
-        _maxHP = 150;
+        _maxHP = 100;
+        _slider.maxValue = _maxHP;
+        _slider.value = _currentHP;
+        _fill.color = _gradient.Evaluate(1f);
     }
     public void TakeDamage(int damage)
     {
         _currentHP -= damage;
         if (_currentHP <= 0)
             Die();
+        _slider.value = _currentHP;
+        _fill.color = _gradient.Evaluate(_slider.normalizedValue);
     }
     public void Heal(int heal)
     {
         _currentHP += heal;
         if (_currentHP > _maxHP)
             _currentHP = _maxHP;
+        _slider.value = _currentHP;
+        _fill.color = _gradient.Evaluate(_slider.normalizedValue);
     }
     public void Die()
     {
+        // как он умирает?
         Destroy(gameObject);
     }
 }
