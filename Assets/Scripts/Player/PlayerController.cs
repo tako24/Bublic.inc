@@ -7,21 +7,21 @@ public class PlayerController : MonoBehaviour
 	public float speed = 5f;
 	private Vector2 movement;
 	private Rigidbody2D rb;
-	public float dashSpeed = 200000;
-	private float currentCD = 0;
-	private float DashCD = 1f;
+	public float _dashSpeed = 200000;
+	private float _currentCD = 0;
+	private float _dashCD = 1f;
+
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
 		rb.freezeRotation = true;
 		rb.gravityScale = 0;
 
+
 	}
 
 	void FixedUpdate()
 	{
-
-
 		rb.velocity = Vector2.zero;
 
 		rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);		
@@ -47,24 +47,26 @@ public class PlayerController : MonoBehaviour
 
 
 
-		if (currentCD <= 0)
+		if (_currentCD <= 0)
 		{
 			if (Input.GetKeyDown(KeyCode.LeftShift))
 			{
 				Dash();
-				currentCD = DashCD;
+				_currentCD = _dashCD;
 
 			}
 		}
 		else
 		{
-			currentCD -= Time.deltaTime;
+			_currentCD -= Time.deltaTime;
 			print("CD DASH");
 		}
 	}
+
+
 	public void Dash()
     {
 		Vector2 mouseDirection = (Input.mousePosition - new Vector3(Screen.width / 2, Screen.height / 2)).normalized;
-		rb.AddForce(mouseDirection * dashSpeed * Time.fixedDeltaTime);
+		rb.AddForce(mouseDirection * _dashSpeed * Time.fixedDeltaTime);
 	}
 }
