@@ -31,7 +31,7 @@ public class StageGeneration : MonoBehaviour
 
         foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
-            enemy.GetComponent<AIDestinationSetter>().target = GameObject.Find("Player 1").transform;
+            enemy.GetComponent<AIDestinationSetter>().target = GameObject.Find("Player").transform;
             enemy.GetComponent<AIPath>().canSearch = false;
         }
     }
