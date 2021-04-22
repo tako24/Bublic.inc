@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 	private float _currentCD = 0;
 	private Animator animator;
 	private GameObject _ap;
-
+	private bool _isDashing;
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
@@ -126,21 +126,39 @@ public class PlayerController : MonoBehaviour
 
 		print(direction);
 	}
-    void SetWeaponDirection(Direction dir)
-    {
-        switch (direction)
-        {
-            case Direction.Up:
-				Quaternion rotation = Quaternion.AngleAxis(45, Vector2.up);
-                _ap.transform.rotation = rotation;
-                break;
-            case Direction.Down:
-				Quaternion rotationd = Quaternion.AngleAxis(45, Vector2.down);
-				_ap.transform.rotation = rotationd;
+	void SetWeaponDirection(Direction dir)
+	{
+		switch (direction)
+		{
+			case Direction.Up:
+				_ap.transform.rotation = Quaternion.Euler(0, 0, 45);
 				break;
-        }
+			case Direction.Down:
+				_ap.transform.rotation = Quaternion.Euler(0, 0, -135);
+				break;
+			case Direction.Right:
+				_ap.transform.rotation = Quaternion.Euler(0, 0, -45);
+				break;
+			case Direction.Left:
+				_ap.transform.rotation = Quaternion.Euler(0, 0, 135);
+				break;
+			case Direction.UpRight:
+				_ap.transform.rotation = Quaternion.Euler(0, 0, 0);
+				break;
+			case Direction.UpLeft:
+				_ap.transform.rotation = Quaternion.Euler(0, 0, 90);
+				break;
+			case Direction.DownRight:
+				_ap.transform.rotation = Quaternion.Euler(0, 0, -90);
+				break;
+			case Direction.DownLeft:
+				_ap.transform.rotation = Quaternion.Euler(0, 0, -180);
+				break;
+			default:
+				break;
 
-    }
+		}
+	}
 
     public void Dash()
 	{

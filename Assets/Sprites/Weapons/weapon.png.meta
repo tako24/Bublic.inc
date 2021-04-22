@@ -111,7 +111,7 @@ TextureImporter:
         width: 86
         height: 93
       alignment: 9
-      pivot: {x: 0.10479182, y: 0.08637722}
+      pivot: {x: 0.16114692, y: 0.13849008}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -148,7 +148,7 @@ TextureImporter:
       name: weapon_2
       rect:
         serializedVersion: 2
-        x: 36
+        x: 35
         y: 200
         width: 122
         height: 60
@@ -169,12 +169,12 @@ TextureImporter:
       name: weapon_3
       rect:
         serializedVersion: 2
-        x: 11
+        x: 10
         y: 16
         width: 124
         height: 120
       alignment: 9
-      pivot: {x: 0.12869354, y: 0.10958505}
+      pivot: {x: 0.10915104, y: 0.09612247}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
