@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody2D rb;
 	private float _currentCD = 0;
 	private Animator animator;
+	private GameObject _ap;
 
 	void Start()
 	{
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
 		animator = GetComponent<Animator>();
 		rb.freezeRotation = true;
 		rb.gravityScale = 0;
+		_ap = GetComponentInChildren<MeleeWeapon>().gameObject;
 	}
 
 	void FixedUpdate()
@@ -33,8 +35,8 @@ public class PlayerController : MonoBehaviour
 	{
 		movementVector.x = Input.GetAxis("Horizontal");
 		movementVector.y = Input.GetAxis("Vertical");
-
 		SetPlayerDirection();
+		SetWeaponDirection(direction);
 
 		if (Input.GetKeyDown(KeyCode.LeftShift) && _currentCD <= 0)
 		{
@@ -124,8 +126,23 @@ public class PlayerController : MonoBehaviour
 
 		print(direction);
 	}
+    void SetWeaponDirection(Direction dir)
+    {
+        switch (direction)
+        {
+            case Direction.Up:
+				Quaternion rotation = Quaternion.AngleAxis(45, Vector2.up);
+                _ap.transform.rotation = rotation;
+                break;
+            case Direction.Down:
+				Quaternion rotationd = Quaternion.AngleAxis(45, Vector2.down);
+				_ap.transform.rotation = rotationd;
+				break;
+        }
 
-	public void Dash()
+    }
+
+    public void Dash()
 	{
 		rb.AddForce(movementVector.normalized * DashSpeed * Time.fixedDeltaTime);
 	}
