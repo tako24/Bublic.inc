@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 		movementVector.y = Input.GetAxis("Vertical");
 		_direction = movementVector.normalized;
 		SetPlayerDirection();
-		SetWeaponDirection();
+		//SetWeaponDirection();
 
 		if (Input.GetKeyDown(KeyCode.LeftShift) && _currentCD <= 0)
 		{
@@ -107,70 +107,99 @@ public class PlayerController : MonoBehaviour
 
     void SetPlayerDirection()
     {
-        if (movementVector.x == 0)
+		movementVector.Normalize();
+		if (movementVector == Vector2.up)
+		{
+			direction = Direction.Up;
+			_ap.transform.rotation = Quaternion.Euler(0, 0, 45);
+			return;
+		}
+        if (movementVector == Vector2.down)
         {
-            if (movementVector.y > 0)
-            {
-                direction = Direction.Up;
-                _ap.transform.rotation = Quaternion.Euler(0, 0, 45);
-            }
-            else if (movementVector.y < 0)
-            {
-                direction = Direction.Down;
-                _ap.transform.rotation = Quaternion.Euler(0, 0, -135);
-            }
-        }
-        else if (movementVector.y == 0)
+			direction = Direction.Down;
+			_ap.transform.rotation = Quaternion.Euler(0, 0, -135);
+			return;
+		}
+        if (movementVector == Vector2.left)
         {
-            if (movementVector.x < 0) direction = Direction.Left;
-            else if (movementVector.x > 0) direction = Direction.Right;
-        }
-        else if (movementVector.x > 0)
+			direction = Direction.Left;
+			_ap.transform.rotation = Quaternion.Euler(0, 0, 135);
+			return;
+		}
+		if (movementVector == Vector2.right)
+		{
+			direction = Direction.Right;
+			_ap.transform.rotation = Quaternion.Euler(0, 0, -45);
+			return;
+		}
+
+        if (movementVector.x > 0)
         {
-            if (movementVector.y > 0) direction = Direction.UpRight;
-            else if (movementVector.y < 0) direction = Direction.DownRight;
-        }
-        else if (movementVector.x < 0)
+			if (movementVector.y > 0) 
+			{
+				direction = Direction.UpRight;
+				_ap.transform.rotation = Quaternion.Euler(0, 0, 0);
+				return;
+			}
+			if (movementVector.y < 0)
+			{
+				direction = Direction.DownRight;
+				_ap.transform.rotation = Quaternion.Euler(0, 0, -90);
+				return;
+			}
+			return;
+		}
+        if (movementVector.x < 0)
         {
-            if (movementVector.y > 0) direction = Direction.UpLeft;
-            else if (movementVector.y < 0) direction = Direction.DownLeft;
-        }
+			if (movementVector.y > 0)
+			{
+				direction = Direction.UpLeft;
+				_ap.transform.rotation = Quaternion.Euler(0, 0, 90);
+				return;
+			}
+			if (movementVector.y < 0)
+			{
+				direction = Direction.DownLeft;
+				_ap.transform.rotation = Quaternion.Euler(0, 0, -180);
+				return;
+			}
+		}
 
         print(direction);
     }
-    void SetWeaponDirection()
-	{
-		switch (direction)
-		{
-			case Direction.Up:
-				_ap.transform.rotation = Quaternion.Euler(0, 0, 45);
-				break;
-			case Direction.Down:
-				_ap.transform.rotation = Quaternion.Euler(0, 0, -135);
-				break;
-			case Direction.Right:
-				_ap.transform.rotation = Quaternion.Euler(0, 0, -45);
-				break;
-			case Direction.Left:
-				_ap.transform.rotation = Quaternion.Euler(0, 0, 135);
-				break;
-			case Direction.UpRight:
-				_ap.transform.rotation = Quaternion.Euler(0, 0, 0);
-				break;
-			case Direction.UpLeft:
-				_ap.transform.rotation = Quaternion.Euler(0, 0, 90);
-				break;
-			case Direction.DownRight:
-				_ap.transform.rotation = Quaternion.Euler(0, 0, -90);
-				break;
-			case Direction.DownLeft:
-				_ap.transform.rotation = Quaternion.Euler(0, 0, -180);
-				break;
-			default:
-				break;
+ //   void SetWeaponDirection()
+	//{
+	//	switch (direction)
+	//	{
+	//		case Direction.Up:
+	//			_ap.transform.rotation = Quaternion.Euler(0, 0, 45);
+	//			break;
+	//		case Direction.Down:
+	//			_ap.transform.rotation = Quaternion.Euler(0, 0, -135);
+	//			break;
+	//		case Direction.Right:
+	//			_ap.transform.rotation = Quaternion.Euler(0, 0, -45);
+	//			break;
+	//		case Direction.Left:
+	//			_ap.transform.rotation = Quaternion.Euler(0, 0, 135);
+	//			break;
+	//		case Direction.UpRight:
+	//			_ap.transform.rotation = Quaternion.Euler(0, 0, 0);
+	//			break;
+	//		case Direction.UpLeft:
+	//			_ap.transform.rotation = Quaternion.Euler(0, 0, 90);
+	//			break;
+	//		case Direction.DownRight:
+	//			_ap.transform.rotation = Quaternion.Euler(0, 0, -90);
+	//			break;
+	//		case Direction.DownLeft:
+	//			_ap.transform.rotation = Quaternion.Euler(0, 0, -180);
+	//			break;
+	//		default:
+	//			break;
 
-		}
-	}
+	//	}
+	//}
 
     public void Dash()
 	{
