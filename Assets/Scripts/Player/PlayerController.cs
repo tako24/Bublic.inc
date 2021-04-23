@@ -1,15 +1,17 @@
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
 	public float Speed = 5f;
 	public float DashCD = 1f;
 	public float DashSpeed = 200000;
 	public Transform AttackPosition;
-
 	private Vector2 movementVector;
-	private Direction direction;
-	private Rigidbody2D rb;
+	
+	private Vector2 _direction;
+    private Direction direction;
+    private Rigidbody2D rb;
 	private float _currentCD = 0;
 	private Animator animator;
 	private GameObject _ap;
@@ -35,8 +37,9 @@ public class PlayerController : MonoBehaviour
 	{
 		movementVector.x = Input.GetAxis("Horizontal");
 		movementVector.y = Input.GetAxis("Vertical");
+		_direction = movementVector.normalized;
 		SetPlayerDirection();
-		SetWeaponDirection(direction);
+		SetWeaponDirection();
 
 		if (Input.GetKeyDown(KeyCode.LeftShift) && _currentCD <= 0)
 		{
@@ -50,6 +53,7 @@ public class PlayerController : MonoBehaviour
 	void Animate()
 	{
 		animator.speed = 1f;
+
 
 		switch (direction)
 		{
@@ -101,32 +105,40 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	void SetPlayerDirection()
-	{
-		if (movementVector.x == 0)
-		{
-			if (movementVector.y > 0) direction = Direction.Up;
-			else if (movementVector.y < 0) direction = Direction.Down;
-		}
-		else if (movementVector.y == 0)
-		{
-			if (movementVector.x < 0) direction = Direction.Left;
-			else if (movementVector.x > 0) direction = Direction.Right;
-		}
-		else if (movementVector.x > 0)
+    void SetPlayerDirection()
+    {
+        if (movementVector.x == 0)
         {
-			if (movementVector.y > 0) direction = Direction.UpRight;
-			else if (movementVector.y < 0) direction = Direction.DownRight;
+            if (movementVector.y > 0)
+            {
+                direction = Direction.Up;
+                _ap.transform.rotation = Quaternion.Euler(0, 0, 45);
+            }
+            else if (movementVector.y < 0)
+            {
+                direction = Direction.Down;
+                _ap.transform.rotation = Quaternion.Euler(0, 0, -135);
+            }
         }
-		else if (movementVector.x < 0)
-		{
-			if (movementVector.y > 0) direction = Direction.UpLeft;
-			else if (movementVector.y < 0) direction = Direction.DownLeft;
-		}
+        else if (movementVector.y == 0)
+        {
+            if (movementVector.x < 0) direction = Direction.Left;
+            else if (movementVector.x > 0) direction = Direction.Right;
+        }
+        else if (movementVector.x > 0)
+        {
+            if (movementVector.y > 0) direction = Direction.UpRight;
+            else if (movementVector.y < 0) direction = Direction.DownRight;
+        }
+        else if (movementVector.x < 0)
+        {
+            if (movementVector.y > 0) direction = Direction.UpLeft;
+            else if (movementVector.y < 0) direction = Direction.DownLeft;
+        }
 
-		print(direction);
-	}
-	void SetWeaponDirection(Direction dir)
+        print(direction);
+    }
+    void SetWeaponDirection()
 	{
 		switch (direction)
 		{
