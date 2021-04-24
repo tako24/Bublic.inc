@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 	private float _currentCD = 0;
 	private Animator animator;
-	private GameObject _ap;
+	private GameObject _weapon;
 	private bool _isDashing;
 
 	void Start()
@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
 		animator = GetComponent<Animator>();
 		rb.freezeRotation = true;
 		rb.gravityScale = 0;
-		_ap = GetComponentInChildren<MeleeWeapon>().gameObject;
+		_weapon = GetComponentInChildren<MeleeWeapon>().gameObject;
+
 	}
 
 	void FixedUpdate()
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
 		movementVector.x = Input.GetAxis("Horizontal");
 		movementVector.y = Input.GetAxis("Vertical");
+		LookAtCursor();
 
 		SetPlayerDirection();
 
@@ -65,6 +67,13 @@ public class PlayerController : MonoBehaviour
 			yield return null;
 		}
 		_isDashing = false;
+	}
+	void LookAtCursor()
+	{
+		Vector3 lookPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+		lookPos = lookPos - transform.position;
+		float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
+		_weapon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 	}
 
 	void Animate()
@@ -127,25 +136,21 @@ public class PlayerController : MonoBehaviour
 		if (movementVector == Vector2.up)
 		{
 			direction = Direction.Up;
-			_ap.transform.rotation = Quaternion.Euler(0, 0, 45);
 			return;
 		}
         if (movementVector == Vector2.down)
         {
 			direction = Direction.Down;
-			_ap.transform.rotation = Quaternion.Euler(0, 0, -135);
 			return;
 		}
         if (movementVector == Vector2.left)
         {
 			direction = Direction.Left;
-			_ap.transform.rotation = Quaternion.Euler(0, 0, 135);
 			return;
 		}
 		if (movementVector == Vector2.right)
 		{
 			direction = Direction.Right;
-			_ap.transform.rotation = Quaternion.Euler(0, 0, -45);
 			return;
 		}
 
@@ -154,13 +159,11 @@ public class PlayerController : MonoBehaviour
 			if (movementVector.y > 0) 
 			{
 				direction = Direction.UpRight;
-				_ap.transform.rotation = Quaternion.Euler(0, 0, 0);
 				return;
 			}
 			if (movementVector.y < 0)
 			{
 				direction = Direction.DownRight;
-				_ap.transform.rotation = Quaternion.Euler(0, 0, -90);
 				return;
 			}
 			return;
@@ -170,13 +173,11 @@ public class PlayerController : MonoBehaviour
 			if (movementVector.y > 0)
 			{
 				direction = Direction.UpLeft;
-				_ap.transform.rotation = Quaternion.Euler(0, 0, 90);
 				return;
 			}
 			if (movementVector.y < 0)
 			{
 				direction = Direction.DownLeft;
-				_ap.transform.rotation = Quaternion.Euler(0, 0, -180);
 				return;
 			}
 		}
