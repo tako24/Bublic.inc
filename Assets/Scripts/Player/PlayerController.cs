@@ -11,6 +11,16 @@ public class PlayerController : MonoBehaviour
 	private float _currentCD = 0;
 	private float _dashCD = 1f;
 
+	public float DashCD = 1f;
+	public float DashSpeed = 1;
+	public float DashTime = 1.0f;
+	private Vector2 movementVector;
+
+	private Vector2 _direction;
+	private Direction direction;
+	private Animator animator;
+	private bool _isDashing;
+
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
@@ -39,28 +49,32 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
-		movement.x = Input.GetAxis("Horizontal");
-		movement.y = Input.GetAxis("Vertical");
+		if (_isDashing) return;
 
-
+		movementVector.x = Input.GetAxis("Horizontal");
+		movementVector.y = Input.GetAxis("Vertical");
+		_direction = movementVector.normalized;
 		LookAtCursor();
 
-
-
-		if (_currentCD <= 0)
+		if (Input.GetKeyDown(KeyCode.LeftShift) && !_isDashing && _currentCD <= 0)
 		{
-			if (Input.GetKeyDown(KeyCode.LeftShift))
-			{
-				Dash();
-				_currentCD = _dashCD;
-
-			}
+			StartCoroutine(DashCoroutine());
+			_isDashing = true;
+			_currentCD = DashCD;
 		}
 		else
-		{
 			_currentCD -= Time.deltaTime;
-			print("CD DASH");
+	}
+
+	private IEnumerator DashCoroutine()
+	{
+		float startTime = Time.time;
+		while (Time.time < startTime + DashTime)
+		{
+			transform.Translate(_direction * DashSpeed * Time.deltaTime);
+			yield return null;
 		}
+		_isDashing = false;
 	}
 
 
