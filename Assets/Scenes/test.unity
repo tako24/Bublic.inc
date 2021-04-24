@@ -144,11 +144,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2672296562080074208, guid: 55de92326188e2446bf346409199d0d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.16497394
       objectReference: {fileID: 0}
     - target: {fileID: 2672296562080074208, guid: 55de92326188e2446bf346409199d0d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.934176
       objectReference: {fileID: 0}
     - target: {fileID: 2672296562080074208, guid: 55de92326188e2446bf346409199d0d1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -156,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2672296562080074208, guid: 55de92326188e2446bf346409199d0d1, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.99999404
       objectReference: {fileID: 0}
     - target: {fileID: 2672296562080074208, guid: 55de92326188e2446bf346409199d0d1, type: 3}
       propertyPath: m_LocalRotation.x
@@ -168,7 +168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2672296562080074208, guid: 55de92326188e2446bf346409199d0d1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.003451033
       objectReference: {fileID: 0}
     - target: {fileID: 2672296562080074208, guid: 55de92326188e2446bf346409199d0d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2672296562080074208, guid: 55de92326188e2446bf346409199d0d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 359.605
       objectReference: {fileID: 0}
     - target: {fileID: 2672296562080074213, guid: 55de92326188e2446bf346409199d0d1, type: 3}
       propertyPath: m_Name
@@ -462,7 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a73d42973786cd48960723ae4147450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 5
+  _damage: 50
   _currentCD: 0
   _trapCD: 1
 --- !u!58 &1793336222

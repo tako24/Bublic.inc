@@ -1,208 +1,86 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
 
 public class PlayerController : MonoBehaviour
 {
-	public float Speed = 5f;
-	public float DashCD = 1f;
-	public float DashSpeed = 200000;
-	private Vector2 movementVector;
-	
-	private Vector2 _direction;
-    private Direction direction;
-    private Rigidbody2D rb;
+	public float speed = 5f;
+	private Vector2 movement;
+	private Rigidbody2D rb;
+	public float _dashSpeed = 200000;
 	private float _currentCD = 0;
+	private float _dashCD = 1f;
+
+	public float DashCD = 1f;
+	public float DashSpeed = 1;
+	public float DashTime = 1.0f;
+	private Vector2 movementVector;
+
+	private Vector2 _direction;
+	private Direction direction;
 	private Animator animator;
-	private GameObject _ap;
 	private bool _isDashing;
 
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
-		animator = GetComponent<Animator>();
 		rb.freezeRotation = true;
 		rb.gravityScale = 0;
-		_ap = GetComponentInChildren<MeleeWeapon>().gameObject;
+
+
 	}
 
 	void FixedUpdate()
 	{
 		rb.velocity = Vector2.zero;
-		rb.MovePosition(rb.position + movementVector * Speed * Time.fixedDeltaTime);
 
-		Animate();
+		rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+		float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg - 90f;
+		rb.rotation = angle;
+	}
+
+	void LookAtCursor()
+	{
+		Vector3 lookPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+		lookPos = lookPos - transform.position;
+		float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 	}
 
 	void Update()
 	{
+		if (_isDashing) return;
+
 		movementVector.x = Input.GetAxis("Horizontal");
 		movementVector.y = Input.GetAxis("Vertical");
 		_direction = movementVector.normalized;
-		SetPlayerDirection();
-		//SetWeaponDirection();
+		LookAtCursor();
 
-		if (Input.GetKeyDown(KeyCode.LeftShift) && _currentCD <= 0)
+		if (Input.GetKeyDown(KeyCode.LeftShift) && !_isDashing && _currentCD <= 0)
 		{
-			Dash();
+			StartCoroutine(DashCoroutine());
+			_isDashing = true;
 			_currentCD = DashCD;
 		}
 		else
 			_currentCD -= Time.deltaTime;
 	}
 
-	void Animate()
+	private IEnumerator DashCoroutine()
 	{
-		animator.speed = 1f;
-
-
-		switch (direction)
+		float startTime = Time.time;
+		while (Time.time < startTime + DashTime)
 		{
-			case Direction.Up:
-				SetAnimation("PlayerLooksUp");
-				break;
-			case Direction.Down:
-				SetAnimation("PlayerLooksDown");
-				break;
-			case Direction.Right:
-				SetAnimation("PlayerLooksRight");
-				break;
-			case Direction.Left:
-				SetAnimation("PlayerLooksLeft");
-				break;
-			case Direction.UpRight:
-				SetAnimation("PlayerLooksUp");
-				break;
-			case Direction.UpLeft:
-				SetAnimation("PlayerLooksUp");
-				break;
-			case Direction.DownRight:
-				SetAnimation("PlayerLooksDown");
-				break;
-			case Direction.DownLeft:
-				SetAnimation("PlayerLooksDown");
-				break;
-			default:
-				break;
+			transform.Translate(_direction * DashSpeed * Time.deltaTime);
+			yield return null;
 		}
-
-		if (movementVector.Equals(Vector2.zero))
-		{
-			animator.Play(animator.GetCurrentAnimatorStateInfo(0).shortNameHash, 0, 0);
-			animator.speed = 0f;
-		}
-
-		//print(movementVector.ToString() + " " + direction);
+		_isDashing = false;
 	}
 
-	void SetAnimation(string currentState)
+
+	public void Dash()
 	{
-		animator.SetBool(currentState, true);
-
-		foreach (var state in new[] { "PlayerLooksUp", "PlayerLooksDown", "PlayerLooksRight", "PlayerLooksLeft" })
-		{
-			if (!state.Equals(currentState))
-				animator.SetBool(state, false);
-		}
-	}
-
-    void SetPlayerDirection()
-    {
-		movementVector.Normalize();
-		if (movementVector == Vector2.up)
-		{
-			direction = Direction.Up;
-			_ap.transform.rotation = Quaternion.Euler(0, 0, 45);
-			return;
-		}
-        if (movementVector == Vector2.down)
-        {
-			direction = Direction.Down;
-			_ap.transform.rotation = Quaternion.Euler(0, 0, -135);
-			return;
-		}
-        if (movementVector == Vector2.left)
-        {
-			direction = Direction.Left;
-			_ap.transform.rotation = Quaternion.Euler(0, 0, 135);
-			return;
-		}
-		if (movementVector == Vector2.right)
-		{
-			direction = Direction.Right;
-			_ap.transform.rotation = Quaternion.Euler(0, 0, -45);
-			return;
-		}
-
-        if (movementVector.x > 0)
-        {
-			if (movementVector.y > 0) 
-			{
-				direction = Direction.UpRight;
-				_ap.transform.rotation = Quaternion.Euler(0, 0, 0);
-				return;
-			}
-			if (movementVector.y < 0)
-			{
-				direction = Direction.DownRight;
-				_ap.transform.rotation = Quaternion.Euler(0, 0, -90);
-				return;
-			}
-			return;
-		}
-        if (movementVector.x < 0)
-        {
-			if (movementVector.y > 0)
-			{
-				direction = Direction.UpLeft;
-				_ap.transform.rotation = Quaternion.Euler(0, 0, 90);
-				return;
-			}
-			if (movementVector.y < 0)
-			{
-				direction = Direction.DownLeft;
-				_ap.transform.rotation = Quaternion.Euler(0, 0, -180);
-				return;
-			}
-		}
-
-        //print(direction);
-    }
- //   void SetWeaponDirection()
-	//{
-	//	switch (direction)
-	//	{
-	//		case Direction.Up:
-	//			_ap.transform.rotation = Quaternion.Euler(0, 0, 45);
-	//			break;
-	//		case Direction.Down:
-	//			_ap.transform.rotation = Quaternion.Euler(0, 0, -135);
-	//			break;
-	//		case Direction.Right:
-	//			_ap.transform.rotation = Quaternion.Euler(0, 0, -45);
-	//			break;
-	//		case Direction.Left:
-	//			_ap.transform.rotation = Quaternion.Euler(0, 0, 135);
-	//			break;
-	//		case Direction.UpRight:
-	//			_ap.transform.rotation = Quaternion.Euler(0, 0, 0);
-	//			break;
-	//		case Direction.UpLeft:
-	//			_ap.transform.rotation = Quaternion.Euler(0, 0, 90);
-	//			break;
-	//		case Direction.DownRight:
-	//			_ap.transform.rotation = Quaternion.Euler(0, 0, -90);
-	//			break;
-	//		case Direction.DownLeft:
-	//			_ap.transform.rotation = Quaternion.Euler(0, 0, -180);
-	//			break;
-	//		default:
-	//			break;
-
-	//	}
-	//}
-
-    public void Dash()
-	{
-		rb.AddForce(movementVector.normalized * DashSpeed * Time.fixedDeltaTime);
+		Vector2 mouseDirection = (Input.mousePosition - new Vector3(Screen.width / 2, Screen.height / 2)).normalized;
+		rb.AddForce(mouseDirection * _dashSpeed * Time.fixedDeltaTime);
 	}
 }
