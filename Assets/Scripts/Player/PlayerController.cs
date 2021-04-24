@@ -1,14 +1,13 @@
-using System.Collections;
 using UnityEngine;
+
 
 public class PlayerController : MonoBehaviour
 {
 	public float Speed = 5f;
 	public float DashCD = 1f;
-	public float DashSpeed = 1;
-	public float DashTime = 1.0f;
+	public float DashSpeed = 200000;
 	private Vector2 movementVector;
-
+	
 	private Vector2 _direction;
     private Direction direction;
     private Rigidbody2D rb;
@@ -36,37 +35,25 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
-		if (_isDashing) return;
-
 		movementVector.x = Input.GetAxis("Horizontal");
 		movementVector.y = Input.GetAxis("Vertical");
 		_direction = movementVector.normalized;
 		SetPlayerDirection();
+		//SetWeaponDirection();
 
-		if (Input.GetKeyDown(KeyCode.LeftShift) && !_isDashing && _currentCD <= 0)
+		if (Input.GetKeyDown(KeyCode.LeftShift) && _currentCD <= 0)
 		{
-			StartCoroutine(DashCoroutine());
-			_isDashing = true;
+			Dash();
 			_currentCD = DashCD;
 		}
 		else
 			_currentCD -= Time.deltaTime;
 	}
 
-	private IEnumerator DashCoroutine()
-	{
-		float startTime = Time.time;
-		while (Time.time < startTime + DashTime)
-		{
-			transform.Translate(_direction * DashSpeed * Time.deltaTime);
-			yield return null;
-		}
-		_isDashing = false;
-	}
-
 	void Animate()
 	{
 		animator.speed = 1f;
+
 
 		switch (direction)
 		{
@@ -180,4 +167,42 @@ public class PlayerController : MonoBehaviour
 
         //print(direction);
     }
+ //   void SetWeaponDirection()
+	//{
+	//	switch (direction)
+	//	{
+	//		case Direction.Up:
+	//			_ap.transform.rotation = Quaternion.Euler(0, 0, 45);
+	//			break;
+	//		case Direction.Down:
+	//			_ap.transform.rotation = Quaternion.Euler(0, 0, -135);
+	//			break;
+	//		case Direction.Right:
+	//			_ap.transform.rotation = Quaternion.Euler(0, 0, -45);
+	//			break;
+	//		case Direction.Left:
+	//			_ap.transform.rotation = Quaternion.Euler(0, 0, 135);
+	//			break;
+	//		case Direction.UpRight:
+	//			_ap.transform.rotation = Quaternion.Euler(0, 0, 0);
+	//			break;
+	//		case Direction.UpLeft:
+	//			_ap.transform.rotation = Quaternion.Euler(0, 0, 90);
+	//			break;
+	//		case Direction.DownRight:
+	//			_ap.transform.rotation = Quaternion.Euler(0, 0, -90);
+	//			break;
+	//		case Direction.DownLeft:
+	//			_ap.transform.rotation = Quaternion.Euler(0, 0, -180);
+	//			break;
+	//		default:
+	//			break;
+
+	//	}
+	//}
+
+    public void Dash()
+	{
+		rb.AddForce(movementVector.normalized * DashSpeed * Time.fixedDeltaTime);
+	}
 }
