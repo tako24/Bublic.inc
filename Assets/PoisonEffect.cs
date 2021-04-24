@@ -5,7 +5,7 @@ public class PoisonEffect : MonoBehaviour
 {
     public int Ticks;
     public int TickDamage;
-    public int TimeBetweenTicksInSeconds;
+    [SerializeField]private int TimeBetweenTicksInSeconds;
 
     private HPBar hpBar;
     private bool poisonInflicted;

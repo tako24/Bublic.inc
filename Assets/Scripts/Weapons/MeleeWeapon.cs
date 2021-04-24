@@ -10,7 +10,7 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
     public int Damage { get; set; }
     public int Durability { get; set; }
     public float TimeBtwnAttack { get; set; }
-    public float StartTimeAttack { get; set; } = 3;
+    public float StartTimeAttack { get; set; } = 0.5f;
     public float AttackRadius;
 
 

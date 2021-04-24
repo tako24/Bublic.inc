@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class HPBar : MonoBehaviour
 {
@@ -62,7 +63,6 @@ public class HPBar : MonoBehaviour
 
     public void Die()
     {
-        // как он умирает?
-        Destroy(gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
