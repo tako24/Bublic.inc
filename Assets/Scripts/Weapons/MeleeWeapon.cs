@@ -29,7 +29,7 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
         else 
         {
             TimeBtwnAttack -= Time.deltaTime;
-            print("Идет перезарядка");
+            //print("Идет перезарядка");
         }
 
     }

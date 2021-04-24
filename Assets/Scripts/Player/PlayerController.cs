@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 	public float Speed = 5f;
 	public float DashCD = 1f;
 	public float DashSpeed = 200000;
-	public Transform AttackPosition;
 	private Vector2 movementVector;
 	
 	private Vector2 _direction;
@@ -16,6 +15,7 @@ public class PlayerController : MonoBehaviour
 	private Animator animator;
 	private GameObject _ap;
 	private bool _isDashing;
+
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 
-        print(direction);
+        //print(direction);
     }
  //   void SetWeaponDirection()
 	//{

@@ -32,6 +32,7 @@ public class HPBar : MonoBehaviour
 
         GUI.Label(new Rect(screenPosition.x, screenPosition.y, 0, 0), _currentHP.ToString(), style);
     }
+
     private void Start()
     {
         _currentHP = 100;
@@ -40,6 +41,7 @@ public class HPBar : MonoBehaviour
         _slider.value = _currentHP;
         _fill.color = _gradient.Evaluate(1f);
     }
+
     public void TakeDamage(int damage)
     {
         _currentHP -= damage;
@@ -48,6 +50,7 @@ public class HPBar : MonoBehaviour
         _slider.value = _currentHP;
         _fill.color = _gradient.Evaluate(_slider.normalizedValue);
     }
+
     public void Heal(int heal)
     {
         _currentHP += heal;
@@ -56,6 +59,7 @@ public class HPBar : MonoBehaviour
         _slider.value = _currentHP;
         _fill.color = _gradient.Evaluate(_slider.normalizedValue);
     }
+
     public void Die()
     {
         // как он умирает?
