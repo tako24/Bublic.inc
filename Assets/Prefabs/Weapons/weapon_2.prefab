@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -5644976530168992815}
   - component: {fileID: 2687396709031631253}
   - component: {fileID: 3537792792738793673}
+  - component: {fileID: 1747709859766268994}
   m_Layer: 0
   m_Name: weapon_2
   m_TagString: Untagged
@@ -99,15 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69490386dcb2ca4eb8b974b5bbafaa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunName: "\u0411\u0423\u041B\u041E\u0412\u0410 "
   AttackPosition: {fileID: 7197471589512859460}
   AttackRadius: 0.49
-  textSize: 14
-  textFont: {fileID: 0}
-  textColor: {r: 1, g: 1, b: 1, a: 1}
-  textHeight: 1.15
-  shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
-  shadowOffset: {x: 1, y: 1}
 --- !u!50 &-5644976530168992815
 Rigidbody2D:
   serializedVersion: 4
@@ -166,6 +160,20 @@ MonoBehaviour:
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
   shadowOffset: {x: 1, y: 1}
   _isPicked: 0
+--- !u!114 &1747709859766268994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5551399242352178299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce72958e221e89e45a12a3a7617122af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 10
+  AtackSpeed: 0
 --- !u!1 &6692962231281727633
 GameObject:
   m_ObjectHideFlags: 0

@@ -292,6 +292,10 @@ PrefabInstance:
       propertyPath: textHeight
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2290166852277539422, guid: 55de92326188e2446bf346409199d0d1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2491308434273934575, guid: 55de92326188e2446bf346409199d0d1, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -755,6 +759,7 @@ MonoBehaviour:
   - {fileID: 5334975429434644614, guid: 6ba0b67000e624749a73b2865a5937bc, type: 3}
   LeftConnection: {fileID: 612248389032828558, guid: 69913bb43fccb3a4a916b91c31f9ecf1, type: 3}
   RightConnection: {fileID: 1432570714763670303, guid: 5dcf2a7101673574abbc7c1cdc425dc6, type: 3}
+  enemy: {fileID: 3465465622681761255, guid: 7f32d52412c930846aefed4676c14899, type: 3}
 --- !u!114 &1323187307
 MonoBehaviour:
   m_ObjectHideFlags: 0

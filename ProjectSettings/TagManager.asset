@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Trap
+  - Exit
+  - patrol
   layers:
   - Default
   - TransparentFX
