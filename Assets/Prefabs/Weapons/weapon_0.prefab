@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: -3457018518877002341}
   - component: {fileID: 5367734945996777489}
   - component: {fileID: 8669409829405920143}
+  - component: {fileID: 9144719811156250646}
   m_Layer: 0
   m_Name: weapon_0
   m_TagString: Untagged
@@ -189,3 +190,17 @@ MonoBehaviour:
   freq: 2
   offset: 0
   isPicked: 0
+--- !u!114 &9144719811156250646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5709153087961001685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce72958e221e89e45a12a3a7617122af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 10
+  AtackSpeed: 0

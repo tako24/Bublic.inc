@@ -10,6 +10,7 @@ public class StageGeneration : MonoBehaviour
     public List<GameObject> RoomsPrefabs;
     public GameObject LeftConnection;
     public GameObject RightConnection;
+    public GameObject enemy;
 
     private GameObject[,] RoomsMap;
     private int mapX;
@@ -29,11 +30,6 @@ public class StageGeneration : MonoBehaviour
 
         AstarPath.Scan();
 
-        foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
-        {
-            enemy.GetComponent<AIDestinationSetter>().target = GameObject.Find("Player").transform;
-            enemy.GetComponent<AIPath>().canSearch = false;
-        }
     }
 
     private void Initialize()
@@ -54,8 +50,6 @@ public class StageGeneration : MonoBehaviour
 
         GameController.CurrentRoom = RoomsMap[mapX, mapY].GetComponent<RoomProperties>();
         GameController.CurrentRoom.IsCleared = true;
-
-        lastSpawnedRoom.transform.Find("Square").gameObject.SetActive(false);
     }
 
     private void GenerateStage()
@@ -143,6 +137,16 @@ public class StageGeneration : MonoBehaviour
             case "Room 2":
                 grid.SetDimensions(7, 7, grid.nodeSize);
                 break;
+        }
+        GenerateEnemies(1);
+    }
+
+    private void GenerateEnemies(int count)
+    {
+        for (var i = 0; i < count; i++)
+        {
+            var e=Instantiate(enemy, lastSpawnedRoom.transform.position, Quaternion.identity);
+            e.transform.parent = lastSpawnedRoom.transform;
         }
     }
 

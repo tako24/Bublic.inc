@@ -10,8 +10,6 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             CurrentRoom.OpenExits();
-            var ai = CurrentRoom.GetComponentInChildren<AIPath>();
-            ai.canSearch = false;
         }
     }
 }
