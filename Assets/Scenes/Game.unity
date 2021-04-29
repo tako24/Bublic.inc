@@ -689,6 +689,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8588471863006231008, guid: 5ad6a3f6ab2f98240a6074c25f8d35cc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 115.775696
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588471863006231008, guid: 5ad6a3f6ab2f98240a6074c25f8d35cc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -23.04358
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ad6a3f6ab2f98240a6074c25f8d35cc, type: 3}
 --- !u!114 &1280834132 stripped
@@ -776,6 +784,7 @@ MonoBehaviour:
   RoomsDensity: 0
   AstarPath: {fileID: 416381125}
   RoomsPrefabs:
+  - {fileID: 4775367763622412229, guid: 62035ea45df93fc4c9e62a9e5537da1b, type: 3}
   - {fileID: 5057523741982149658, guid: b34dc35ee3a39f54498d38caf078ad6f, type: 3}
   - {fileID: 5334975429434644614, guid: 6ba0b67000e624749a73b2865a5937bc, type: 3}
   LeftConnection: {fileID: 612248389032828558, guid: 69913bb43fccb3a4a916b91c31f9ecf1, type: 3}

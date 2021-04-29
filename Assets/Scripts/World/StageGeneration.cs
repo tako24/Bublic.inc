@@ -35,7 +35,7 @@ public class StageGeneration : MonoBehaviour
     {
         spawnedRooms = new List<GameObject>();
 
-        roomToSpawn = RoomsPrefabs[Random.Range(0, RoomsPrefabs.Count)];
+        roomToSpawn = RoomsPrefabs[0];
         lastSpawnedRoom = Instantiate(roomToSpawn, Vector2.zero, Quaternion.identity);
         lastSpawnedRoom.transform.parent = transform;
         spawnedRooms.Add(lastSpawnedRoom);
@@ -102,7 +102,7 @@ public class StageGeneration : MonoBehaviour
 
     private void SpawnRoom(int xSign, int ySign, int mapDX, int mapDY)
     {
-        roomToSpawn = RoomsPrefabs[Random.Range(0, RoomsPrefabs.Count)];
+        roomToSpawn = RoomsPrefabs[Random.Range(1, RoomsPrefabs.Count)];
         var maxRoomSize = System.Math.Max(roomToSpawn.GetComponent<RoomProperties>().Size,
             roomToSpawnFrom.GetComponent<RoomProperties>().Size);
         var roomDX = maxRoomSize - RoomsDensity;
