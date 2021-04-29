@@ -29,7 +29,6 @@ public class StageGeneration : MonoBehaviour
         GenerateStage();
 
         AstarPath.Scan();
-
     }
 
     private void Initialize()
@@ -49,7 +48,6 @@ public class StageGeneration : MonoBehaviour
         RoomsMap[mapX, mapY] = lastSpawnedRoom;
 
         GameController.CurrentRoom = RoomsMap[mapX, mapY].GetComponent<RoomProperties>();
-        GameController.CurrentRoom.IsCleared = true;
     }
 
     private void GenerateStage()
@@ -138,7 +136,7 @@ public class StageGeneration : MonoBehaviour
                 grid.SetDimensions(7, 7, grid.nodeSize);
                 break;
         }
-        GenerateEnemies(1);
+        //GenerateEnemies(1);
     }
 
     private void GenerateEnemies(int count)

@@ -289,9 +289,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1280834133}
     - target: {fileID: 1449721490, guid: 55de92326188e2446bf346409199d0d1, type: 3}
+      propertyPath: InvFrames
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449721490, guid: 55de92326188e2446bf346409199d0d1, type: 3}
       propertyPath: textHeight
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1449721490, guid: 55de92326188e2446bf346409199d0d1, type: 3}
+      propertyPath: PlayerSprite
+      value: 
+      objectReference: {fileID: 1848045625}
     - target: {fileID: 2290166852277539422, guid: 55de92326188e2446bf346409199d0d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
@@ -380,7 +388,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7492601285266572388, guid: 55de92326188e2446bf346409199d0d1, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492601285266572388, guid: 55de92326188e2446bf346409199d0d1, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492601285266572388, guid: 55de92326188e2446bf346409199d0d1, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1711678658913893983, guid: 55de92326188e2446bf346409199d0d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 55de92326188e2446bf346409199d0d1, type: 3}
 --- !u!1 &416381124
 GameObject:
@@ -759,7 +780,7 @@ MonoBehaviour:
   - {fileID: 5334975429434644614, guid: 6ba0b67000e624749a73b2865a5937bc, type: 3}
   LeftConnection: {fileID: 612248389032828558, guid: 69913bb43fccb3a4a916b91c31f9ecf1, type: 3}
   RightConnection: {fileID: 1432570714763670303, guid: 5dcf2a7101673574abbc7c1cdc425dc6, type: 3}
-  enemy: {fileID: 3465465622681761255, guid: 7f32d52412c930846aefed4676c14899, type: 3}
+  enemy: {fileID: 3465465622681761255, guid: 4b40c36832459d242ad06550f2ac689c, type: 3}
 --- !u!114 &1323187307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -772,6 +793,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2408ab345aa75b4b9df6178a42bd1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &1848045625 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7492601285266572388, guid: 55de92326188e2446bf346409199d0d1, type: 3}
+  m_PrefabInstance: {fileID: 195556950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1969262014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2672296562080074208, guid: 55de92326188e2446bf346409199d0d1, type: 3}

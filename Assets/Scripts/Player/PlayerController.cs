@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
 	public float DashCD = 1f;
 	public float DashSpeed = 1;
 	public float DashTime = 1.0f;
-	public GameObject shootpoint;
 
 	private Vector2 movementVector;
     private Direction direction;
@@ -24,7 +23,6 @@ public class PlayerController : MonoBehaviour
 		rb.freezeRotation = true;
 		rb.gravityScale = 0;
 		_weapon = GetComponentInChildren<MeleeWeapon>().gameObject;
-
 	}
 
 	void FixedUpdate()
@@ -69,13 +67,13 @@ public class PlayerController : MonoBehaviour
 		}
 		_isDashing = false;
 	}
+
 	void LookAtCursor()
 	{
 		Vector3 lookPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
-		lookPos = lookPos - transform.position;
+		lookPos -= transform.position;
 		float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
-		_weapon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-		shootpoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+		_weapon.transform.rotation = Quaternion.AngleAxis(angle - 45, Vector3.forward);
 	}
 
 	void Animate()

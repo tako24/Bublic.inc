@@ -16,6 +16,24 @@ public class RoomProperties : MonoBehaviour
     public bool IsCleared;
 
     public List<GameObject> SpawnedExits = new List<GameObject>();
+    public List<GameObject> Enemies = new List<GameObject>();
+
+    void Start()
+    {
+        foreach (Transform t in transform)
+        {
+            if (t.CompareTag("Enemy"))
+                Enemies.Add(t.gameObject);
+        }
+    }
+
+    public void RemoveEnemy(GameObject enemy)
+    {
+        Enemies.Remove(enemy);
+
+        if (Enemies.Count == 0)
+            OpenExits();
+    }
 
     public void SpawnExit(Direction dir)
     {
@@ -56,11 +74,9 @@ public class RoomProperties : MonoBehaviour
         if (IsCleared) return;
 
         foreach (var exit in SpawnedExits)
-            {
-                exit.GetComponent<TilemapRenderer>().enabled = true;
-                exit.GetComponent<EdgeCollider2D>().isTrigger = false;
-            }
-
-        Debug.Log("Encounter Started (Press E to clear)");
+        {
+            exit.GetComponent<TilemapRenderer>().enabled = true;
+            exit.GetComponent<EdgeCollider2D>().isTrigger = false;
+        }
     }
 }
