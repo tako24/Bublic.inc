@@ -1,5 +1,6 @@
 using UnityEngine;
 using Pathfinding;
+using System.Linq;
 
 public class ExitController : MonoBehaviour
 {
@@ -13,11 +14,11 @@ public class ExitController : MonoBehaviour
     {
         var currentRoom = gameObject.GetComponentInParent<RoomProperties>();
         currentRoom.CloseExits();
-        var ai = currentRoom.GetComponentInChildren<EnemyLogic>();
+        var ai = currentRoom.GetComponentsInChildren<EnemyLogic>();
         if (ai != null)
             if (!currentRoom.IsCleared)
-                ai.Atack();
+                foreach (var x in ai) x.Atack();
             else
-                ai.StopAtack();
+                foreach (var x in ai) x.StopAtack();
     }
 }

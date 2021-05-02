@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class weaponStats : MonoBehaviour
+public class WeaponStats : MonoBehaviour
 {
     public int Damage;
-    public int AtackSpeed;
+    public float ReloadTime;
     // Start is called before the first frame update
     void Start()
     {
