@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 using UnityEngine.SceneManagement;
 
 public class HPBar : MonoBehaviour
@@ -13,11 +10,14 @@ public class HPBar : MonoBehaviour
 
     private int _currentHP;
     private int _maxHP;
+    private float _currentInvTime;
 
-    public Color textColor = Color.white;
-    public float textHeight = 0.8f;
-    public Color shadowColor = new Color(0, 0, 0, 0.5f);
-    public Vector2 shadowOffset = new Vector2(1, 1);
+    public Color TextColor = Color.white;
+    public float TextHeight = 0.8f;
+    public Color ShadowColor = new Color(0, 0, 0, 0.5f);
+    public Vector2 ShadowOffset = new Vector2(1, 1);
+    public float InvFrames;
+    public SpriteRenderer PlayerSprite;
 
     GUIStyle style = new GUIStyle();
 
@@ -25,9 +25,9 @@ public class HPBar : MonoBehaviour
     {
         GUI.depth = 9999;
 
-        style.normal.textColor = textColor;
+        style.normal.textColor = TextColor;
 
-        Vector3 worldPosition = new Vector3(transform.position.x, transform.position.y + textHeight, transform.position.z);
+        Vector3 worldPosition = new Vector3(transform.position.x, transform.position.y + TextHeight, transform.position.z);
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
         screenPosition.y = Screen.height - screenPosition.y;
 
@@ -41,15 +41,35 @@ public class HPBar : MonoBehaviour
         _slider.maxValue = _maxHP;
         _slider.value = _currentHP;
         _fill.color = _gradient.Evaluate(1f);
+        PlayerSprite.color = Color.white;
+    }
+
+    private void FixedUpdate()
+    {
+        if (_currentInvTime > 0)
+        {
+            _currentInvTime -= Time.fixedDeltaTime;
+
+            if (_currentInvTime <= 0f)
+            {
+                _currentInvTime = 0f;
+                PlayerSprite.color = Color.white;
+            }
+        }
     }
 
     public void TakeDamage(int damage)
     {
-        _currentHP -= damage;
-        if (_currentHP <= 0)
-            Die();
-        _slider.value = _currentHP;
-        _fill.color = _gradient.Evaluate(_slider.normalizedValue);
+        if (_currentInvTime == 0f)
+        {
+            _currentInvTime = InvFrames;
+            PlayerSprite.color = Color.red;
+            _currentHP -= damage;
+            if (_currentHP <= 0)
+                Die();
+            _slider.value = _currentHP;
+            _fill.color = _gradient.Evaluate(_slider.normalizedValue);
+        }
     }
 
     public void Heal(int heal)

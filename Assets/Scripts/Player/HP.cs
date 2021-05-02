@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HP : MonoBehaviour
 {
@@ -26,25 +23,30 @@ public class HP : MonoBehaviour
 
         GUI.Label(new Rect(screenPosition.x, screenPosition.y, 0, 0), _currentHP.ToString(), style);
     }
+
     private void Start()
     {
         _currentHP = 100;
         _maxHP = 150;
     }
+
     public void TakeDamage(int damage)
     {
         _currentHP -= damage;
         if (_currentHP <= 0)
             Die();
     }
+
     public void Heal(int heal)
     {
         _currentHP += heal;
         if (_currentHP > _maxHP)
             _currentHP = _maxHP;
     }
+
     public void Die()
     {
+        GameController.CurrentRoom.RemoveEnemy(gameObject);
         Destroy(gameObject);
     }
 }

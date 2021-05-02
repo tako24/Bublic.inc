@@ -29,14 +29,13 @@ public class StageGeneration : MonoBehaviour
         GenerateStage();
 
         AstarPath.Scan();
-
     }
 
     private void Initialize()
     {
         spawnedRooms = new List<GameObject>();
 
-        roomToSpawn = RoomsPrefabs[Random.Range(0, RoomsPrefabs.Count)];
+        roomToSpawn = RoomsPrefabs[0];
         lastSpawnedRoom = Instantiate(roomToSpawn, Vector2.zero, Quaternion.identity);
         lastSpawnedRoom.transform.parent = transform;
         spawnedRooms.Add(lastSpawnedRoom);
@@ -49,7 +48,6 @@ public class StageGeneration : MonoBehaviour
         RoomsMap[mapX, mapY] = lastSpawnedRoom;
 
         GameController.CurrentRoom = RoomsMap[mapX, mapY].GetComponent<RoomProperties>();
-        GameController.CurrentRoom.IsCleared = true;
     }
 
     private void GenerateStage()
@@ -104,7 +102,7 @@ public class StageGeneration : MonoBehaviour
 
     private void SpawnRoom(int xSign, int ySign, int mapDX, int mapDY)
     {
-        roomToSpawn = RoomsPrefabs[Random.Range(0, RoomsPrefabs.Count)];
+        roomToSpawn = RoomsPrefabs[Random.Range(1, RoomsPrefabs.Count)];
         var maxRoomSize = System.Math.Max(roomToSpawn.GetComponent<RoomProperties>().Size,
             roomToSpawnFrom.GetComponent<RoomProperties>().Size);
         var roomDX = maxRoomSize - RoomsDensity;
@@ -138,7 +136,7 @@ public class StageGeneration : MonoBehaviour
                 grid.SetDimensions(7, 7, grid.nodeSize);
                 break;
         }
-        GenerateEnemies(1);
+        //GenerateEnemies(1);
     }
 
     private void GenerateEnemies(int count)
