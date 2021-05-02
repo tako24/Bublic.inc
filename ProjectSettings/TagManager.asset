@@ -8,6 +8,8 @@ TagManager:
   - Trap
   - Exit
   - patrol
+  - ammo
+  - flypoint
   layers:
   - Default
   - TransparentFX
