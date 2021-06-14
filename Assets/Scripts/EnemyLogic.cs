@@ -24,7 +24,7 @@ public class EnemyLogic : MonoBehaviour
     private GameObject[] patroolPoints;
     public AIPath AIPath;
     public AIDestinationSetter AIDestinationSetter;
-    private State state;
+    public State state;
     public LogicType LogicType;
     private GameObject player;
     public float distanceToPlayer;

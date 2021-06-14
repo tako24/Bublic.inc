@@ -97,9 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3ff917023d37740b088ed76b11ba45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  owner: {fileID: 0}
-  weapon: {fileID: 0}
+  Speed: 1000
+  Owner: {fileID: 0}
+  Weapon: {fileID: 0}
 --- !u!50 &8322551605553068244
 Rigidbody2D:
   serializedVersion: 4
@@ -112,7 +112,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0

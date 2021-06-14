@@ -78,5 +78,13 @@ public class RoomProperties : MonoBehaviour
             exit.GetComponent<TilemapRenderer>().enabled = true;
             exit.GetComponent<EdgeCollider2D>().isTrigger = false;
         }
+
+        foreach (var enemy in Enemies)
+        {
+            var shootSystem = enemy.GetComponent<ShootSystem>();
+
+            if (shootSystem != null)
+                shootSystem.Firepoint = GameController.Player.transform;
+        }
     }
 }

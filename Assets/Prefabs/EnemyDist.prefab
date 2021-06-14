@@ -288,6 +288,7 @@ MonoBehaviour:
   distanceToPlayer: 1.5
   baseDistance: 0.2
   runningAwayDistance: 3.2
+  stoprunAwatDelta: 0.2
 --- !u!114 &4829918315771419889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,8 +314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 387c614b77cef6b49b223aae5a002db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firepoint: {fileID: 7867886270706344937}
-  ammo: {fileID: 3281858374423512881, guid: 11efe8b58fd6761438339bad5e3f27f3, type: 3}
+  Firepoint: {fileID: 0}
+  Ammo: {fileID: 3281858374423512881, guid: 11efe8b58fd6761438339bad5e3f27f3, type: 3}
   IsShooting: 0
 --- !u!114 &4440233212293593148
 MonoBehaviour:
