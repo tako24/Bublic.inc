@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float Speed = 0.0001f;
+    public float Speed;
     public GameObject Owner;
     public WeaponStats Weapon;
 
     void Start()
     {
-        GetComponent<Rigidbody2D>().velocity = transform.forward * Speed;
+        var shotDirection = Weapon.gameObject.GetComponent<ShootSystem>().Firepoint.transform.position 
+            - gameObject.transform.position;
+        GetComponent<Rigidbody2D>().velocity = shotDirection * Speed;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

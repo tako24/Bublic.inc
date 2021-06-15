@@ -30,7 +30,7 @@ public class ShootSystem : MonoBehaviour
 
     private void Shoot()
     {   
-        var bullet = Instantiate(Ammo, Firepoint.position, Firepoint.rotation).GetComponent<Bullet>();
+        var bullet = Instantiate(Ammo, gameObject.transform.position, Firepoint.rotation).GetComponent<Bullet>();
         bullet.Owner = gameObject;
         bullet.Weapon = weaponStats;
     }
