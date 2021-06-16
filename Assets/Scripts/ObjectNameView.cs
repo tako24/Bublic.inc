@@ -13,7 +13,7 @@ public class ObjectNameView : MonoBehaviour
     public float textHeight = 0.8f;
     public Color shadowColor = new Color(0, 0, 0, 0.5f);
     public Vector2 shadowOffset = new Vector2(1, 1);
-    [SerializeField] private bool _isPicked;
+    public bool _isPicked;
     private void Start()
     {
         if (_isPicked)
@@ -42,7 +42,7 @@ public class ObjectNameView : MonoBehaviour
 
         GUI.Label(new Rect(screenPosition.x, screenPosition.y, 0, 0), text, style);
     }
-    void PickUp()
+    public void PickUp()
     {
         enabled = false;
     }

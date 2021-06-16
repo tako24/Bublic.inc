@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 	public float DashCD = 1f;
 	public float DashSpeed = 1;
 	public float DashTime = 1.0f;
-
+	public Transform HoldP;
 	private Vector2 movementVector;
     private Direction direction;
     private Rigidbody2D rb;
