@@ -72,8 +72,11 @@ public class PlayerController : MonoBehaviour
 	{
 		Vector3 lookPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
 		lookPos -= transform.position;
+		lookPos.z = 0;
 		float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
-		_weapon.transform.rotation = Quaternion.AngleAxis(angle - 45, Vector3.forward);
+		_weapon.transform.rotation = Quaternion.AngleAxis(angle + 45, Vector3.forward);
+		var desiredPosition = transform.position + new Vector3(-lookPos.y, lookPos.x).normalized * 0.2f;
+		_weapon.transform.position = Vector3.MoveTowards(_weapon.transform.position, desiredPosition, Time.deltaTime * 80f);
 	}
 
 	void Animate()
@@ -110,11 +113,11 @@ public class PlayerController : MonoBehaviour
 				break;
 		}
 
-		if (movementVector.Equals(Vector2.zero))
-		{
-			animator.Play(animator.GetCurrentAnimatorStateInfo(0).shortNameHash, 0, 0);
-			animator.speed = 0f;
-		}
+		////if (movementVector.Equals(Vector2.zero))
+		//{
+		//	animator.Play(animator.GetCurrentAnimatorStateInfo(0).shortNameHash, 0, 0);
+		//	animator.speed = 0f;
+		//}
 
 		//print(movementVector.ToString() + " " + direction);
 	}

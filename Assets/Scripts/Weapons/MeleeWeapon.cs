@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MeleeWeapon : MonoBehaviour, IWeapon
@@ -9,6 +10,13 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
     public float StartTimeAttack { get; set; } = 0.5f;
 
     public float AttackRadius;
+
+    public EdgeCollider2D AttackArea;
+
+    void Start()
+    {
+        AttackArea = GetComponent<EdgeCollider2D>();
+    }
 
     void Update()
     {
@@ -35,32 +43,34 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
 
     public void DoDamage()
     {
-        Collider2D[] enemysCollider = Physics2D.OverlapCircleAll(
-            AttackPosition.position, AttackRadius, LayerMask.GetMask("Enemy"));
+        var enemysCollider = new List<Collider2D>();
+        var filter = new ContactFilter2D();
+        Physics2D.OverlapCollider(AttackArea, filter, enemysCollider);
 
-        if (enemysCollider.Length == 0)
+        if (enemysCollider.Count == 0)
         {
             print("Никого нет в радиусе аттаки");
             return;
         }
-;
+
         foreach (Collider2D enemyCollider in enemysCollider)
         {
+            if (!enemyCollider.CompareTag("Enemy")) continue;
             enemyCollider.GetComponent<HP>().TakeDamage(15);
         }
 
         AttackCooldown = StartTimeAttack;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(AttackPosition.position, AttackRadius);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawSphere(AttackPosition.position, AttackRadius);
+    //}
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(AttackPosition.position, AttackRadius);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawSphere(AttackPosition.position, AttackRadius);
+    //}
 }
