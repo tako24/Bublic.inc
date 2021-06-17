@@ -71,9 +71,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00008058548, y: -0.06332809}
+  m_Offset: {x: 0.00008058548, y: -0.25974834}
   serializedVersion: 2
-  m_Radius: 0.3571769
+  m_Radius: 0.11360079
 --- !u!212 &7492601285266572388
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -226,7 +226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2491308433627876350, guid: e09b2f39ac86e6342bf048bc6b1792d9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.188
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2491308433627876350, guid: e09b2f39ac86e6342bf048bc6b1792d9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -238,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2491308433627876350, guid: e09b2f39ac86e6342bf048bc6b1792d9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2491308433627876350, guid: e09b2f39ac86e6342bf048bc6b1792d9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -250,7 +250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2491308433627876350, guid: e09b2f39ac86e6342bf048bc6b1792d9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2491308433627876350, guid: e09b2f39ac86e6342bf048bc6b1792d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -262,7 +262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2491308433627876350, guid: e09b2f39ac86e6342bf048bc6b1792d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -45
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e09b2f39ac86e6342bf048bc6b1792d9, type: 3}

@@ -74,8 +74,8 @@ public class PlayerController : MonoBehaviour
 		lookPos -= transform.position;
 		lookPos.z = 0;
 		float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
-		_weapon.transform.rotation = Quaternion.AngleAxis(angle + 45, Vector3.forward);
-		var desiredPosition = transform.position + new Vector3(-lookPos.y, lookPos.x).normalized * 0.2f;
+		_weapon.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+		var desiredPosition = transform.position + lookPos.normalized * 0.5f;
 		_weapon.transform.position = Vector3.MoveTowards(_weapon.transform.position, desiredPosition, Time.deltaTime * 80f);
 	}
 

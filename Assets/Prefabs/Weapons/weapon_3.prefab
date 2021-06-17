@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 5310406362138727199}
   - component: {fileID: -1837976030737612607}
   - component: {fileID: 2719874593131121124}
-  - component: {fileID: 3911816592012090462}
+  - component: {fileID: 7553163921646552163}
+  - component: {fileID: 1229851361625183442}
   m_Layer: 0
   m_Name: weapon_3
   m_TagString: Untagged
@@ -30,13 +31,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2491308433627876336}
-  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2491308433627876351
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 946132551445127754, guid: 345d3f61b7e29e14f960437fd9eb6882, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6b063936845ec714d8d4352e482f4fd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -175,7 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 10
   ReloadTime: 0
---- !u!68 &3911816592012090462
+--- !u!68 &7553163921646552163
 EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,17 +192,32 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 1.2908212, y: 0.008000642}
-  - {x: -0.5752026, y: -1.8585925}
-  - {x: -0.26782528, y: -2.1319664}
-  - {x: 0.20390032, y: -2.271079}
-  - {x: 0.84794873, y: -2.287301}
-  - {x: 1.3566754, y: -1.9077051}
-  - {x: 1.7175122, y: -1.3605629}
-  - {x: 1.6731226, y: -0.80460507}
-  - {x: 1.5860709, y: -0.33708382}
-  - {x: 1.2907315, y: 0.0025394}
+  - {x: 0.99352825, y: 0}
+  - {x: -1.0028777, y: -0.0027402006}
+  - {x: -0.6087173, y: 0.5157437}
+  - {x: 0.016899109, y: 0.72491944}
+  - {x: 0.59623516, y: 0.5347688}
+  - {x: 1, y: 0}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!95 &1229851361625183442
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2491308433627876336}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5c2269027e806b343b3a94b2793f05fc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

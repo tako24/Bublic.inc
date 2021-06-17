@@ -43,6 +43,9 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
 
     public void DoDamage()
     {
+        var anim = GetComponent<Animator>();
+        anim.SetTrigger("Attacked");
+
         var enemysCollider = new List<Collider2D>();
         var filter = new ContactFilter2D();
         Physics2D.OverlapCollider(AttackArea, filter, enemysCollider);

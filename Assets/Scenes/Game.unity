@@ -340,6 +340,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3731499132834679162, guid: 55de92326188e2446bf346409199d0d1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731499132834679162, guid: 55de92326188e2446bf346409199d0d1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731499132834679162, guid: 55de92326188e2446bf346409199d0d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5642093162475220877, guid: 55de92326188e2446bf346409199d0d1, type: 3}
       propertyPath: axis.y
       value: 0
@@ -728,7 +740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomsCount: 10
-  RoomsDensity: 0
+  RoomsDensity: 5
   AstarPath: {fileID: 416381125}
   RoomsPrefabs:
   - {fileID: 4775367763622412229, guid: 62035ea45df93fc4c9e62a9e5537da1b, type: 3}
