@@ -51,7 +51,8 @@ public class MeleeWeapon : MonoBehaviour
 
         foreach (Collider2D enemyCollider in enemysCollider)
         {
-            if (!enemyCollider.CompareTag("Enemy")) continue;
+            if (!enemyCollider.CompareTag("Enemy")
+                && !enemyCollider.CompareTag("Destroyable")) continue;
             enemyCollider.GetComponent<HP>().TakeDamage(Damage);
         }
     }
