@@ -44,7 +44,14 @@ public class HP : MonoBehaviour
 
     public void Die()
     {
-        GameController.CurrentRoom.RemoveEnemy(gameObject);
-        Destroy(gameObject);
+        if (CompareTag("Enemy"))
+        {
+            GameController.CurrentRoom.RemoveEnemy(gameObject);
+            Destroy(gameObject);
+        }
+        else if (CompareTag("Destroyable"))
+        {
+            GetComponent<VaseScript>().Break();
+        }
     }
 }
