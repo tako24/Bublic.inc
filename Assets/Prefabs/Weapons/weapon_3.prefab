@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5001247942593523166}
   - component: {fileID: 5310406362138727199}
   - component: {fileID: -1837976030737612607}
-  - component: {fileID: 2719874593131121124}
   - component: {fileID: 7553163921646552163}
   - component: {fileID: 1229851361625183442}
   m_Layer: 0
@@ -101,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69490386dcb2ca4eb8b974b5bbafaa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackPosition: {fileID: 0}
-  AttackRadius: 0.7
+  Damage: 15
+  AttackCooldown: 0.3
   AttackArea: {fileID: 0}
 --- !u!50 &5001247942593523166
 Rigidbody2D:
@@ -162,20 +161,6 @@ MonoBehaviour:
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
   shadowOffset: {x: 1, y: 1}
   _isPicked: 1
---- !u!114 &2719874593131121124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2491308433627876336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce72958e221e89e45a12a3a7617122af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Damage: 10
-  ReloadTime: 0
 --- !u!68 &7553163921646552163
 EdgeCollider2D:
   m_ObjectHideFlags: 0

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class HP : MonoBehaviour
 {
-    private int _currentHP;
-    private int _maxHP;
+    public int _currentHP;
+    public int _maxHP;
 
     public Color textColor = Color.white;
     public float textHeight = 0.8f;
@@ -26,8 +26,6 @@ public class HP : MonoBehaviour
 
     private void Start()
     {
-        _currentHP = 100;
-        _maxHP = 150;
     }
 
     public void TakeDamage(int damage)

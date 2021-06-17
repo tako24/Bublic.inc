@@ -1,15 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeWeapon : MonoBehaviour, IWeapon
+public class MeleeWeapon : MonoBehaviour
 {
-    public Transform AttackPosition;
-    public int Damage { get; set; }
-    public int Durability { get; set; }
-    public float AttackCooldown { get; set; }
-    public float StartTimeAttack { get; set; } = 0.5f;
-
-    public float AttackRadius;
+    public int Damage;
+    public float AttackCooldown;
+    private float KD = 0f;
 
     public EdgeCollider2D AttackArea;
 
@@ -20,20 +16,17 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
 
     void Update()
     {
-        if (AttackCooldown <= 0)
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
+            if (KD <= 0)
             {
                 DoDamage();
-                AttackCooldown = StartTimeAttack;
+                KD = AttackCooldown / 100;
             }
-        }
-        else 
-        {
-            AttackCooldown -= Time.deltaTime;
-            //print("Идет перезарядка");
-        }
 
+            else
+                KD -= Time.deltaTime;
+        }
     }
 
     public void PickUp()
@@ -59,10 +52,8 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
         foreach (Collider2D enemyCollider in enemysCollider)
         {
             if (!enemyCollider.CompareTag("Enemy")) continue;
-            enemyCollider.GetComponent<HP>().TakeDamage(15);
+            enemyCollider.GetComponent<HP>().TakeDamage(Damage);
         }
-
-        AttackCooldown = StartTimeAttack;
     }
 
     //private void OnDrawGizmos()

@@ -203,6 +203,8 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   _fill: {fileID: 0}
+  _currentHP: 100
+  _maxHP: 100
   TextColor: {r: 1, g: 1, b: 1, a: 1}
   TextHeight: 0.8
   ShadowColor: {r: 0, g: 0, b: 0, a: 0.5}

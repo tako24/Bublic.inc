@@ -8,8 +8,8 @@ public class HPBar : MonoBehaviour
     [SerializeField] private Gradient _gradient;
     [SerializeField] private Image _fill;
 
-    private int _currentHP;
-    private int _maxHP;
+    public int _currentHP;
+    public int _maxHP;
     private float _currentInvTime;
 
     public Color TextColor = Color.white;
@@ -36,8 +36,6 @@ public class HPBar : MonoBehaviour
 
     private void Start()
     {
-        _currentHP = 100;
-        _maxHP = 100;
         _slider.maxValue = _maxHP;
         _slider.value = _currentHP;
         _fill.color = _gradient.Evaluate(1f);
