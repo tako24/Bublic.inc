@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 15
-  AttackCooldown: 0.3
+  AttackCooldown: 1
   AttackArea: {fileID: 0}
 --- !u!50 &5001247942593523166
 Rigidbody2D:
