@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 	private Animator animator;
 	private GameObject _weapon;
 	private bool _isDashing;
-
+	public int _score;
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
@@ -133,7 +133,26 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-    void SetPlayerDirection()
+
+	public delegate void OnCoinTake();
+	public event OnCoinTake onCoinTake;
+
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.CompareTag("Coin"))
+		{
+			TakeCoin();
+			Destroy(collision.gameObject);
+		}
+	}
+
+	private void TakeCoin()
+	{
+		onCoinTake?.Invoke();
+	}
+
+	void SetPlayerDirection()
     {
 		movementVector.Normalize();
 		if (movementVector == Vector2.up)
