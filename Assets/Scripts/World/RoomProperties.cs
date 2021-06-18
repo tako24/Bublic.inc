@@ -40,18 +40,22 @@ public class RoomProperties : MonoBehaviour
         switch (dir)
         {
             case Direction.Up:
+                TopExit.SetActive(true);
                 TopExit.GetComponent<EdgeCollider2D>().isTrigger = true;
                 SpawnedExits.Add(TopExit);
                 break;
             case Direction.Down:
+                BottomExit.SetActive(true);
                 BottomExit.GetComponent<EdgeCollider2D>().isTrigger = true;
                 SpawnedExits.Add(BottomExit);
                 break;
             case Direction.Right:
+                RightExit.SetActive(true);
                 RightExit.GetComponent<EdgeCollider2D>().isTrigger = true;
                 SpawnedExits.Add(RightExit);
                 break;
             case Direction.Left:
+                LeftExit.SetActive(true);
                 LeftExit.GetComponent<EdgeCollider2D>().isTrigger = true;
                 SpawnedExits.Add(LeftExit);
                 break;
@@ -62,7 +66,7 @@ public class RoomProperties : MonoBehaviour
     {
         foreach (var exit in SpawnedExits)
         {
-            exit.GetComponent<TilemapRenderer>().enabled = false;
+            exit.GetComponentInChildren<Animator>().SetTrigger("Open");
             exit.GetComponent<EdgeCollider2D>().isTrigger = true;
         }
 
@@ -75,7 +79,7 @@ public class RoomProperties : MonoBehaviour
 
         foreach (var exit in SpawnedExits)
         {
-            exit.GetComponent<TilemapRenderer>().enabled = true;
+            exit.GetComponentInChildren<Animator>().SetTrigger("Close");
             exit.GetComponent<EdgeCollider2D>().isTrigger = false;
         }
 

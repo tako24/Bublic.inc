@@ -15,17 +15,8 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-       if (collision.gameObject.GetHashCode() != Owner.GetHashCode()
-            && !collision.gameObject.CompareTag("Trap") 
-            && (!collision.gameObject.CompareTag("Exit") 
-            || !collision.gameObject.GetComponentInParent<RoomProperties>().IsCleared)
-            && !collision.gameObject.CompareTag("ammo"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Room") || collision.CompareTag("Exit"))
         {
-            var hp = collision.gameObject.GetComponent<HP>();
-
-            if (hp != null)
-                hp.TakeDamage(Weapon.Damage);
-
             var hpBar = collision.gameObject.GetComponent<HPBar>();
 
             if (hpBar != null)
