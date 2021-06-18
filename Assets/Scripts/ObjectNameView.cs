@@ -42,7 +42,7 @@ public class ObjectNameView : MonoBehaviour
 
         GUI.Label(new Rect(screenPosition.x, screenPosition.y, 0, 0), text, style);
     }
-    void PickUp()
+    public void PickUp()
     {
         enabled = false;
     }
