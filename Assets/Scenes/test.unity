@@ -507,10 +507,10 @@ RectTransform:
   m_Father: {fileID: 657692514}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -93.8, y: -29.699997}
-  m_SizeDelta: {x: 36, y: 36}
+  m_SizeDelta: {x: -64, y: -64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &357483343
 MonoBehaviour:
@@ -582,10 +582,10 @@ RectTransform:
   m_Father: {fileID: 657692514}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -115.8, y: 40}
-  m_SizeDelta: {x: 80, y: 96}
+  m_SizeDelta: {x: -20, y: -4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &358300793
 MonoBehaviour:
@@ -1022,10 +1022,10 @@ RectTransform:
   m_Father: {fileID: 657692514}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -93.8, y: -70}
-  m_SizeDelta: {x: 36, y: 36}
+  m_SizeDelta: {x: -64, y: -64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &751636869
 MonoBehaviour:
@@ -1498,10 +1498,10 @@ RectTransform:
   m_Father: {fileID: 657692514}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -137.8, y: -70}
-  m_SizeDelta: {x: 36, y: 36}
+  m_SizeDelta: {x: -64, y: -64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1641482865
 MonoBehaviour:
@@ -1813,10 +1813,10 @@ RectTransform:
   m_Father: {fileID: 1464186582}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -264.6, y: 94.3}
-  m_SizeDelta: {x: -534.1212, y: -240.8122}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 10.900024, y: -34.69995}
+  m_SizeDelta: {x: 16.878784, y: 17.187805}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1925747951
 Animator:
@@ -1907,10 +1907,10 @@ RectTransform:
   m_Father: {fileID: 657692514}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 140, y: 176}
+  m_SizeDelta: {x: 40, y: 76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2062500585
 MonoBehaviour:
@@ -1982,10 +1982,10 @@ RectTransform:
   m_Father: {fileID: 657692514}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -137.8, y: -29.7}
-  m_SizeDelta: {x: 36, y: 36}
+  m_SizeDelta: {x: -64, y: -64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2077295219
 MonoBehaviour:
@@ -2140,6 +2140,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.75294125
       objectReference: {fileID: 0}
+    - target: {fileID: 8588471862897793560, guid: 5ad6a3f6ab2f98240a6074c25f8d35cc, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588471862897793561, guid: 5ad6a3f6ab2f98240a6074c25f8d35cc, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8588471862897793563, guid: 5ad6a3f6ab2f98240a6074c25f8d35cc, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2230,7 +2238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8588471863006231008, guid: 5ad6a3f6ab2f98240a6074c25f8d35cc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -12.7
+      value: -12.699951
       objectReference: {fileID: 0}
     - target: {fileID: 8588471863006231011, guid: 5ad6a3f6ab2f98240a6074c25f8d35cc, type: 3}
       propertyPath: m_Value
