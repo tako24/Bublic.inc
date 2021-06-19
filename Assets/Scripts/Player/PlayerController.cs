@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 	private GameObject _weapon;
 	private bool _isDashing;
 	public int _score;
+
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
 		rb.freezeRotation = true;
 		rb.gravityScale = 0;
 		_weapon = GetComponentInChildren<MeleeWeapon>().gameObject;
+		GameController.CurrentWeapon = _weapon.GetComponent<MeleeWeapon>();
 	}
 
 	void FixedUpdate()
@@ -70,13 +72,16 @@ public class PlayerController : MonoBehaviour
 
 	void LookAtCursor()
 	{
-		Vector3 lookPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+		Vector3 lookPos = Camera.main.ScreenToWorldPoint(
+			new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
 		lookPos -= transform.position;
 		lookPos.z = 0;
+
 		float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
 		_weapon.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 		var desiredPosition = transform.position + lookPos.normalized * 0.5f;
 		_weapon.transform.position = Vector3.MoveTowards(_weapon.transform.position, desiredPosition, Time.deltaTime * 80f);
+		print(_weapon.transform.position);
 	}
 
 	void Animate()

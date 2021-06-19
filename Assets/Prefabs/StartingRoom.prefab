@@ -1749,6 +1749,8 @@ MonoBehaviour:
   BottomExit: {fileID: 9185004314109835904}
   RightExit: {fileID: 4417953172862603025}
   LeftExit: {fileID: 3780461641722059010}
+  TopWall: {fileID: 0}
+  LeftWall: {fileID: 0}
   IsCleared: 1
   SpawnedExits: []
   Enemies: []

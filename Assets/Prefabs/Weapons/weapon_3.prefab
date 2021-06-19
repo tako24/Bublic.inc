@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 5001247942593523166}
   - component: {fileID: 5310406362138727199}
   - component: {fileID: -1837976030737612607}
-  - component: {fileID: 7553163921646552163}
   - component: {fileID: 1229851361625183442}
+  - component: {fileID: 3470159648319570235}
+  - component: {fileID: 848162992070420383}
   m_Layer: 0
   m_Name: weapon_3
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 2491308433627876336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6b063936845ec714d8d4352e482f4fd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,8 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 15
-  AttackCooldown: 1
+  AttackCooldown: 0.5
   AttackArea: {fileID: 0}
+  WeaponSprite: {fileID: 0}
 --- !u!50 &5001247942593523166
 Rigidbody2D:
   serializedVersion: 4
@@ -161,32 +163,6 @@ MonoBehaviour:
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
   shadowOffset: {x: 1, y: 1}
   _isPicked: 1
---- !u!68 &7553163921646552163
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2491308433627876336}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 0.99352825, y: 0}
-  - {x: -1.0028777, y: -0.0027402006}
-  - {x: -0.6087173, y: 0.5157437}
-  - {x: 0.016899109, y: 0.72491944}
-  - {x: 0.59623516, y: 0.5347688}
-  - {x: 1, y: 0}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!95 &1229851361625183442
 Animator:
   serializedVersion: 3
@@ -206,3 +182,72 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!60 &3470159648319570235
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2491308433627876336}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 1
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 1}
+    newSize: {x: 1.24, y: 1.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.75, y: 0}
+      - {x: 0.5, y: 0.25}
+      - {x: 0, y: 0.5}
+      - {x: -0.5, y: 0.25}
+      - {x: -0.75, y: 0}
+--- !u!66 &848162992070420383
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2491308433627876336}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.1}
+  m_GeometryType: 1
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 3470159648319570235}
+    m_ColliderPaths:
+    - - X: 9375000
+        Y: 0
+      - X: 6250000
+        Y: 3125000
+      - X: 0
+        Y: 6250000
+      - X: -6250000
+        Y: 3125000
+      - X: -9375000
+        Y: 0
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 0.625, y: 0.2125}
+      - {x: 0, y: 0.525}
+      - {x: -0.625, y: 0.2125}
+      - {x: -0.9375, y: -0.1}
+      - {x: 0.9375, y: -0.1}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0

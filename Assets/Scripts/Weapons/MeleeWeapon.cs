@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,13 +6,15 @@ public class MeleeWeapon : MonoBehaviour
 {
     public int Damage;
     public float AttackCooldown;
-    private float KD = 0f;
+    private float KD;
 
-    public EdgeCollider2D AttackArea;
+    public Collider2D AttackArea;
+    public SpriteRenderer WeaponSprite;
 
     void Start()
     {
-        AttackArea = GetComponent<EdgeCollider2D>();
+        AttackArea = GetComponent<CompositeCollider2D>();
+        WeaponSprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -20,13 +23,24 @@ public class MeleeWeapon : MonoBehaviour
         {
             if (KD <= 0)
             {
+                WeaponSprite.color = Color.white;
                 DoDamage();
-                KD = AttackCooldown / 100;
+                KD = AttackCooldown;
             }
-
-            else
-                KD -= Time.deltaTime;
         }
+        else if (KD > 0)
+        {
+            KD -= Time.deltaTime;
+            if (KD <= 0)
+                StartCoroutine(Blink());
+        }
+    }
+
+    public IEnumerator Blink()
+    {
+        WeaponSprite.color = new Color(0.18f, 0.3f, 0.3f);
+        yield return new WaitForSeconds(0.25f);
+        WeaponSprite.color = Color.white;
     }
 
     public void PickUp()

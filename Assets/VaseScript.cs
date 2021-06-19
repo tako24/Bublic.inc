@@ -22,7 +22,7 @@ public class VaseScript : MonoBehaviour
 
         if (rand < lootChance)
             Instantiate(Loot[lootIndex], 
-                        new Vector2(transform.position.x, transform.position.y - 0.25f), 
+                        new Vector3(transform.position.x, transform.position.y - 0.25f, 4),
                         Quaternion.identity);
 
         collider.enabled = false;
