@@ -785,6 +785,7 @@ MonoBehaviour:
   RoomsPrefabs:
   - {fileID: 4775367763622412229, guid: 62035ea45df93fc4c9e62a9e5537da1b, type: 3}
   - {fileID: 5089815319919241063, guid: 56bda37e260935e46a31c1adca079fa3, type: 3}
+  - {fileID: 3776062353319405992, guid: e62fc69ebe7d3b447b8e2bd5e16998ea, type: 3}
   LeftConnection: {fileID: 612248389032828558, guid: 69913bb43fccb3a4a916b91c31f9ecf1, type: 3}
   RightConnection: {fileID: 1432570714763670303, guid: 5dcf2a7101673574abbc7c1cdc425dc6, type: 3}
 --- !u!114 &1323187307
