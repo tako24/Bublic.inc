@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 3603934419853122533}
   - component: {fileID: 2672296562080074211}
   - component: {fileID: 1449721490}
+  - component: {fileID: 2950255043572100891}
+  - component: {fileID: 2119756160218226546}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -211,6 +213,30 @@ MonoBehaviour:
   ShadowOffset: {x: 1, y: 1}
   InvFrames: 0.75
   PlayerSprite: {fileID: 7492601285266572388}
+--- !u!114 &2950255043572100891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2672296562080074213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b22be4a131d43240be3c848c60a550d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2119756160218226546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2672296562080074213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c27c13f2305e84c87e967cdc0be6c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1250335360422576772
 PrefabInstance:
   m_ObjectHideFlags: 0
