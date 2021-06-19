@@ -1,31 +1,46 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeWeapon : MonoBehaviour, IWeapon
+public class MeleeWeapon : MonoBehaviour
 {
-    public Transform AttackPosition;
-    public int Damage { get; set; }
-    public int Durability { get; set; }
-    public float AttackCooldown { get; set; }
-    public float StartTimeAttack { get; set; } = 0.5f;
+    public int Damage;
+    public float AttackCooldown;
+    private float KD;
 
-    public float AttackRadius;
+    public Collider2D AttackArea;
+    public SpriteRenderer WeaponSprite;
+
+    void Start()
+    {
+        AttackArea = GetComponent<CompositeCollider2D>();
+        WeaponSprite = GetComponent<SpriteRenderer>();
+    }
 
     void Update()
     {
-        if (AttackCooldown <= 0)
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
+            if (KD <= 0)
             {
+                WeaponSprite.color = Color.white;
                 DoDamage();
-                AttackCooldown = StartTimeAttack;
+                KD = AttackCooldown;
             }
         }
-        else 
+        else if (KD > 0)
         {
-            AttackCooldown -= Time.deltaTime;
-            //print("Идет перезарядка");
+            KD -= Time.deltaTime;
+            if (KD <= 0)
+                StartCoroutine(Blink());
         }
+    }
 
+    public IEnumerator Blink()
+    {
+        WeaponSprite.color = new Color(0.18f, 0.3f, 0.3f);
+        yield return new WaitForSeconds(0.25f);
+        WeaponSprite.color = Color.white;
     }
 
     public void PickUp()
@@ -35,32 +50,36 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
 
     public void DoDamage()
     {
-        Collider2D[] enemysCollider = Physics2D.OverlapCircleAll(
-            AttackPosition.position, AttackRadius, LayerMask.GetMask("Enemy"));
+        var anim = GetComponent<Animator>();
+        anim.SetTrigger("Attacked");
 
-        if (enemysCollider.Length == 0)
+        var enemysCollider = new List<Collider2D>();
+        var filter = new ContactFilter2D();
+        Physics2D.OverlapCollider(AttackArea, filter, enemysCollider);
+
+        if (enemysCollider.Count == 0)
         {
             print("Никого нет в радиусе аттаки");
             return;
         }
-;
+
         foreach (Collider2D enemyCollider in enemysCollider)
         {
-            enemyCollider.GetComponent<HP>().TakeDamage(15);
+            if (!enemyCollider.CompareTag("Enemy")
+                && !enemyCollider.CompareTag("Destroyable")) continue;
+            enemyCollider.GetComponent<HP>().TakeDamage(Damage);
         }
-
-        AttackCooldown = StartTimeAttack;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(AttackPosition.position, AttackRadius);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawSphere(AttackPosition.position, AttackRadius);
+    //}
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(AttackPosition.position, AttackRadius);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawSphere(AttackPosition.position, AttackRadius);
+    //}
 }

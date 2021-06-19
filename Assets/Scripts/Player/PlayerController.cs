@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 	public float DashCD = 1f;
 	public float DashSpeed = 1;
 	public float DashTime = 1.0f;
-
+	public Transform _holdP;
 	private Vector2 movementVector;
     private Direction direction;
     private Rigidbody2D rb;
@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 	private Animator animator;
 	private GameObject _weapon;
 	private bool _isDashing;
+	public int _score;
 
 	void Start()
 	{
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
 		rb.freezeRotation = true;
 		rb.gravityScale = 0;
 		_weapon = GetComponentInChildren<MeleeWeapon>().gameObject;
+		GameController.CurrentWeapon = _weapon.GetComponent<MeleeWeapon>();
 	}
 
 	void FixedUpdate()
@@ -70,10 +72,16 @@ public class PlayerController : MonoBehaviour
 
 	void LookAtCursor()
 	{
-		Vector3 lookPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+		Vector3 lookPos = Camera.main.ScreenToWorldPoint(
+			new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
 		lookPos -= transform.position;
+		lookPos.z = 0;
+
 		float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
-		_weapon.transform.rotation = Quaternion.AngleAxis(angle - 45, Vector3.forward);
+		_weapon.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+		var desiredPosition = transform.position + lookPos.normalized * 0.5f;
+		_weapon.transform.position = Vector3.MoveTowards(_weapon.transform.position, desiredPosition, Time.deltaTime * 80f);
+		print(_weapon.transform.position);
 	}
 
 	void Animate()
@@ -110,11 +118,11 @@ public class PlayerController : MonoBehaviour
 				break;
 		}
 
-		if (movementVector.Equals(Vector2.zero))
-		{
-			animator.Play(animator.GetCurrentAnimatorStateInfo(0).shortNameHash, 0, 0);
-			animator.speed = 0f;
-		}
+		////if (movementVector.Equals(Vector2.zero))
+		//{
+		//	animator.Play(animator.GetCurrentAnimatorStateInfo(0).shortNameHash, 0, 0);
+		//	animator.speed = 0f;
+		//}
 
 		//print(movementVector.ToString() + " " + direction);
 	}
@@ -130,7 +138,26 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-    void SetPlayerDirection()
+
+	public delegate void OnCoinTake();
+	public event OnCoinTake onCoinTake;
+
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.CompareTag("Coin"))
+		{
+			TakeCoin();
+			Destroy(collision.gameObject);
+		}
+	}
+
+	private void TakeCoin()
+	{
+		onCoinTake?.Invoke();
+	}
+
+	void SetPlayerDirection()
     {
 		movementVector.Normalize();
 		if (movementVector == Vector2.up)

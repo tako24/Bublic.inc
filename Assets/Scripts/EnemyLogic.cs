@@ -24,7 +24,7 @@ public class EnemyLogic : MonoBehaviour
     private GameObject[] patroolPoints;
     public AIPath AIPath;
     public AIDestinationSetter AIDestinationSetter;
-    private State state;
+    public State state;
     public LogicType LogicType;
     private GameObject player;
     public float distanceToPlayer;
@@ -53,9 +53,34 @@ public class EnemyLogic : MonoBehaviour
     }
     private void LookAtPlayer()
     {
+        var playerPos = GameController.Player.transform.position;
+        var enemyPos = transform.position;
+        var animator = GetComponent<Animator>();
 
-        gameObject.transform.LookAt(player.transform);
-        AIPath.enableRotation = false;
+        if (playerPos.x > enemyPos.x)
+        {
+            animator.SetBool("LookRight", true);
+            animator.SetBool("LookLeft", false);
+        }
+        else
+        {
+            animator.SetBool("LookRight", false);
+            animator.SetBool("LookLeft", true);
+        }
+
+        if (playerPos.y > enemyPos.y)
+        {
+            animator.SetBool("LookUp", true);
+            animator.SetBool("LookDown", false);
+        }
+        else
+        {
+            animator.SetBool("LookUp", false);
+            animator.SetBool("LookDown", true);
+        }
+
+        //gameObject.transform.LookAt(player.transform);
+        //AIPath.enableRotation = false;
     }
     public void Atack()
     {

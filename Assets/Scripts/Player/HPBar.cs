@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 public class HPBar : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private Gradient _gradient;
+    //[SerializeField] private Gradient _gradient;
     [SerializeField] private Image _fill;
 
-    private int _currentHP;
-    private int _maxHP;
+    public int _currentHP;
+    public int _maxHP;
     private float _currentInvTime;
 
     public Color TextColor = Color.white;
@@ -36,11 +36,9 @@ public class HPBar : MonoBehaviour
 
     private void Start()
     {
-        _currentHP = 100;
-        _maxHP = 100;
         _slider.maxValue = _maxHP;
         _slider.value = _currentHP;
-        _fill.color = _gradient.Evaluate(1f);
+        //_fill.color = _gradient.Evaluate(1f);
         PlayerSprite.color = Color.white;
     }
 
@@ -68,7 +66,7 @@ public class HPBar : MonoBehaviour
             if (_currentHP <= 0)
                 Die();
             _slider.value = _currentHP;
-            _fill.color = _gradient.Evaluate(_slider.normalizedValue);
+            //_fill.color = _gradient.Evaluate(_slider.normalizedValue);
         }
     }
 
@@ -78,7 +76,7 @@ public class HPBar : MonoBehaviour
         if (_currentHP > _maxHP)
             _currentHP = _maxHP;
         _slider.value = _currentHP;
-        _fill.color = _gradient.Evaluate(_slider.normalizedValue);
+        //_fill.color = _gradient.Evaluate(_slider.normalizedValue);
     }
 
     public void Die()

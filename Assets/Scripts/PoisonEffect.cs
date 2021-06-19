@@ -15,9 +15,9 @@ public class PoisonEffect : MonoBehaviour
         hpBar = FindObjectOfType<HPBar>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!poisonInflicted)
+        if (collision.CompareTag("Player") && !poisonInflicted)
             StartCoroutine("InflictPoison");
     }
 

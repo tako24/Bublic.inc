@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class RoomProperties : MonoBehaviour
 {
@@ -12,6 +11,11 @@ public class RoomProperties : MonoBehaviour
     public GameObject BottomExit;
     public GameObject RightExit;
     public GameObject LeftExit;
+
+    public GameObject TopWall;
+    public GameObject BottomWall;
+    public GameObject RightWall;
+    public GameObject LeftWall;
 
     public bool IsCleared;
 
@@ -40,18 +44,30 @@ public class RoomProperties : MonoBehaviour
         switch (dir)
         {
             case Direction.Up:
+                if (TopWall)
+                    TopWall.SetActive(false);
+                TopExit.SetActive(true);
                 TopExit.GetComponent<EdgeCollider2D>().isTrigger = true;
                 SpawnedExits.Add(TopExit);
                 break;
             case Direction.Down:
+                if (BottomWall)
+                    BottomWall.SetActive(false);
+                BottomExit.SetActive(true);
                 BottomExit.GetComponent<EdgeCollider2D>().isTrigger = true;
                 SpawnedExits.Add(BottomExit);
                 break;
             case Direction.Right:
+                if (RightWall)
+                    RightWall.SetActive(false);
+                RightExit.SetActive(true);
                 RightExit.GetComponent<EdgeCollider2D>().isTrigger = true;
                 SpawnedExits.Add(RightExit);
                 break;
             case Direction.Left:
+                if (LeftWall)
+                    LeftWall.SetActive(false);
+                LeftExit.SetActive(true);
                 LeftExit.GetComponent<EdgeCollider2D>().isTrigger = true;
                 SpawnedExits.Add(LeftExit);
                 break;
@@ -62,7 +78,9 @@ public class RoomProperties : MonoBehaviour
     {
         foreach (var exit in SpawnedExits)
         {
-            exit.GetComponent<TilemapRenderer>().enabled = false;
+            exit.GetComponentInChildren<Animator>().SetBool("Open", true);
+            exit.GetComponentInChildren<Animator>().SetBool("Close", false);
+
             exit.GetComponent<EdgeCollider2D>().isTrigger = true;
         }
 
@@ -75,8 +93,18 @@ public class RoomProperties : MonoBehaviour
 
         foreach (var exit in SpawnedExits)
         {
-            exit.GetComponent<TilemapRenderer>().enabled = true;
+            exit.GetComponentInChildren<Animator>().SetBool("Close", true);
+            exit.GetComponentInChildren<Animator>().SetBool("Open", false);
+
             exit.GetComponent<EdgeCollider2D>().isTrigger = false;
+        }
+
+        foreach (var enemy in Enemies)
+        {
+            var shootSystem = enemy.GetComponent<ShootSystem>();
+
+            if (shootSystem != null)
+                shootSystem.Firepoint = GameController.Player.transform;
         }
     }
 }

@@ -10,7 +10,6 @@ public class StageGeneration : MonoBehaviour
     public List<GameObject> RoomsPrefabs;
     public GameObject LeftConnection;
     public GameObject RightConnection;
-    public GameObject enemy;
 
     private GameObject[,] RoomsMap;
     private int mapX;
@@ -135,16 +134,6 @@ public class StageGeneration : MonoBehaviour
             case "Room 2":
                 grid.SetDimensions(7, 7, grid.nodeSize);
                 break;
-        }
-        //GenerateEnemies(1);
-    }
-
-    private void GenerateEnemies(int count)
-    {
-        for (var i = 0; i < count; i++)
-        {
-            var e=Instantiate(enemy, lastSpawnedRoom.transform.position, Quaternion.identity);
-            e.transform.parent = lastSpawnedRoom.transform;
         }
     }
 

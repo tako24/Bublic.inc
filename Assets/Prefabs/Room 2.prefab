@@ -335,7 +335,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0.09708738, z: 0}
   m_MaxChunkCount: 16
@@ -533,7 +533,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0.09708738, z: 0}
   m_MaxChunkCount: 16
@@ -721,82 +721,19 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -3, y: 2, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 2147483648
-  - first: {x: -3, y: 3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 2147483648
-  - first: {x: -2, y: 3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 2147483648
-  m_AnimatedTiles:
-  - first: {x: -3, y: 2, z: 0}
-    second:
-      m_AnimatedSprites:
-      - {fileID: 21300000, guid: 20a7fd9e72eab1d4da32fd12a38591dd, type: 3}
-      - {fileID: 21300000, guid: 356512ebfe75cd949a5d95fbf479a4e1, type: 3}
-      - {fileID: 21300000, guid: e6e9520e33e63974fb7a8ee0cc03eab9, type: 3}
-      - {fileID: 21300000, guid: d17391f9ef44745478cee7fb6d7905ac, type: 3}
-      - {fileID: 21300000, guid: 393f223ce13426d4597e0f064c749ee9, type: 3}
-      m_AnimationSpeed: 3
-      m_AnimationTimeOffset: 0
-      m_IsLooping: 1
-  - first: {x: -3, y: 3, z: 0}
-    second:
-      m_AnimatedSprites:
-      - {fileID: 21300000, guid: 20a7fd9e72eab1d4da32fd12a38591dd, type: 3}
-      - {fileID: 21300000, guid: 356512ebfe75cd949a5d95fbf479a4e1, type: 3}
-      - {fileID: 21300000, guid: e6e9520e33e63974fb7a8ee0cc03eab9, type: 3}
-      - {fileID: 21300000, guid: d17391f9ef44745478cee7fb6d7905ac, type: 3}
-      - {fileID: 21300000, guid: 393f223ce13426d4597e0f064c749ee9, type: 3}
-      m_AnimationSpeed: 3
-      m_AnimationTimeOffset: 0
-      m_IsLooping: 1
-  - first: {x: -2, y: 3, z: 0}
-    second:
-      m_AnimatedSprites:
-      - {fileID: 21300000, guid: 20a7fd9e72eab1d4da32fd12a38591dd, type: 3}
-      - {fileID: 21300000, guid: 356512ebfe75cd949a5d95fbf479a4e1, type: 3}
-      - {fileID: 21300000, guid: e6e9520e33e63974fb7a8ee0cc03eab9, type: 3}
-      - {fileID: 21300000, guid: d17391f9ef44745478cee7fb6d7905ac, type: 3}
-      - {fileID: 21300000, guid: 393f223ce13426d4597e0f064c749ee9, type: 3}
-      m_AnimationSpeed: 3
-      m_AnimationTimeOffset: 0
-      m_IsLooping: 1
+  m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: e88fa0c45673b5a4b81e16f981bf3a8f, type: 2}
-  - m_RefCount: 3
-    m_Data: {fileID: 11400000, guid: 28740bec3a206464395081e165ab4951, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 4e334a5527f1b034db1b7b0c5b591a0a, type: 3}
-  - m_RefCount: 3
-    m_Data: {fileID: 21300000, guid: 393f223ce13426d4597e0f064c749ee9, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 5
+  - m_RefCount: 2
     m_Data:
       e00: 1
       e01: 0
@@ -815,7 +752,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 5
+  - m_RefCount: 2
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -880,7 +817,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0.09708738, z: 0}
   m_MaxChunkCount: 16
@@ -1078,7 +1015,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0.09708738, z: 0}
   m_MaxChunkCount: 16
@@ -2476,7 +2413,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2486,7 +2423,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2496,7 +2433,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2506,7 +2443,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2516,53 +2453,91 @@ Tilemap:
   - first: {x: -1, y: -1, z: 0}
     second:
       m_AnimatedSprites:
-      - {fileID: 21300000, guid: 20a7fd9e72eab1d4da32fd12a38591dd, type: 3}
-      - {fileID: 21300000, guid: 356512ebfe75cd949a5d95fbf479a4e1, type: 3}
-      - {fileID: 21300000, guid: e6e9520e33e63974fb7a8ee0cc03eab9, type: 3}
-      - {fileID: 21300000, guid: d17391f9ef44745478cee7fb6d7905ac, type: 3}
-      - {fileID: 21300000, guid: 393f223ce13426d4597e0f064c749ee9, type: 3}
-      m_AnimationSpeed: 3
+      - {fileID: 21300000, guid: bd79affa7a59369468ce82877ebceca0, type: 3}
+      - {fileID: 21300000, guid: a43ad8391e540984a9455c042f763db7, type: 3}
+      - {fileID: 21300000, guid: 2004026f2b668414d97a1e7a8312a425, type: 3}
+      - {fileID: 21300000, guid: 3e95c34c137059b48a03912962d4fbff, type: 3}
+      - {fileID: 21300000, guid: 2245d7d7c839fcd4d96d8c3ff4d39c7f, type: 3}
+      - {fileID: 21300000, guid: ee20373658d4b0f42b63a848afba4f31, type: 3}
+      - {fileID: 21300000, guid: 576ccffbdd8378b4989336ea49b1d34c, type: 3}
+      - {fileID: 21300000, guid: e47ff446c2de8ec4aa15783c7c39f513, type: 3}
+      - {fileID: 21300000, guid: 80c76dbfeafe24445ae838c711de3878, type: 3}
+      - {fileID: 21300000, guid: 25b93f67af6bf8044b7f809239ee69f7, type: 3}
+      - {fileID: 21300000, guid: 37247da001dd2a148a02030e58057b00, type: 3}
+      - {fileID: 21300000, guid: f4be668965e5dc14b85691bcc80273af, type: 3}
+      - {fileID: 21300000, guid: 4f81c03272682ae41914e1f3087439b9, type: 3}
+      - {fileID: 21300000, guid: 81b9e49bacef3ce4d981ab313565d9b3, type: 3}
+      m_AnimationSpeed: 18.1438
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 0, y: -1, z: 0}
     second:
       m_AnimatedSprites:
-      - {fileID: 21300000, guid: 20a7fd9e72eab1d4da32fd12a38591dd, type: 3}
-      - {fileID: 21300000, guid: 356512ebfe75cd949a5d95fbf479a4e1, type: 3}
-      - {fileID: 21300000, guid: e6e9520e33e63974fb7a8ee0cc03eab9, type: 3}
-      - {fileID: 21300000, guid: d17391f9ef44745478cee7fb6d7905ac, type: 3}
-      - {fileID: 21300000, guid: 393f223ce13426d4597e0f064c749ee9, type: 3}
-      m_AnimationSpeed: 3
+      - {fileID: 21300000, guid: bd79affa7a59369468ce82877ebceca0, type: 3}
+      - {fileID: 21300000, guid: a43ad8391e540984a9455c042f763db7, type: 3}
+      - {fileID: 21300000, guid: 2004026f2b668414d97a1e7a8312a425, type: 3}
+      - {fileID: 21300000, guid: 3e95c34c137059b48a03912962d4fbff, type: 3}
+      - {fileID: 21300000, guid: 2245d7d7c839fcd4d96d8c3ff4d39c7f, type: 3}
+      - {fileID: 21300000, guid: ee20373658d4b0f42b63a848afba4f31, type: 3}
+      - {fileID: 21300000, guid: 576ccffbdd8378b4989336ea49b1d34c, type: 3}
+      - {fileID: 21300000, guid: e47ff446c2de8ec4aa15783c7c39f513, type: 3}
+      - {fileID: 21300000, guid: 80c76dbfeafe24445ae838c711de3878, type: 3}
+      - {fileID: 21300000, guid: 25b93f67af6bf8044b7f809239ee69f7, type: 3}
+      - {fileID: 21300000, guid: 37247da001dd2a148a02030e58057b00, type: 3}
+      - {fileID: 21300000, guid: f4be668965e5dc14b85691bcc80273af, type: 3}
+      - {fileID: 21300000, guid: 4f81c03272682ae41914e1f3087439b9, type: 3}
+      - {fileID: 21300000, guid: 81b9e49bacef3ce4d981ab313565d9b3, type: 3}
+      m_AnimationSpeed: 10.029249
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -1, y: 0, z: 0}
     second:
       m_AnimatedSprites:
-      - {fileID: 21300000, guid: 20a7fd9e72eab1d4da32fd12a38591dd, type: 3}
-      - {fileID: 21300000, guid: 356512ebfe75cd949a5d95fbf479a4e1, type: 3}
-      - {fileID: 21300000, guid: e6e9520e33e63974fb7a8ee0cc03eab9, type: 3}
-      - {fileID: 21300000, guid: d17391f9ef44745478cee7fb6d7905ac, type: 3}
-      - {fileID: 21300000, guid: 393f223ce13426d4597e0f064c749ee9, type: 3}
-      m_AnimationSpeed: 3
+      - {fileID: 21300000, guid: bd79affa7a59369468ce82877ebceca0, type: 3}
+      - {fileID: 21300000, guid: a43ad8391e540984a9455c042f763db7, type: 3}
+      - {fileID: 21300000, guid: 2004026f2b668414d97a1e7a8312a425, type: 3}
+      - {fileID: 21300000, guid: 3e95c34c137059b48a03912962d4fbff, type: 3}
+      - {fileID: 21300000, guid: 2245d7d7c839fcd4d96d8c3ff4d39c7f, type: 3}
+      - {fileID: 21300000, guid: ee20373658d4b0f42b63a848afba4f31, type: 3}
+      - {fileID: 21300000, guid: 576ccffbdd8378b4989336ea49b1d34c, type: 3}
+      - {fileID: 21300000, guid: e47ff446c2de8ec4aa15783c7c39f513, type: 3}
+      - {fileID: 21300000, guid: 80c76dbfeafe24445ae838c711de3878, type: 3}
+      - {fileID: 21300000, guid: 25b93f67af6bf8044b7f809239ee69f7, type: 3}
+      - {fileID: 21300000, guid: 37247da001dd2a148a02030e58057b00, type: 3}
+      - {fileID: 21300000, guid: f4be668965e5dc14b85691bcc80273af, type: 3}
+      - {fileID: 21300000, guid: 4f81c03272682ae41914e1f3087439b9, type: 3}
+      - {fileID: 21300000, guid: 81b9e49bacef3ce4d981ab313565d9b3, type: 3}
+      m_AnimationSpeed: 15.865123
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 0, y: 0, z: 0}
     second:
       m_AnimatedSprites:
-      - {fileID: 21300000, guid: 20a7fd9e72eab1d4da32fd12a38591dd, type: 3}
-      - {fileID: 21300000, guid: 356512ebfe75cd949a5d95fbf479a4e1, type: 3}
-      - {fileID: 21300000, guid: e6e9520e33e63974fb7a8ee0cc03eab9, type: 3}
-      - {fileID: 21300000, guid: d17391f9ef44745478cee7fb6d7905ac, type: 3}
-      - {fileID: 21300000, guid: 393f223ce13426d4597e0f064c749ee9, type: 3}
-      m_AnimationSpeed: 3
+      - {fileID: 21300000, guid: bd79affa7a59369468ce82877ebceca0, type: 3}
+      - {fileID: 21300000, guid: a43ad8391e540984a9455c042f763db7, type: 3}
+      - {fileID: 21300000, guid: 2004026f2b668414d97a1e7a8312a425, type: 3}
+      - {fileID: 21300000, guid: 3e95c34c137059b48a03912962d4fbff, type: 3}
+      - {fileID: 21300000, guid: 2245d7d7c839fcd4d96d8c3ff4d39c7f, type: 3}
+      - {fileID: 21300000, guid: ee20373658d4b0f42b63a848afba4f31, type: 3}
+      - {fileID: 21300000, guid: 576ccffbdd8378b4989336ea49b1d34c, type: 3}
+      - {fileID: 21300000, guid: e47ff446c2de8ec4aa15783c7c39f513, type: 3}
+      - {fileID: 21300000, guid: 80c76dbfeafe24445ae838c711de3878, type: 3}
+      - {fileID: 21300000, guid: 25b93f67af6bf8044b7f809239ee69f7, type: 3}
+      - {fileID: 21300000, guid: 37247da001dd2a148a02030e58057b00, type: 3}
+      - {fileID: 21300000, guid: f4be668965e5dc14b85691bcc80273af, type: 3}
+      - {fileID: 21300000, guid: 4f81c03272682ae41914e1f3087439b9, type: 3}
+      - {fileID: 21300000, guid: 81b9e49bacef3ce4d981ab313565d9b3, type: 3}
+      m_AnimationSpeed: 14.004438
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 28740bec3a206464395081e165ab4951, type: 2}
   m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 4
-    m_Data: {fileID: 21300000, guid: 393f223ce13426d4597e0f064c749ee9, type: 3}
+    m_Data: {fileID: 21300000, guid: 81b9e49bacef3ce4d981ab313565d9b3, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 4
     m_Data:
@@ -2775,6 +2750,25 @@ Transform:
   m_Father: {fileID: 4769161956148903872}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &3767560940576512037
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5605322180972276386}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: de0fad7e05b48f444aa5e1bc7eaf2a7e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &9069638648369930053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2785,6 +2779,10 @@ PrefabInstance:
     - target: {fileID: 3465465622681761255, guid: 4b40c36832459d242ad06550f2ac689c, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465465622681761255, guid: 4b40c36832459d242ad06550f2ac689c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4309553318503659445, guid: 4b40c36832459d242ad06550f2ac689c, type: 3}
       propertyPath: m_RootOrder
@@ -2832,6 +2830,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b40c36832459d242ad06550f2ac689c, type: 3}
+--- !u!1 &5605322180972276386 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3465465622681761255, guid: 4b40c36832459d242ad06550f2ac689c, type: 3}
+  m_PrefabInstance: {fileID: 9069638648369930053}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5049467178227230960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4309553318503659445, guid: 4b40c36832459d242ad06550f2ac689c, type: 3}

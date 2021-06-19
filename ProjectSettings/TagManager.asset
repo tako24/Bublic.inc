@@ -10,6 +10,9 @@ TagManager:
   - patrol
   - ammo
   - flypoint
+  - Destroyable
+  - Room
+  - Coin
   layers:
   - Default
   - TransparentFX

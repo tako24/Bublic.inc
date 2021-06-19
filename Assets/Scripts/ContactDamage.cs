@@ -11,7 +11,7 @@ public class ContactDamage : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<HPBar>();
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
             player.TakeDamage(Damage);
