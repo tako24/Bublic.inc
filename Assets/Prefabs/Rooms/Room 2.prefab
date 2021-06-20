@@ -1475,7 +1475,7 @@ GameObject:
   - component: {fileID: 1327466816329821192}
   - component: {fileID: 2334933600095554017}
   - component: {fileID: 986022541025179287}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ColumnBase(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1842,6 +1842,7 @@ GameObject:
   - component: {fileID: 5401660433947803415}
   - component: {fileID: 3601700472229195374}
   - component: {fileID: 3302758360467773271}
+  - component: {fileID: 9165080161607069488}
   m_Layer: 0
   m_Name: Room 2
   m_TagString: Untagged
@@ -2010,6 +2011,19 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &9165080161607069488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5089815319919241063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109c47e94d3ee8741b66cf1b848e3388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 7
 --- !u!1 &5131608038215748112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2021,7 +2035,7 @@ GameObject:
   - component: {fileID: 520348518551599615}
   - component: {fileID: 139789617415821518}
   - component: {fileID: 6598024948018727671}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ColumnBase(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3948,7 +3962,7 @@ GameObject:
   - component: {fileID: 8944935823418780512}
   - component: {fileID: 7382243871648890627}
   - component: {fileID: 6123457607803458644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ColumnBase(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4056,7 +4070,7 @@ GameObject:
   - component: {fileID: 6924494762627220554}
   - component: {fileID: 4337772421994817731}
   - component: {fileID: 3187304437520680230}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ColumnBase(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
