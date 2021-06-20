@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69490386dcb2ca4eb8b974b5bbafaa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 15
-  AttackCooldown: 0.5
+  Damage: 150
+  AttackCooldown: 0
   AttackArea: {fileID: 0}
   WeaponSprite: {fileID: 0}
 --- !u!50 &5001247942593523166

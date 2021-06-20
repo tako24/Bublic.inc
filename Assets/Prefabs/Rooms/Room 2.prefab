@@ -85,26 +85,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -4, y: -4, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 4294967295
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 1
-      dummyAlignment: 0
-      m_AllTileFlags: 0
-  - first: {x: 5, y: -4, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 4294967295
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 1
-      dummyAlignment: 0
-      m_AllTileFlags: 0
   - first: {x: 5, y: -4, z: 4}
     second:
       serializedVersion: 2
@@ -375,16 +355,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -4, y: 5, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 4294967295
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 1
-      dummyAlignment: 0
-      m_AllTileFlags: 0
   - first: {x: -4, y: 5, z: 4}
     second:
       serializedVersion: 2
@@ -556,20 +526,6 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   m_AnimatedTiles:
-  - first: {x: -4, y: -4, z: 0}
-    second:
-      m_AnimatedSprites:
-      - {fileID: 0}
-      m_AnimationSpeed: 0
-      m_AnimationTimeOffset: 0
-      m_IsLooping: 1
-  - first: {x: 5, y: -4, z: 0}
-    second:
-      m_AnimatedSprites:
-      - {fileID: 0}
-      m_AnimationSpeed: 0
-      m_AnimationTimeOffset: 0
-      m_IsLooping: 1
   - first: {x: 5, y: -4, z: 4}
     second:
       m_AnimatedSprites:
@@ -612,13 +568,6 @@ Tilemap:
       m_AnimationSpeed: 0
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
-  - first: {x: -4, y: 5, z: 0}
-    second:
-      m_AnimatedSprites:
-      - {fileID: 0}
-      m_AnimationSpeed: 0
-      m_AnimationTimeOffset: 0
-      m_IsLooping: 1
   - first: {x: -4, y: 5, z: 4}
     second:
       m_AnimatedSprites:
@@ -647,7 +596,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: dfcfe0d769944224c8dffe53a41f4cc5, type: 2}
   - m_RefCount: 28
     m_Data: {fileID: 11400000, guid: db0380bc173dd8c45b8c9c92db1ab432, type: 2}
-  - m_RefCount: 4
+  - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 443bac91ec65ed9458d4ed0076a4e596, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -661,7 +610,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 48
+  - m_RefCount: 45
     m_Data:
       e00: 1
       e01: 0
@@ -680,12 +629,12 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 48
+  - m_RefCount: 45
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray:
   - m_RefCount: 8
     m_Data: {fileID: 3868046738845548029, guid: f50f7bd1b46b15742a83f5022c20f9e1, type: 3}
-  - m_RefCount: 4
+  - m_RefCount: 1
     m_Data: {fileID: 8562658238867912412, guid: b21ae901686c7a844a044165d0ace8fb, type: 3}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1241,7 +1190,11 @@ Tilemap:
       - {fileID: 21300000, guid: f4be668965e5dc14b85691bcc80273af, type: 3}
       - {fileID: 21300000, guid: 4f81c03272682ae41914e1f3087439b9, type: 3}
       - {fileID: 21300000, guid: 81b9e49bacef3ce4d981ab313565d9b3, type: 3}
+<<<<<<< Updated upstream:Assets/Prefabs/Rooms/Room 2.prefab
       m_AnimationSpeed: 19.364183
+=======
+      m_AnimationSpeed: 11.968352
+>>>>>>> Stashed changes:Assets/Prefabs/Rooms/Room2.prefab
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -3, y: 2, z: 0}
@@ -1261,7 +1214,11 @@ Tilemap:
       - {fileID: 21300000, guid: f4be668965e5dc14b85691bcc80273af, type: 3}
       - {fileID: 21300000, guid: 4f81c03272682ae41914e1f3087439b9, type: 3}
       - {fileID: 21300000, guid: 81b9e49bacef3ce4d981ab313565d9b3, type: 3}
+<<<<<<< Updated upstream:Assets/Prefabs/Rooms/Room 2.prefab
       m_AnimationSpeed: 16.014938
+=======
+      m_AnimationSpeed: 16.592667
+>>>>>>> Stashed changes:Assets/Prefabs/Rooms/Room2.prefab
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -1475,7 +1432,7 @@ GameObject:
   - component: {fileID: 1327466816329821192}
   - component: {fileID: 2334933600095554017}
   - component: {fileID: 986022541025179287}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ColumnBase(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1842,7 +1799,6 @@ GameObject:
   - component: {fileID: 5401660433947803415}
   - component: {fileID: 3601700472229195374}
   - component: {fileID: 3302758360467773271}
-  - component: {fileID: 9165080161607069488}
   m_Layer: 0
   m_Name: Room 2
   m_TagString: Untagged
@@ -2011,19 +1967,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &9165080161607069488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5089815319919241063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 109c47e94d3ee8741b66cf1b848e3388, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: 7
 --- !u!1 &5131608038215748112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2035,7 +1978,7 @@ GameObject:
   - component: {fileID: 520348518551599615}
   - component: {fileID: 139789617415821518}
   - component: {fileID: 6598024948018727671}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ColumnBase(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3962,7 +3905,7 @@ GameObject:
   - component: {fileID: 8944935823418780512}
   - component: {fileID: 7382243871648890627}
   - component: {fileID: 6123457607803458644}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ColumnBase(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4070,7 +4013,7 @@ GameObject:
   - component: {fileID: 6924494762627220554}
   - component: {fileID: 4337772421994817731}
   - component: {fileID: 3187304437520680230}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ColumnBase(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

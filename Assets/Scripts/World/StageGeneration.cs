@@ -35,7 +35,6 @@ public class StageGeneration : MonoBehaviour
 
         AstarPath.Scan();
     }
-    private void Update()=> AstarPath.Scan();
 
     private void Initialize()
     {

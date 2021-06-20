@@ -78,8 +78,11 @@ public class RoomProperties : MonoBehaviour
     {
         foreach (var exit in SpawnedExits)
         {
-            exit.GetComponentInChildren<Animator>().SetBool("Open", true);
-            exit.GetComponentInChildren<Animator>().SetBool("Close", false);
+            foreach (var gate in exit.GetComponentsInChildren<Animator>())
+            {
+                gate.SetBool("Open", true);
+                gate.SetBool("Close", false);
+            }
 
             exit.GetComponent<EdgeCollider2D>().isTrigger = true;
         }
@@ -94,8 +97,11 @@ public class RoomProperties : MonoBehaviour
 
         foreach (var exit in SpawnedExits)
         {
-            exit.GetComponentInChildren<Animator>().SetBool("Close", true);
-            exit.GetComponentInChildren<Animator>().SetBool("Open", false);
+            foreach (var gate in exit.GetComponentsInChildren<Animator>())
+            {
+                gate.SetBool("Close", true);
+                gate.SetBool("Open", false);
+            }
 
             exit.GetComponent<EdgeCollider2D>().isTrigger = false;
         }
