@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
 		_weapon.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 		var desiredPosition = transform.position + lookPos.normalized * 0.5f;
 		_weapon.transform.position = Vector3.MoveTowards(_weapon.transform.position, desiredPosition, Time.deltaTime * 80f);
-		print(_weapon.transform.position);
 	}
 
 	void Animate()

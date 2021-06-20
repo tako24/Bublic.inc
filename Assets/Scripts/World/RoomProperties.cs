@@ -85,6 +85,7 @@ public class RoomProperties : MonoBehaviour
         }
 
         IsCleared = true;
+        GameController.IncreaseClearedRoomsCount();
     }
 
     public void CloseExits()

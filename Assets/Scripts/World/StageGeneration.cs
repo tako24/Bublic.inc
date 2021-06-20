@@ -6,7 +6,10 @@ public class StageGeneration : MonoBehaviour
 {
     public int RoomsCount;
     public int RoomsDensity;
+    public int BossSpawnDelay;
     public AstarPath AstarPath;
+    public GameObject BossRoom;
+    public GameObject ShopRoom;
     public List<GameObject> RoomsPrefabs;
     public GameObject LeftConnection;
     public GameObject RightConnection;
@@ -20,6 +23,8 @@ public class StageGeneration : MonoBehaviour
     private GameObject roomToSpawnFrom;
 
     private List<GameObject> spawnedRooms;
+
+    private bool spawnShop;
 
     void Start()
     {
@@ -53,7 +58,14 @@ public class StageGeneration : MonoBehaviour
     {
         for (int i = 1; i < RoomsCount; i++)
         {
-            roomToSpawnFrom = spawnedRooms[Random.Range(0, spawnedRooms.Count)];
+            if (i == RoomsCount - 1)
+            {
+                roomToSpawnFrom = spawnedRooms[Random.Range(1, spawnedRooms.Count)];
+                spawnShop = true;
+            }
+            else
+                roomToSpawnFrom = spawnedRooms[Random.Range(0, spawnedRooms.Count)];
+
             mapX = roomToSpawnFrom.GetComponent<RoomProperties>().MapX;
             mapY = roomToSpawnFrom.GetComponent<RoomProperties>().MapY;
             var possibleDirections = GetPossibleDirections();
@@ -101,7 +113,97 @@ public class StageGeneration : MonoBehaviour
 
     private void SpawnRoom(int xSign, int ySign, int mapDX, int mapDY)
     {
-        roomToSpawn = RoomsPrefabs[Random.Range(1, RoomsPrefabs.Count)];
+        roomToSpawn = spawnShop ? ShopRoom : RoomsPrefabs[Random.Range(1, RoomsPrefabs.Count)];
+        var maxRoomSize = System.Math.Max(roomToSpawn.GetComponent<RoomProperties>().Size,
+            roomToSpawnFrom.GetComponent<RoomProperties>().Size);
+        var roomDX = maxRoomSize - RoomsDensity;
+        var roomDY = roomDX / 2;
+
+        lastSpawnedRoom = Instantiate(roomToSpawn, new Vector3(roomToSpawnFrom.transform.position.x + roomDX * xSign,
+        roomToSpawnFrom.transform.position.y + roomDY * ySign, 0), Quaternion.identity);
+        GenerateAiNet();
+        lastSpawnedRoom.GetComponent<RoomProperties>().MapX = roomToSpawnFrom.GetComponent<RoomProperties>().MapX + mapDX;
+        lastSpawnedRoom.GetComponent<RoomProperties>().MapY = roomToSpawnFrom.GetComponent<RoomProperties>().MapY + mapDY;
+        mapX += mapDX;
+        mapY += mapDY;
+        MakeConnection(xSign, ySign, maxRoomSize);
+    }
+
+    public void GenerateBossRoom()
+    {
+        var roomsWithDistance = new Dictionary<GameObject, int>();
+        var mapX = GameController.CurrentRoom.MapX;
+        var mapY = GameController.CurrentRoom.MapY;
+
+        var maxDistance = 0;
+        foreach (var room in spawnedRooms)
+        {
+            var distance = 0;
+            distance += System.Math.Abs(room.GetComponent<RoomProperties>().MapX - mapX);
+            distance += System.Math.Abs(room.GetComponent<RoomProperties>().MapY - mapY);
+            roomsWithDistance.Add(room, distance);
+
+            if (distance > maxDistance)
+                maxDistance = distance;
+        }
+
+        var distantRooms = new List<GameObject>();
+        foreach (var room in roomsWithDistance)
+            if (room.Value == maxDistance)
+                distantRooms.Add(room.Key);
+
+        var possibleDirections = new List<Direction>();
+        for (int i = 0; i < distantRooms.Count; i++)
+        {
+            roomToSpawnFrom = distantRooms[Random.Range(0, distantRooms.Count)];
+            mapX = roomToSpawnFrom.GetComponent<RoomProperties>().MapX;
+            mapY = roomToSpawnFrom.GetComponent<RoomProperties>().MapY;
+            possibleDirections = GetPossibleDirections();
+
+            if (possibleDirections.Count == 0)
+            {
+                distantRooms.Remove(roomToSpawnFrom);
+                i--;
+                continue;
+            }
+        }
+
+        var spawnDirection = possibleDirections[Random.Range(0, possibleDirections.Count)];
+
+        switch (spawnDirection)
+        {
+            case Direction.Up:
+                {
+                    SpawnBossRoom(1, 1, 0, 1);
+                    break;
+                }
+            case Direction.Down:
+                {
+                    SpawnBossRoom(-1, -1, 0, -1);
+                    break;
+                }
+            case Direction.Right:
+                {
+                    SpawnBossRoom(1, -1, 1, 0);
+                    break;
+                }
+            case Direction.Left:
+                {
+                    SpawnBossRoom(-1, 1, -1, 0);
+                    break;
+                }
+            default:
+                break;
+        }
+
+        RoomsMap[mapX, mapY] = lastSpawnedRoom;
+        lastSpawnedRoom.transform.parent = transform;
+        spawnedRooms.Add(lastSpawnedRoom);
+    }
+
+    private void SpawnBossRoom(int xSign, int ySign, int mapDX, int mapDY)
+    {
+        roomToSpawn = BossRoom;
         var maxRoomSize = System.Math.Max(roomToSpawn.GetComponent<RoomProperties>().Size,
             roomToSpawnFrom.GetComponent<RoomProperties>().Size);
         var roomDX = maxRoomSize - RoomsDensity;
