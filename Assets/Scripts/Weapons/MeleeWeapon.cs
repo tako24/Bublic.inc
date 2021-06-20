@@ -11,6 +11,8 @@ public class MeleeWeapon : MonoBehaviour
     public Collider2D AttackArea;
     public SpriteRenderer WeaponSprite;
 
+    public AudioClip AtackDamage;
+
     void Start()
     {
         AttackArea = GetComponent<CompositeCollider2D>();
@@ -25,6 +27,7 @@ public class MeleeWeapon : MonoBehaviour
             {
                 WeaponSprite.color = Color.white;
                 DoDamage();
+                gameObject.GetComponent<AudioSource>().PlayOneShot(AtackDamage);
                 KD = AttackCooldown;
             }
         }

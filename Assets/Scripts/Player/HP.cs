@@ -4,11 +4,13 @@ public class HP : MonoBehaviour
 {
     public int _currentHP;
     public int _maxHP;
+    
 
     public Color textColor = Color.white;
     public float textHeight = 0.8f;
     public Color shadowColor = new Color(0, 0, 0, 0.5f);
     public Vector2 shadowOffset = new Vector2(1, 1);
+    public AudioClip damageSound;
     GUIStyle style = new GUIStyle();
 
     void OnGUI()
@@ -31,6 +33,7 @@ public class HP : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _currentHP -= damage;
+        gameObject.GetComponent<AudioSource>().PlayOneShot(damageSound);
         if (_currentHP <= 0)
             Die();
     }

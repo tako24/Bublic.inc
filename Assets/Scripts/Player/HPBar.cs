@@ -16,6 +16,7 @@ public class HPBar : MonoBehaviour
     public float TextHeight = 0.8f;
     public Color ShadowColor = new Color(0, 0, 0, 0.5f);
     public Vector2 ShadowOffset = new Vector2(1, 1);
+    public AudioClip PlayerDamage;
     public float InvFrames;
     public SpriteRenderer PlayerSprite;
 
@@ -63,6 +64,7 @@ public class HPBar : MonoBehaviour
             _currentInvTime = InvFrames;
             PlayerSprite.color = Color.red;
             _currentHP -= damage;
+            gameObject.GetComponent<AudioSource>().PlayOneShot(PlayerDamage);
             if (_currentHP <= 0)
                 Die();
             _slider.value = _currentHP;

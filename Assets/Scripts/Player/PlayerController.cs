@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 	private GameObject _weapon;
 	private bool _isDashing;
 	public int _score;
+	public AudioClip coinsSound;
 
 	void Start()
 	{
@@ -154,6 +155,7 @@ public class PlayerController : MonoBehaviour
 	private void TakeCoin()
 	{
 		onCoinTake?.Invoke();
+		gameObject.GetComponent<AudioSource>().PlayOneShot(coinsSound);
 	}
 
 	void SetPlayerDirection()
