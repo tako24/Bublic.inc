@@ -42,8 +42,8 @@ public class EnemyLogic : MonoBehaviour
         if (LogicType == LogicType.flyingMob)
         {
             state = State.Stop;
-            if(flyingPoints.Length!=0)
-                gameObject.transform.position = flyingPoints[UnityEngine.Random.Range(0, flyingPoints.Length)].transform.position;
+            //if(flyingPoints.Length!=0)
+            //    gameObject.transform.position = flyingPoints[UnityEngine.Random.Range(0, flyingPoints.Length)].transform.position;
         }
         if (patroolPoints.Length != 0 && LogicType != LogicType.flyingMob)
         {

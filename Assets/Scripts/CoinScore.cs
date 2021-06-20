@@ -17,7 +17,11 @@ public class CoinScore : MonoBehaviour
         _score.text = _coinCount.ToString();
      }
 
-    public void ChangeScore() => _score.text = _coinCount++.ToString();
+    public void ChangeScore()
+    {
+        _coinCount++;
+        _score.text = _coinCount.ToString(); 
+    }
 }
 
 
