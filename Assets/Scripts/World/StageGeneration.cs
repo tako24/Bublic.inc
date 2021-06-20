@@ -36,6 +36,7 @@ public class StageGeneration : MonoBehaviour
 
         AstarPath.Scan();
     }
+
     private void Update()
     {
         if (delta <= 0)
