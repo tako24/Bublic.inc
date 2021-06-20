@@ -26,6 +26,7 @@ public class StageGeneration : MonoBehaviour
     private List<GameObject> spawnedRooms;
 
     private bool spawnShop;
+    private float delta=0;
 
     void Start()
     {
@@ -35,7 +36,16 @@ public class StageGeneration : MonoBehaviour
 
         AstarPath.Scan();
     }
-    private void Update()=> AstarPath.Scan();
+    private void Update()
+    {
+        if (delta <= 0)
+        {
+            AstarPath.Scan();
+            delta = 5f;
+        }
+        delta -= Time.deltaTime;
+    }
+
 
     private void Initialize()
     {
