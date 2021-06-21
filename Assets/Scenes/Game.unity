@@ -978,6 +978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ce86d83a071ee49bb074e487459814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WithRepetitions: 1
   RoomsCount: 9
   RoomsDensity: 4
   BossSpawnDelay: 1
@@ -986,13 +987,7 @@ MonoBehaviour:
   ShopRoom: {fileID: 993279460741580353, guid: 2c2ff88ebb71f2c4b8bafc771ff12c2d, type: 3}
   RoomsPrefabs:
   - {fileID: 4775367763622412229, guid: 62035ea45df93fc4c9e62a9e5537da1b, type: 3}
-  - {fileID: 2056128660655614085, guid: f5325815d8cf5f841a25720902a3f17a, type: 3}
-  - {fileID: 5613451579417198142, guid: 0e8ecf42baa15c944b81ad0e145245e1, type: 3}
-  - {fileID: 3776062353319405992, guid: e62fc69ebe7d3b447b8e2bd5e16998ea, type: 3}
   - {fileID: 1600601898161026596, guid: 1ad1b98a89a7b3d4da1b29551b4c59a5, type: 3}
-  - {fileID: 3704335237431623603, guid: 61f058b31c2d85845baf6f8532f6b336, type: 3}
-  - {fileID: 2944712546005077068, guid: cbb6f3f8ea8e0054b9076531fb82452f, type: 3}
-  - {fileID: 7813578406557119136, guid: b27102956c0225a42a9aefeaafa9bfab, type: 3}
   LeftConnection: {fileID: 612248389032828558, guid: 69913bb43fccb3a4a916b91c31f9ecf1, type: 3}
   RightConnection: {fileID: 1432570714763670303, guid: 5dcf2a7101673574abbc7c1cdc425dc6, type: 3}
 --- !u!114 &1323187307
