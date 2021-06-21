@@ -11,7 +11,10 @@ public class MeleeWeapon : MonoBehaviour
     public Collider2D AttackArea;
     public SpriteRenderer WeaponSprite;
 
-    public AudioClip AtackDamage;
+    public AudioClip AttackSound;
+
+    public bool IsPicked;
+    public bool IsInRange;
 
     void Start()
     {
@@ -21,22 +24,28 @@ public class MeleeWeapon : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (IsPicked)
         {
-            if (KD <= 0)
+            if (Input.GetMouseButtonDown(0))
             {
-                WeaponSprite.color = Color.white;
-                DoDamage();
-                gameObject.GetComponent<AudioSource>().PlayOneShot(AtackDamage);
-                KD = AttackCooldown;
+                if (KD <= 0)
+                {
+                    WeaponSprite.color = Color.white;
+                    DoDamage();
+                    gameObject.GetComponent<AudioSource>().PlayOneShot(AttackSound);
+                    KD = AttackCooldown;
+                }
+            }
+            else if (KD > 0)
+            {
+                KD -= Time.deltaTime;
+                if (KD <= 0)
+                    StartCoroutine(Blink());
             }
         }
-        else if (KD > 0)
-        {
-            KD -= Time.deltaTime;
-            if (KD <= 0)
-                StartCoroutine(Blink());
-        }
+
+        if (Input.GetKeyDown(KeyCode.E) && IsInRange)
+            PickUp();
     }
 
     public IEnumerator Blink()
@@ -48,7 +57,18 @@ public class MeleeWeapon : MonoBehaviour
 
     public void PickUp()
     {
+        IsPicked = true;
+
+        GetComponent<ObjectsMove>().enabled = false;
         GetComponent<ObjectNameView>().enabled = false;
+
+        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<PolygonCollider2D>().enabled = true;
+
+        for (int i = 0; i < transform.childCount; i++)
+            transform.GetChild(i).gameObject.SetActive(false);
+
+        GameController.Inventory.CollectItem(gameObject);
     }
 
     public void DoDamage()
@@ -72,6 +92,16 @@ public class MeleeWeapon : MonoBehaviour
                 && !enemyCollider.CompareTag("Destroyable")) continue;
             enemyCollider.GetComponent<HP>().TakeDamage(Damage);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!IsPicked) IsInRange = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!IsPicked) IsInRange = false;
     }
 
     //private void OnDrawGizmos()

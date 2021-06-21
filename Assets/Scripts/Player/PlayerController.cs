@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 	private float _currentCD = 0;
 	private Animator animator;
-	private GameObject _weapon;
+	public GameObject Weapon;
 	private bool _isDashing;
 	public int _score;
 	public AudioClip coinsSound;
@@ -24,8 +24,6 @@ public class PlayerController : MonoBehaviour
 		animator = GetComponent<Animator>();
 		rb.freezeRotation = true;
 		rb.gravityScale = 0;
-		_weapon = GetComponentInChildren<MeleeWeapon>().gameObject;
-		GameController.CurrentWeapon = _weapon.GetComponent<MeleeWeapon>();
 	}
 
 	void FixedUpdate()
@@ -45,7 +43,9 @@ public class PlayerController : MonoBehaviour
 
 		movementVector.x = Input.GetAxis("Horizontal");
 		movementVector.y = Input.GetAxis("Vertical");
-		LookAtCursor();
+
+		if (Weapon)
+			LookAtCursor();
 
 		SetPlayerDirection();
 
@@ -79,9 +79,9 @@ public class PlayerController : MonoBehaviour
 		lookPos.z = 0;
 
 		float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
-		_weapon.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+		Weapon.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 		var desiredPosition = transform.position + lookPos.normalized * 0.5f;
-		_weapon.transform.position = Vector3.MoveTowards(_weapon.transform.position, desiredPosition, Time.deltaTime * 80f);
+		Weapon.transform.position = Vector3.MoveTowards(Weapon.transform.position, desiredPosition, Time.deltaTime * 80f);
 	}
 
 	void Animate()

@@ -623,6 +623,7 @@ GameObject:
   - component: {fileID: 6240480020265115217}
   - component: {fileID: 460184783122421513}
   - component: {fileID: 4758160829480881558}
+  - component: {fileID: 2022912663918494355}
   - component: {fileID: 3614922299187903747}
   m_Layer: 0
   m_Name: Left
@@ -630,7 +631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6240480020265115217
 Transform:
   m_ObjectHideFlags: 0
@@ -757,6 +758,28 @@ TilemapRenderer:
   m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!68 &2022912663918494355
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4439739112423852226}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -5.4995923, y: 2.0121155}
+  - {x: -3.485419, y: 3.0198352}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!114 &3614922299187903747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4298,13 +4321,14 @@ GameObject:
   - component: {fileID: 3393666797305330969}
   - component: {fileID: 7475568644288567094}
   - component: {fileID: 5017432223512795235}
+  - component: {fileID: 1806050153189882870}
   m_Layer: 0
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1686161542803022512
 Transform:
   m_ObjectHideFlags: 0
@@ -4313,7 +4337,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4753501414816034380}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.86, y: -1.68, z: 6}
+  m_LocalPosition: {x: 0, y: 0, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1041331355324907936}
@@ -4443,6 +4467,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76888595111ffc746861bbe77a22ce17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!68 &1806050153189882870
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4753501414816034380}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 3.5204043, y: 3.0029688}
+  - {x: 5.507221, y: 2.0126686}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &4814077180190476551
 GameObject:
   m_ObjectHideFlags: 0
@@ -4454,6 +4500,7 @@ GameObject:
   - component: {fileID: 4609810676936447743}
   - component: {fileID: 3612340818226197223}
   - component: {fileID: 4268056794004289788}
+  - component: {fileID: 6390514132670286037}
   - component: {fileID: 5509376309280091002}
   m_Layer: 0
   m_Name: Bottom
@@ -4461,7 +4508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4609810676936447743
 Transform:
   m_ObjectHideFlags: 0
@@ -4588,6 +4635,28 @@ TilemapRenderer:
   m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!68 &6390514132670286037
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4814077180190476551}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -5.5119033, y: -1.4959694}
+  - {x: -3.4923687, y: -2.5133083}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!114 &5509376309280091002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4786,6 +4855,7 @@ GameObject:
   - component: {fileID: 1673111297935008157}
   - component: {fileID: 7466494861934700460}
   - component: {fileID: 6747753273535217913}
+  - component: {fileID: 3211242723025756961}
   - component: {fileID: 3207306123333186188}
   m_Layer: 0
   m_Name: Right
@@ -4793,7 +4863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1673111297935008157
 Transform:
   m_ObjectHideFlags: 0
@@ -4920,6 +4990,28 @@ TilemapRenderer:
   m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!68 &3211242723025756961
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6452288014473483447}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 3.4923701, y: -2.5168452}
+  - {x: 5.5117393, y: -1.4961883}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!114 &3207306123333186188
 MonoBehaviour:
   m_ObjectHideFlags: 0

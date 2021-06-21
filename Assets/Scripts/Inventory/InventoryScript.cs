@@ -17,16 +17,10 @@ public class InventoryScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         moduleSlots = new InventoryItem[3];
         matrix = new InventoryItem[4, 4];
-        AddItem(new InventoryItem(null,0, itemBase[0],false,true,false));//Тестировочные объекты, впоследствии изчезнут
-        AddItem(new InventoryItem(null, 1, itemBase[1], false, true, false));
-        AddItem(new InventoryItem(null, 0, itemBase[0], false, true, false));
-        AddItem(new InventoryItem(null, 0, itemBase[0], false, true, false));
-        AddItem(new InventoryItem(null, 0, itemBase[0], false, true, false));
-
     }
+
     public bool isMoving()
     {
         return movingItem != null;
@@ -79,6 +73,9 @@ public class InventoryScript : MonoBehaviour
                     AddItem(item.InventoryItem);
                 }
             }
+            item.transform.SetParent(GameController.Player.transform);
+            item.transform.position.Set(0, 0, 4);
+            item.gameObject.SetActive(false);
         }
     }
     public void StartMoveItem(InventoryItem Item)
@@ -94,11 +91,14 @@ public class InventoryScript : MonoBehaviour
     {
         RemoveMoved();
         weaponSlot = movingItem;
+        movingItem.mainObject.SetActive(true);
+        GameController.Player.GetComponent<PlayerController>().Weapon = movingItem.mainObject;
     }
     public void MoveToModuleSlot(int i)
     {
         RemoveMoved();
         moduleSlots[i] = movingItem;
+        movingItem.mainObject.GetComponent<ModuleScript>().Activate(true);
     }
     public void MoveToInv(int i,int j)
     {
@@ -118,12 +118,18 @@ public class InventoryScript : MonoBehaviour
                 }
             }
         }
-        if(weaponSlot==movingItem)
+        if (weaponSlot == movingItem)
+        {
             weaponSlot = null;
+            movingItem.mainObject.SetActive(false);
+        }
         for (var i = 0; i < moduleSlots.Length; i++)
         {
-            if(moduleSlots[i]==movingItem)
+            if (moduleSlots[i] == movingItem)
+            {
                 moduleSlots[i] = null;
+                movingItem.mainObject.GetComponent<ModuleScript>().Activate(false);
+            }
         }
     }
     public bool AddItem(InventoryItem inventoryItem)
@@ -186,14 +192,14 @@ public class InventoryScript : MonoBehaviour
                 icon.SetActive(true);
                 icon.GetComponent<RectTransform>().anchoredPosition = slotPosition.anchoredPosition;
                 icon.GetComponent<Image>().sprite = moduleSlots[i].icon;
-                icon.GetComponent<InventoryItemScript>().inventoryItem = weaponSlot;
+                icon.GetComponent<InventoryItemScript>().inventoryItem = moduleSlots[i];
             }
         }
         var player=GameObject.Find("Player");
         var weaponBase = player.GetComponent<WeaponBase>();
-        weaponBase.DisplayWeapon(weaponSlot);
+        //weaponBase.DisplayWeapon(weaponSlot);
         var moduleBase = player.GetComponent<ModuleBase>();
-        moduleBase.UpdateModuleInfo(moduleSlots);
+        //moduleBase.UpdateModuleInfo(moduleSlots);
     }
     // Update is called once per frame
     void Update()
@@ -201,6 +207,7 @@ public class InventoryScript : MonoBehaviour
     }
 }
 
+[System.Serializable]
 public class InventoryItem
 {
     public int id;
