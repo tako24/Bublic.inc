@@ -2,14 +2,10 @@ using UnityEngine;
 
 public class ModuleScript : MonoBehaviour
 {
+    public GameObject TripletModule;
     public IModuleEffect Effect;
     public bool IsInRange;
     public bool IsPicked;
-
-    private void Start()
-    {
-        Effect = GetComponentInChildren<IModuleEffect>();
-    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -26,13 +22,21 @@ public class ModuleScript : MonoBehaviour
     private void Update()
     {
         if (!IsPicked && Input.GetKeyDown(KeyCode.E) && IsInRange)
+            CollectModule();
+    }
+
+    public void CollectModule()
+    {
+        GameController.Inventory.CollectItem(gameObject);
+        try
         {
-            GameController.Inventory.CollectItem(gameObject);
+            Effect = GetComponentInChildren<IModuleEffect>();
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<ObjectsMove>().enabled = false;
             GetComponent<ObjectNameView>().enabled = false;
-            gameObject.SetActive(false);
         }
+        catch { }
+        gameObject.SetActive(false);
     }
 
     public void Activate(bool activate)

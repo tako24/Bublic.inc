@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ebe4aa14909b74d80022043d0dde25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TripletModule: {fileID: 6714301985722812249, guid: d453d1d8bbc65ad41b742701699596bf, type: 3}
   IsInRange: 0
   IsPicked: 0
 --- !u!114 &9068010554553502368

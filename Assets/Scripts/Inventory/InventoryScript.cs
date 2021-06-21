@@ -111,6 +111,7 @@ public class InventoryScript : MonoBehaviour
     {
         RemoveMoved();
         matrix[i, j] = movingItem;
+        UpdateInv();
     }
 
     private void RemoveMoved()
@@ -204,6 +205,8 @@ public class InventoryScript : MonoBehaviour
         {
             if (modulesCounts[module] == 3)
             {
+                GameObject upgradedModule = null;
+
                 for (int i = 0; i < matrix.GetLength(0); i++)
                 {
                     for (int j = 0; j < matrix.GetLength(1); j++)
@@ -213,8 +216,18 @@ public class InventoryScript : MonoBehaviour
                         if (item != null && item.isModule && item.mainObject.name == module)
                         {
                             matrix[i, j] = null;
+
+                            if (!upgradedModule)
+                                upgradedModule = item.mainObject;
                         }
                     }
+                }
+
+                var triplet = upgradedModule.GetComponent<ModuleScript>().TripletModule;
+                if (triplet)
+                {
+                    triplet = Instantiate(triplet);
+                    triplet.GetComponent<ModuleScript>().CollectModule();
                 }
             }
         }
