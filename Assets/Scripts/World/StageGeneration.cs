@@ -127,6 +127,7 @@ public class StageGeneration : MonoBehaviour
     private void SpawnRoom(int xSign, int ySign, int mapDX, int mapDY)
     {
         roomToSpawn = spawnShop ? ShopRoom : RoomsPrefabs[UnityEngine.Random.Range(1, RoomsPrefabs.Count)];
+        RoomsPrefabs.Remove(roomToSpawn);
         var maxRoomSize = System.Math.Max(roomToSpawn.GetComponent<RoomProperties>().Size,
             roomToSpawnFrom.GetComponent<RoomProperties>().Size);
         var roomDX = maxRoomSize - RoomsDensity;
