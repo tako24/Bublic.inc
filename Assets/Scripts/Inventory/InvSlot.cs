@@ -8,7 +8,6 @@ public class InvSlot : MonoBehaviour,IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("Drop");
         if (eventData.pointerDrag != null && GameObject.Find("Inventory").GetComponent<InventoryScript>().isMoving())
         {
             var cords = gameObject.name.Split(' ').Select(x => int.Parse(x)).ToArray();
@@ -16,17 +15,5 @@ public class InvSlot : MonoBehaviour,IDropHandler
             eventData.pointerDrag.GetComponent<InventoryItemScript>().SavePosition();
             GameObject.Find("Inventory").GetComponent<InventoryScript>().MoveToInv(cords[0], cords[1]);
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -44,7 +44,7 @@ public class MeleeWeapon : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && IsInRange)
+        if (Input.GetKeyDown(KeyCode.E) && IsInRange && !IsPicked)
             PickUp();
     }
 
@@ -90,7 +90,7 @@ public class MeleeWeapon : MonoBehaviour
         {
             if (!enemyCollider.CompareTag("Enemy")
                 && !enemyCollider.CompareTag("Destroyable")) continue;
-            enemyCollider.GetComponent<HP>().TakeDamage(Damage);
+            enemyCollider.GetComponent<HP>().TakeDamage(Damage + GameController.DamageBonus);
         }
     }
 

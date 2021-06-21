@@ -933,7 +933,7 @@ MonoBehaviour:
   WithRepetitions: 1
   RoomsCount: 9
   RoomsDensity: 4
-  BossSpawnDelay: 1
+  BossSpawnDelay: 3
   AstarPath: {fileID: 416381125}
   BossRoom: {fileID: 4822536661245823284, guid: f7597abf680778b4687968e27c5ea871, type: 3}
   ShopRoom: {fileID: 993279460741580353, guid: 2c2ff88ebb71f2c4b8bafc771ff12c2d, type: 3}
@@ -961,6 +961,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 744125661679518177, guid: 6d811437d40b6674eb526f0c0a8240b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061049363450611331, guid: 6d811437d40b6674eb526f0c0a8240b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3140781518998326386, guid: 6d811437d40b6674eb526f0c0a8240b0, type: 3}
       propertyPath: m_Name
       value: Inv
@@ -1007,6 +1015,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4091620759169201186, guid: 6d811437d40b6674eb526f0c0a8240b0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177646334073443696, guid: 6d811437d40b6674eb526f0c0a8240b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5534319930877459989, guid: 6d811437d40b6674eb526f0c0a8240b0, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7820502127783287010, guid: 6d811437d40b6674eb526f0c0a8240b0, type: 3}

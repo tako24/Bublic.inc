@@ -16,14 +16,16 @@ public class VaseScript : MonoBehaviour
 
     public void Break()
     {
-        var lootIndex = Random.Range(0, Loot.Count);
-        var lootChance = LootChances[lootIndex];
-        var rand = Random.Range(0, 100);
+        var rand = Random.Range(0 + GameController.LuckBonus, 100 - GameController.LuckBonus * 2);
 
-        if (rand < lootChance)
-            Instantiate(Loot[lootIndex], 
-                        new Vector3(transform.position.x, transform.position.y - 0.25f, 4),
-                        Quaternion.identity);
+        for (int i = 0; i < LootChances.Count; i++)
+            if (rand < LootChances[i])
+            {
+                Instantiate(Loot[i],
+                            new Vector3(transform.position.x, transform.position.y - 0.25f, 4),
+                            Quaternion.identity);
+                break;
+            }
 
         collider.enabled = false;
         animator.SetTrigger("Broke");

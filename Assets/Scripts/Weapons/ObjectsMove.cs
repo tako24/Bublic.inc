@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectsMove : MonoBehaviour
 {
     public float time=0;
-    public float amp=0.25f;
+    public float amp=0.05f;
     public float freq=2; //частота
     public float offset=0; //смещение
     private Vector2 startPos;
