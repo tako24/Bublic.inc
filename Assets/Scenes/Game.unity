@@ -930,16 +930,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ce86d83a071ee49bb074e487459814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WithRepetitions: 1
-  RoomsCount: 9
+  WithRepetitions: 0
+  RoomsCount: 8
   RoomsDensity: 4
-  BossSpawnDelay: 3
+  BossSpawnDelay: 4
   AstarPath: {fileID: 416381125}
   BossRoom: {fileID: 4822536661245823284, guid: f7597abf680778b4687968e27c5ea871, type: 3}
   ShopRoom: {fileID: 993279460741580353, guid: 2c2ff88ebb71f2c4b8bafc771ff12c2d, type: 3}
   RoomsPrefabs:
   - {fileID: 4775367763622412229, guid: 62035ea45df93fc4c9e62a9e5537da1b, type: 3}
-  - {fileID: 993279460741580353, guid: 2c2ff88ebb71f2c4b8bafc771ff12c2d, type: 3}
+  - {fileID: 4822536661245823284, guid: f7597abf680778b4687968e27c5ea871, type: 3}
   LeftConnection: {fileID: 612248389032828558, guid: 69913bb43fccb3a4a916b91c31f9ecf1, type: 3}
   RightConnection: {fileID: 1432570714763670303, guid: 5dcf2a7101673574abbc7c1cdc425dc6, type: 3}
 --- !u!114 &1323187307

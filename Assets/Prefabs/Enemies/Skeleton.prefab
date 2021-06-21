@@ -242,8 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a6a085035d25e4887f08a339055675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHP: 45
-  _maxHP: 45
+  _currentHP: 35
+  _maxHP: 35
   textColor: {r: 1, g: 1, b: 1, a: 1}
   textHeight: 0.8
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01dd9dd169918ef428f087dd8ea0de38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 10
+  Damage: 5
 --- !u!114 &1279431053338159591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce72958e221e89e45a12a3a7617122af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 20
+  Damage: 7
   ReloadTime: 5
 --- !u!95 &7486823407174770041
 Animator:
