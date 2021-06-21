@@ -292,7 +292,7 @@ MonoBehaviour:
   AIDestinationSetter: {fileID: 3323994600093031363}
   state: 0
   LogicType: 1
-  distanceToPlayer: 1.5
+  distanceToPlayer: 1.75
   baseDistance: 0.2
   runningAwayDistance: 3.2
   stoprunAwatDelta: 0.2
