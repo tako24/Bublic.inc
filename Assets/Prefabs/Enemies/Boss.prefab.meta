@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefabs/Enemies/Boss.prefab.meta
 guid: 30848fc757e49d1499d46b68b8f6625d
+=======
+guid: c1e187bedb82e7c4eb5308a74d41f720
+>>>>>>> 3b012d709f2aa16012912982c436473ed49df71f:Assets/Prefabs/HealingSalve.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
