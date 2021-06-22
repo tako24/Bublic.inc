@@ -17,9 +17,13 @@ public class PlayerController : MonoBehaviour
 	private bool _isDashing;
 	public int Score;
 	public AudioClip coinsSound;
+	public Collider2D Hitbox;
+	public SpriteRenderer PlayerSprite;
 
 	void Start()
 	{
+		PlayerSprite = GetComponent<SpriteRenderer>();
+		Hitbox = GetComponent<BoxCollider2D>();
 		rb = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 		rb.freezeRotation = true;
@@ -30,9 +34,13 @@ public class PlayerController : MonoBehaviour
 	{
 		rb.velocity = Vector2.zero;
 		if (_isDashing)
+		{
 			rb.MovePosition(rb.position + movementVector * DashSpeed * Time.fixedDeltaTime);
+		}
 		else
+		{
 			rb.MovePosition(rb.position + movementVector * Speed * Time.fixedDeltaTime);
+		}
 
 		Animate();
 	}
@@ -61,6 +69,8 @@ public class PlayerController : MonoBehaviour
 
 	private IEnumerator DashCoroutine()
 	{
+		PlayerSprite.color = new Color(1, 1, 1, 0.5f);
+		Hitbox.enabled = false;
 		float startTime = Time.time;
 		while (Time.time < startTime + DashTime)
 		{
@@ -68,6 +78,8 @@ public class PlayerController : MonoBehaviour
 			//rb.MovePosition(rb.position + movementVector * DashSpeed * Time.fixedDeltaTime);
 			yield return null;
 		}
+		PlayerSprite.color = new Color(1, 1, 1, 1f);
+		Hitbox.enabled = true;
 		_isDashing = false;
 	}
 
@@ -138,10 +150,8 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-
 	public delegate void OnCoinTake();
 	public event OnCoinTake onCoinTake;
-
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
