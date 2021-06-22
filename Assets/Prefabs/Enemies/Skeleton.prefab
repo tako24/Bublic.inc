@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 2
-  radius: 1
+  radius: 1.2
   height: 2
   repathRate: 0.5
   canSearch: 1
@@ -184,8 +184,8 @@ MonoBehaviour:
   maxAcceleration: -2.5
   rotationSpeed: 0
   slowdownDistance: 0.6
-  pickNextWaypointDist: 1.2
-  endReachedDistance: 1.5
+  pickNextWaypointDist: 0.5
+  endReachedDistance: 0.5
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 0
   whenCloseToDestination: 0
@@ -326,6 +326,10 @@ MonoBehaviour:
   Firepoint: {fileID: 0}
   Ammo: {fileID: 3281858374423512881, guid: 11efe8b58fd6761438339bad5e3f27f3, type: 3}
   IsShooting: 0
+  IsBoss: 0
+  boss: {fileID: 0}
+  weaponStats: {fileID: 0}
+  shootCount: 0
 --- !u!114 &4440233212293593148
 MonoBehaviour:
   m_ObjectHideFlags: 0

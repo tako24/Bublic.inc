@@ -43,7 +43,7 @@ public class StageGeneration : MonoBehaviour
         if (delta <= 0)
         {
             AstarPath.Scan();
-            delta = 5f;
+            delta = 3f;
         }
         delta -= Time.deltaTime;
     }
@@ -245,7 +245,7 @@ public class StageGeneration : MonoBehaviour
         grid.isometricAngle = 60;
         grid.collision.use2D = true;
         grid.nodeSize = 0.5f;
-        grid.collision.mask = LayerMask.GetMask(new string[] { "column" });
+        grid.collision.mask = LayerMask.GetMask(new string[] { "column", "Enemy" });
         grid.rotation = new Vector3(45, 270, 270);
         var position = lastSpawnedRoom.transform.position;
         grid.center = new Vector3(position.x, position.y + 0.244f, position.z);
