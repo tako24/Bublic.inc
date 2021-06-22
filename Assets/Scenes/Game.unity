@@ -931,9 +931,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WithRepetitions: 1
-  RoomsCount: 8
+  RoomsCount: 4
   RoomsDensity: 4
-  BossSpawnDelay: 2
+  BossSpawnDelay: 1
   AstarPath: {fileID: 416381125}
   BossRoom: {fileID: 4822536661245823284, guid: f7597abf680778b4687968e27c5ea871, type: 3}
   ShopRoom: {fileID: 993279460741580353, guid: 2c2ff88ebb71f2c4b8bafc771ff12c2d, type: 3}

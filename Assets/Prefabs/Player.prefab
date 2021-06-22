@@ -177,6 +177,8 @@ MonoBehaviour:
   Weapon: {fileID: 0}
   Score: 0
   coinsSound: {fileID: 8300000, guid: f15cc0eef23a68a49bbf6afc8b969a79, type: 3}
+  Hitbox: {fileID: 0}
+  PlayerSprite: {fileID: 0}
 --- !u!114 &1449721490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,8 +193,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slider: {fileID: 0}
   _fill: {fileID: 0}
-  _currentHP: 100
-  _maxHP: 100
+  _currentHP: 1000
+  _maxHP: 1000
   TextColor: {r: 1, g: 1, b: 1, a: 1}
   TextHeight: 0.8
   ShadowColor: {r: 0, g: 0, b: 0, a: 0.5}
