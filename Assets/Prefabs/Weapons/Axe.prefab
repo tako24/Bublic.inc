@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 50
-  AttackCooldown: 0.5
+  AttackCooldown: 2
   AttackArea: {fileID: 0}
   WeaponSprite: {fileID: 0}
   DistanceOffset: 0
