@@ -15,13 +15,14 @@ public class BossLogic : MonoBehaviour
     public float FirstStageAtackKD;
     public float TurboSpeed;
     public float NormalSpeed;
-    public GameObject shild;
+    public GameObject shield;
     public float SecondStageWaitingOnPoint;
     public float distanseNoFlySpawn;
     public float minFlySpawn;
     public GameObject fly;
     public SecondStageController SecondStageController;
     public float runningAwayDistance;
+    public Animator Animator;
 
     private BossStage BossStage = BossStage.Sleep;
     private BossFirstStage firstStage = BossFirstStage.None;
@@ -47,6 +48,8 @@ public class BossLogic : MonoBehaviour
         player = GameObject.Find("Player");
         destinationSetter.target = centerPoint.transform;
         AIPath.canSearch = false;
+        Animator = GetComponent<Animator>();
+        shield.GetComponent<SpriteRenderer>().enabled = false;
         //var l1 = lasergroup1.GetComponentsInChildren<ShootSystem>();
         //var l2 = lasergroup2.GetComponentsInChildren<ShootSystem>();
         //var l3 = lasergroup3.GetComponentsInChildren<ShootSystem>();
@@ -67,6 +70,7 @@ public class BossLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Animate();
         StageCheck();
         if (BossStage == BossStage.First && AIPath.reachedDestination)
         {
@@ -86,7 +90,7 @@ public class BossLogic : MonoBehaviour
             AIPath.maxSpeed = TurboSpeed;
             firstStage = BossFirstStage.First;
             gameObject.tag = "Untagged";
-            shild.SetActive(true);
+            shield.SetActive(true);
         }
         if (BossStage == BossStage.FirstStageAtack)
         {
@@ -109,7 +113,7 @@ public class BossLogic : MonoBehaviour
                 lasergroup3.SetActive(false);
                 AIPath.maxSpeed = NormalSpeed;
                 BossStage = BossStage.First;
-                shild.SetActive(false);
+                shield.SetActive(false);
                 firstStage = BossFirstStage.None;
                 gameObject.tag = "Enemy";
             }
@@ -156,6 +160,30 @@ public class BossLogic : MonoBehaviour
             destinationSetter.target = player.transform;
             BossThirdStage = BossThirdStage.Atack;
         }
+    }
+
+    public void Animate()
+    {
+        var playerPos = GameController.Player.transform.position;
+
+        Animator.SetBool("LooksRight", false);
+        Animator.SetBool("LooksLeft", false);
+        Animator.SetBool("LooksUp", false);
+        Animator.SetBool("LooksDown", false);
+        Animator.SetBool("Shielded", false);
+
+        if (playerPos.x > transform.position.x)
+            Animator.SetBool("LooksRight", true);
+        else
+            Animator.SetBool("LooksLeft", true);
+
+        if (playerPos.y > transform.position.y)
+            Animator.SetBool("LooksUp", true);
+        else
+            Animator.SetBool("LooksDown", true);
+
+        if (shield.activeInHierarchy)
+            Animator.SetBool("Shielded", true);
     }
 
     private void SpawnFly()

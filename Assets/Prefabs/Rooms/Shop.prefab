@@ -2475,6 +2475,7 @@ GameObject:
   - component: {fileID: 8431300231278182532}
   - component: {fileID: 8762345363585448922}
   - component: {fileID: 187006936960047539}
+  - component: {fileID: 4163592023608245871}
   m_Layer: 0
   m_Name: Left
   m_TagString: Untagged
@@ -2712,6 +2713,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76888595111ffc746861bbe77a22ce17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!68 &4163592023608245871
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528203020042564898}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -4.4706774, y: 1.516829}
+  - {x: -2.443053, y: 2.5384858}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &993279460741580353
 GameObject:
   m_ObjectHideFlags: 0
@@ -3385,6 +3408,7 @@ GameObject:
   - component: {fileID: 5662058971070793530}
   - component: {fileID: 943841560165238131}
   - component: {fileID: 2992254593289456172}
+  - component: {fileID: 6947796886275360693}
   m_Layer: 0
   m_Name: Top
   m_TagString: Untagged
@@ -3622,6 +3646,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76888595111ffc746861bbe77a22ce17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!68 &6947796886275360693
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2489326944190495083}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 2.611721, y: 2.458453}
+  - {x: 4.476168, y: 1.5360372}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &2495774328219405666
 GameObject:
   m_ObjectHideFlags: 0
@@ -5935,6 +5981,7 @@ GameObject:
   - component: {fileID: 2657922376369549151}
   - component: {fileID: 6927966796974884194}
   - component: {fileID: 6201168811468991771}
+  - component: {fileID: 5760004315205311901}
   m_Layer: 0
   m_Name: Bottom
   m_TagString: Untagged
@@ -6172,6 +6219,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76888595111ffc746861bbe77a22ce17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!68 &5760004315205311901
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6949129777623049876}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -4.520584, y: -0.97668666}
+  - {x: -2.491527, y: -1.9819366}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &7661437047898480617
 GameObject:
   m_ObjectHideFlags: 0
@@ -6455,6 +6524,7 @@ GameObject:
   - component: {fileID: 6925706834033184288}
   - component: {fileID: 2580520484449284088}
   - component: {fileID: 4278367092244459663}
+  - component: {fileID: 603228646008068268}
   m_Layer: 0
   m_Name: Right
   m_TagString: Untagged
@@ -6692,6 +6762,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76888595111ffc746861bbe77a22ce17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!68 &603228646008068268
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907259896789951628}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 2.50489, y: -1.9872779}
+  - {x: 4.5028744, y: -0.99532795}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &9064094273998757443
 GameObject:
   m_ObjectHideFlags: 0
