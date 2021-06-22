@@ -21,8 +21,7 @@ public class ObjectNameView : MonoBehaviour
     }
     private void Awake()
     {
-        text = String.Format("<b>Нажмите \"{0}\", что бы взять </b> <color=#ffea00> {1}</color>", "E", objectName);
-        textSize = 8;
+        text = String.Format("<b>Нажмите \"{0}\" чтобы взять </b><color=#ffea00>{1}</color>", "E", objectName);
     }
     void OnGUI()
     {

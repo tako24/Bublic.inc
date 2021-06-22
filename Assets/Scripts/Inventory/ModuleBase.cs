@@ -6,6 +6,7 @@ public class ModuleBase : MonoBehaviour
 {
     public void UpdateModuleInfo(InventoryItem[] modules)
     {
-        
+        foreach (var module in modules)
+            module.mainObject.GetComponent<ModuleScript>().Activate(true);
     }
 }

@@ -4,14 +4,21 @@ public class HP : MonoBehaviour
 {
     public int _currentHP;
     public int _maxHP;
-    
+    public float InvFrames;
+    private float _currentInvTime;
 
+    public SpriteRenderer EnemySprite;
     public Color textColor = Color.white;
     public float textHeight = 0.8f;
     public Color shadowColor = new Color(0, 0, 0, 0.5f);
     public Vector2 shadowOffset = new Vector2(1, 1);
     public AudioClip damageSound;
     GUIStyle style = new GUIStyle();
+
+    private void Start()
+    {
+        EnemySprite = GetComponent<SpriteRenderer>();
+    }
 
     void OnGUI()
     {
@@ -26,16 +33,32 @@ public class HP : MonoBehaviour
         GUI.Label(new Rect(screenPosition.x, screenPosition.y, 0, 0), _currentHP.ToString(), style);
     }
 
-    private void Start()
+    private void FixedUpdate()
     {
+        if (_currentInvTime > 0)
+        {
+            _currentInvTime -= Time.fixedDeltaTime;
+
+            if (_currentInvTime <= 0f)
+            {
+                _currentInvTime = 0f;
+                EnemySprite.color = Color.white;
+            }
+        }
     }
 
     public void TakeDamage(int damage)
     {
-        _currentHP -= damage;
-        gameObject.GetComponent<AudioSource>().PlayOneShot(damageSound);
-        if (_currentHP <= 0)
-            Die();
+        if (_currentInvTime == 0f)
+        {
+            _currentInvTime = InvFrames;
+            if (CompareTag("Enemy"))
+                EnemySprite.color = Color.red;
+            _currentHP -= damage;
+            gameObject.GetComponent<AudioSource>().PlayOneShot(damageSound);
+            if (_currentHP <= 0)
+                Die();
+        }
     }
 
     public void Heal(int heal)

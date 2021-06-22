@@ -13,39 +13,47 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 	private float _currentCD = 0;
 	private Animator animator;
-	private GameObject _weapon;
+	public MeleeWeapon Weapon;
 	private bool _isDashing;
-	public int _score;
+	public int Score;
 	public AudioClip coinsSound;
+	public Collider2D Hitbox;
+	public SpriteRenderer PlayerSprite;
 
 	void Start()
 	{
+		PlayerSprite = GetComponent<SpriteRenderer>();
+		Hitbox = GetComponent<BoxCollider2D>();
 		rb = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 		rb.freezeRotation = true;
 		rb.gravityScale = 0;
-		_weapon = GetComponentInChildren<MeleeWeapon>().gameObject;
-		GameController.CurrentWeapon = _weapon.GetComponent<MeleeWeapon>();
 	}
 
 	void FixedUpdate()
 	{
 		rb.velocity = Vector2.zero;
 		if (_isDashing)
+		{
 			rb.MovePosition(rb.position + movementVector * DashSpeed * Time.fixedDeltaTime);
+		}
 		else
+		{
 			rb.MovePosition(rb.position + movementVector * Speed * Time.fixedDeltaTime);
+		}
 
 		Animate();
 	}
 
 	void Update()
 	{
-		if (_isDashing) return;
+		if (Time.timeScale == 0f || _isDashing) return;
 
 		movementVector.x = Input.GetAxis("Horizontal");
 		movementVector.y = Input.GetAxis("Vertical");
-		LookAtCursor();
+
+		if (Weapon)
+			LookAtCursor();
 
 		SetPlayerDirection();
 
@@ -61,6 +69,8 @@ public class PlayerController : MonoBehaviour
 
 	private IEnumerator DashCoroutine()
 	{
+		PlayerSprite.color = new Color(1, 1, 1, 0.5f);
+		Hitbox.enabled = false;
 		float startTime = Time.time;
 		while (Time.time < startTime + DashTime)
 		{
@@ -68,6 +78,8 @@ public class PlayerController : MonoBehaviour
 			//rb.MovePosition(rb.position + movementVector * DashSpeed * Time.fixedDeltaTime);
 			yield return null;
 		}
+		PlayerSprite.color = new Color(1, 1, 1, 1f);
+		Hitbox.enabled = true;
 		_isDashing = false;
 	}
 
@@ -79,9 +91,9 @@ public class PlayerController : MonoBehaviour
 		lookPos.z = 0;
 
 		float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
-		_weapon.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-		var desiredPosition = transform.position + lookPos.normalized * 0.5f;
-		_weapon.transform.position = Vector3.MoveTowards(_weapon.transform.position, desiredPosition, Time.deltaTime * 80f);
+		Weapon.transform.rotation = Quaternion.AngleAxis(angle - Weapon.AngleOffset, Vector3.forward);
+		var desiredPosition = transform.position + lookPos.normalized * Weapon.DistanceOffset;
+		Weapon.transform.position = Vector3.MoveTowards(Weapon.transform.position, desiredPosition, Time.deltaTime * 80f);
 	}
 
 	void Animate()
@@ -138,10 +150,8 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-
 	public delegate void OnCoinTake();
 	public event OnCoinTake onCoinTake;
-
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{

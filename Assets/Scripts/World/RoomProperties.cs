@@ -29,6 +29,9 @@ public class RoomProperties : MonoBehaviour
             if (t.CompareTag("Enemy"))
                 Enemies.Add(t.gameObject);
         }
+
+        if (Enemies.Count == 0)
+            IsCleared = true;
     }
 
     public void RemoveEnemy(GameObject enemy)

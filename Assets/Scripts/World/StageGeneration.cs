@@ -174,8 +174,8 @@ public class StageGeneration : MonoBehaviour
         for (int i = 0; i < distantRooms.Count; i++)
         {
             roomToSpawnFrom = distantRooms[UnityEngine.Random.Range(0, distantRooms.Count)];
-            mapX = roomToSpawnFrom.GetComponent<RoomProperties>().MapX;
-            mapY = roomToSpawnFrom.GetComponent<RoomProperties>().MapY;
+            this.mapX = roomToSpawnFrom.GetComponent<RoomProperties>().MapX;
+            this.mapY = roomToSpawnFrom.GetComponent<RoomProperties>().MapY;
             possibleDirections = GetPossibleDirections();
 
             if (possibleDirections.Count == 0)
@@ -184,6 +184,7 @@ public class StageGeneration : MonoBehaviour
                 i--;
                 continue;
             }
+            else break;
         }
 
         var spawnDirection = possibleDirections[UnityEngine.Random.Range(0, possibleDirections.Count)];
