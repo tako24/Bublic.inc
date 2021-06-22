@@ -5,6 +5,7 @@ using System;
 
 public class StageGeneration : MonoBehaviour
 {
+    public bool WithRepetitions;
     public int RoomsCount;
     public int RoomsDensity;
     public int BossSpawnDelay;
@@ -42,7 +43,7 @@ public class StageGeneration : MonoBehaviour
         if (delta <= 0)
         {
             AstarPath.Scan();
-            delta = 5f;
+            delta = 3f;
         }
         delta -= Time.deltaTime;
     }
@@ -127,7 +128,10 @@ public class StageGeneration : MonoBehaviour
     private void SpawnRoom(int xSign, int ySign, int mapDX, int mapDY)
     {
         roomToSpawn = spawnShop ? ShopRoom : RoomsPrefabs[UnityEngine.Random.Range(1, RoomsPrefabs.Count)];
-        RoomsPrefabs.Remove(roomToSpawn);
+
+        if(!WithRepetitions)
+            RoomsPrefabs.Remove(roomToSpawn);
+
         var maxRoomSize = System.Math.Max(roomToSpawn.GetComponent<RoomProperties>().Size,
             roomToSpawnFrom.GetComponent<RoomProperties>().Size);
         var roomDX = maxRoomSize - RoomsDensity;
@@ -170,8 +174,8 @@ public class StageGeneration : MonoBehaviour
         for (int i = 0; i < distantRooms.Count; i++)
         {
             roomToSpawnFrom = distantRooms[UnityEngine.Random.Range(0, distantRooms.Count)];
-            mapX = roomToSpawnFrom.GetComponent<RoomProperties>().MapX;
-            mapY = roomToSpawnFrom.GetComponent<RoomProperties>().MapY;
+            this.mapX = roomToSpawnFrom.GetComponent<RoomProperties>().MapX;
+            this.mapY = roomToSpawnFrom.GetComponent<RoomProperties>().MapY;
             possibleDirections = GetPossibleDirections();
 
             if (possibleDirections.Count == 0)
@@ -180,6 +184,7 @@ public class StageGeneration : MonoBehaviour
                 i--;
                 continue;
             }
+            else break;
         }
 
         var spawnDirection = possibleDirections[UnityEngine.Random.Range(0, possibleDirections.Count)];
@@ -240,7 +245,7 @@ public class StageGeneration : MonoBehaviour
         grid.isometricAngle = 60;
         grid.collision.use2D = true;
         grid.nodeSize = 0.5f;
-        grid.collision.mask = LayerMask.GetMask(new string[] { "column" });
+        grid.collision.mask = LayerMask.GetMask(new string[] { "column", "Enemy" });
         grid.rotation = new Vector3(45, 270, 270);
         var position = lastSpawnedRoom.transform.position;
         grid.center = new Vector3(position.x, position.y + 0.244f, position.z);

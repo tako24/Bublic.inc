@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5924672783871558775}
   - component: {fileID: 8198453686285259955}
   - component: {fileID: -8092817912450253175}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Vase
   m_TagString: Destroyable
   m_Icon: {fileID: 0}
@@ -136,6 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentHP: 0
   _maxHP: 0
+  InvFrames: 0
+  EnemySprite: {fileID: 0}
   textColor: {r: 1, g: 1, b: 1, a: 0}
   textHeight: 0
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
@@ -155,7 +157,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Loot:
   - {fileID: 639918244236513425, guid: ac571aef119243f448238b85d25ff5f0, type: 3}
-  LootChances: 32000000
+  - {fileID: 8294686457310251293, guid: 27f297a0f5bdfa64ebbbe621ce1ef260, type: 3}
+  - {fileID: 8241158032844816721, guid: 489d7246332e197498d3c586e4c82d11, type: 3}
+  - {fileID: 1988776792559160861, guid: df76b9e2379c28b42bd8a3241c5d1cf5, type: 3}
+  - {fileID: 7082579832319015544, guid: 0b4f9261bccc2454ea4cc4a5d9a70e9d, type: 3}
+  LootChances: 37000000390000003b0000003d0000003f000000
 --- !u!82 &-8092817912450253175
 AudioSource:
   m_ObjectHideFlags: 0

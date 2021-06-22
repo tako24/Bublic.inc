@@ -6,10 +6,10 @@ public class InventoryController : MonoBehaviour
 {
     public InventoryScript inv;
     public Canvas canvas;
-    // Update is called once per frame
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (canvas.enabled)
             {
@@ -39,6 +39,5 @@ public class InventoryController : MonoBehaviour
         {
             inv.Use(3);
         }
-
     }
 }

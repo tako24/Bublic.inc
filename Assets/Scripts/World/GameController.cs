@@ -6,6 +6,11 @@ public class GameController : MonoBehaviour
     public static int CoinsCount;
     public static MeleeWeapon CurrentWeapon;
 
+    public static int DamageBonus;
+    public static int LuckBonus;
+
+    public static InventoryScript Inventory;
+
     public static StageGeneration Stage;
     public static RoomProperties CurrentRoom;
 
@@ -15,6 +20,7 @@ public class GameController : MonoBehaviour
     {
         Player = GameObject.Find("Player");
         Stage = GameObject.Find("GameWorld").GetComponent<StageGeneration>();
+        Inventory = GameObject.Find("Inventory").GetComponent<InventoryScript>();
     }
 
     public static void IncreaseClearedRoomsCount()

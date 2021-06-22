@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 4829918315771419889}
   - component: {fileID: 5799472793486360339}
   - component: {fileID: 7420633722878648445}
+  - component: {fileID: 4380469216914772373}
   m_Layer: 6
   m_Name: Slime
   m_TagString: Enemy
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e33f9d3b5877c9d4585bd3de6b8a51f3, type: 3}
-  m_Color: {r: 0.9245283, g: 0.1729159, b: 0.099430345, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -150,8 +151,8 @@ MonoBehaviour:
   maxAcceleration: -2.5
   rotationSpeed: 0
   slowdownDistance: 0.6
-  pickNextWaypointDist: 1.2
-  endReachedDistance: 0.2
+  pickNextWaypointDist: 0.5
+  endReachedDistance: 0.5
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 0
   whenCloseToDestination: 0
@@ -177,7 +178,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3465465622681761255}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -210,6 +211,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentHP: 45
   _maxHP: 45
+  InvFrames: 0.5
+  EnemySprite: {fileID: 0}
   textColor: {r: 1, g: 1, b: 1, a: 1}
   textHeight: 0.8
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
@@ -222,7 +225,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3465465622681761255}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -274,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01dd9dd169918ef428f087dd8ea0de38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 10
+  Damage: 8
 --- !u!50 &5799472793486360339
 Rigidbody2D:
   serializedVersion: 4
@@ -308,7 +311,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -392,3 +395,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!70 &4380469216914772373
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3465465622681761255}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.007812509, y: -0.066472955}
+  m_Size: {x: 1.5624585, y: 0.86707294}
+  m_Direction: 1

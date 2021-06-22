@@ -14,19 +14,14 @@ public class InventoryScript : MonoBehaviour
     private InventoryItem[] moduleSlots;
     private InventoryItem movingItem;
 
-    // Start is called before the first frame update
+    private Dictionary<string, int> modulesCounts;
+
     void Start()
     {
-
         moduleSlots = new InventoryItem[3];
         matrix = new InventoryItem[4, 4];
-        AddItem(new InventoryItem(null,0, itemBase[0],false,true,false));//Тестировочные объекты, впоследствии изчезнут
-        AddItem(new InventoryItem(null, 1, itemBase[1], false, true, false));
-        AddItem(new InventoryItem(null, 0, itemBase[0], false, true, false));
-        AddItem(new InventoryItem(null, 0, itemBase[0], false, true, false));
-        AddItem(new InventoryItem(null, 0, itemBase[0], false, true, false));
-
     }
+
     public bool isMoving()
     {
         return movingItem != null;
@@ -50,23 +45,27 @@ public class InventoryScript : MonoBehaviour
                     var buffer = weaponSlot;
                     weaponSlot = item;
                     matrix[0, number] = buffer;
+                    buffer.mainObject.SetActive(false);
                     UpdateInv();
                 }
+                item.mainObject.SetActive(true);
+                GameController.Player.GetComponent<PlayerController>().Weapon = item.mainObject.GetComponent<MeleeWeapon>();
             }
             if (item.isHeal)
             {
-                if(item.mainObject!=null)
+                if (item.mainObject != null)
                 {
-                    var heal = item.mainObject.GetComponent<Heal>();
+                    var heal = item.mainObject.GetComponent<HealScript>();
                     if (heal != null)
                     {
-                        heal.HealPlayer();
+                        heal.Heal();
                         matrix[0, number] = null;
                     }
                 }
             }
         }
     }
+
     public void CollectItem(GameObject gameObject)
     {
         if (gameObject != null)
@@ -79,32 +78,45 @@ public class InventoryScript : MonoBehaviour
                     AddItem(item.InventoryItem);
                 }
             }
+            item.transform.SetParent(GameController.Player.transform);
+            item.transform.position.Set(0, 0, 4);
+            item.gameObject.SetActive(false);
         }
     }
+
     public void StartMoveItem(InventoryItem Item)
     {
         movingItem = Item;
     }
+
     public void EndMoveItem()
     {
         movingItem = null;
         UpdateInv();
     }
+
     public void MoveToWeaponSlot()
     {
         RemoveMoved();
         weaponSlot = movingItem;
+        movingItem.mainObject.SetActive(true);
+        GameController.Player.GetComponent<PlayerController>().Weapon = movingItem.mainObject.GetComponent<MeleeWeapon>();
     }
+
     public void MoveToModuleSlot(int i)
     {
         RemoveMoved();
         moduleSlots[i] = movingItem;
+        movingItem.mainObject.GetComponent<ModuleScript>().Activate(true);
     }
+
     public void MoveToInv(int i,int j)
     {
         RemoveMoved();
         matrix[i, j] = movingItem;
+        UpdateInv();
     }
+
     private void RemoveMoved()
     {
         for (int i = 0; i < matrix.GetLength(0); i++)
@@ -118,17 +130,27 @@ public class InventoryScript : MonoBehaviour
                 }
             }
         }
-        if(weaponSlot==movingItem)
+
+        if (weaponSlot == movingItem)
+        {
             weaponSlot = null;
+            movingItem.mainObject.SetActive(false);
+        }
+
         for (var i = 0; i < moduleSlots.Length; i++)
         {
-            if(moduleSlots[i]==movingItem)
+            if (moduleSlots[i] == movingItem)
+            {
                 moduleSlots[i] = null;
+                movingItem.mainObject.GetComponent<ModuleScript>().Activate(false);
+            }
         }
     }
+
     public bool AddItem(InventoryItem inventoryItem)
     {
         var isFound = false;
+
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
             if (isFound)
@@ -143,29 +165,76 @@ public class InventoryScript : MonoBehaviour
                 }
             }
         }
+
         UpdateInv();
         return isFound;
     }
+
     public void UpdateInv()
     {
         IconBases = savedIconBases.ToList();
         IconBases.ForEach(x => x.SetActive(false));
+
+        var modulesCountsTemp = new Dictionary<string, int>(); 
+
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
             for (int j = 0; j < matrix.GetLength(1); j++)
             {
                 if (matrix[i, j] != null)
                 {
+                    var item = matrix[i, j];
+
+                    if (item.isModule)
+                        if (!modulesCountsTemp.ContainsKey(item.mainObject.name))
+                            modulesCountsTemp.Add(item.mainObject.name, 1);
+                        else
+                            modulesCountsTemp[item.mainObject.name]++;
+
                     var slotPosition = GameObject.Find($"{i} {j}").GetComponent<RectTransform>();
                     var icon = IconBases.Last();
                     IconBases.Remove(icon);
                     icon.SetActive(true);
                     icon.GetComponent<RectTransform>().anchoredPosition = slotPosition.anchoredPosition;
-                    icon.GetComponent<Image>().sprite = matrix[i, j].icon;
-                    icon.GetComponent<InventoryItemScript>().inventoryItem = matrix[i, j];
+                    icon.GetComponent<Image>().sprite = item.icon;
+                    icon.GetComponent<InventoryItemScript>().inventoryItem = item;
                 }
             }
         }
+
+        modulesCounts = modulesCountsTemp;
+
+        foreach (var module in modulesCounts.Keys)
+        {
+            if (modulesCounts[module] == 3)
+            {
+                GameObject upgradedModule = null;
+
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                {
+                    for (int j = 0; j < matrix.GetLength(1); j++)
+                    {
+                        var item = matrix[i, j];
+
+                        if (item != null && item.isModule && item.mainObject.name == module)
+                        {
+                            matrix[i, j] = null;
+
+                            if (!upgradedModule)
+                                upgradedModule = item.mainObject;
+                        }
+                    }
+                }
+
+                var triplet = upgradedModule.GetComponent<ModuleScript>().TripletModule;
+                if (triplet)
+                {
+                    triplet = Instantiate(triplet);
+                    triplet.GetComponent<ModuleScript>().CollectModule();
+                }
+            }
+        }
+
         if (weaponSlot != null)
         {
             var slotPosition = GameObject.Find($"WeaponSlot").GetComponent<RectTransform>();
@@ -176,7 +245,8 @@ public class InventoryScript : MonoBehaviour
             icon.GetComponent<Image>().sprite = weaponSlot.icon;
             icon.GetComponent<InventoryItemScript>().inventoryItem = weaponSlot;
         }
-        for(var i = 0; i < moduleSlots.Length; i++)
+
+        for (var i = 0; i < moduleSlots.Length; i++)
         {
             if (moduleSlots[i] != null)
             {
@@ -186,21 +256,13 @@ public class InventoryScript : MonoBehaviour
                 icon.SetActive(true);
                 icon.GetComponent<RectTransform>().anchoredPosition = slotPosition.anchoredPosition;
                 icon.GetComponent<Image>().sprite = moduleSlots[i].icon;
-                icon.GetComponent<InventoryItemScript>().inventoryItem = weaponSlot;
+                icon.GetComponent<InventoryItemScript>().inventoryItem = moduleSlots[i];
             }
         }
-        var player=GameObject.Find("Player");
-        var weaponBase = player.GetComponent<WeaponBase>();
-        weaponBase.DisplayWeapon(weaponSlot);
-        var moduleBase = player.GetComponent<ModuleBase>();
-        moduleBase.UpdateModuleInfo(moduleSlots);
-    }
-    // Update is called once per frame
-    void Update()
-    {
     }
 }
 
+[System.Serializable]
 public class InventoryItem
 {
     public int id;
