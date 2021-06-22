@@ -158,7 +158,7 @@ MonoBehaviour:
   WeaponSprite: {fileID: 0}
   DistanceOffset: 0.5
   AngleOffset: 90
-  AttackSound: {fileID: 0}
+  AttackSound: {fileID: 8300000, guid: abece1eb12596ea45af1d6da4d21dfcf, type: 3}
   IsPicked: 0
   IsInRange: 0
   Animator: {fileID: 0}

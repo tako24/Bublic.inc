@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5924672783871558775}
   - component: {fileID: 8198453686285259955}
   - component: {fileID: -8092817912450253175}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Vase
   m_TagString: Destroyable
   m_Icon: {fileID: 0}
@@ -136,6 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentHP: 0
   _maxHP: 0
+  InvFrames: 0
+  EnemySprite: {fileID: 0}
   textColor: {r: 1, g: 1, b: 1, a: 0}
   textHeight: 0
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}

@@ -81,7 +81,7 @@ Transform:
   m_GameObject: {fileID: 5709153087961001685}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 4}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9154163850237793539}
   - {fileID: 407595956305605769}
@@ -157,7 +157,7 @@ MonoBehaviour:
   WeaponSprite: {fileID: 0}
   DistanceOffset: 0
   AngleOffset: 0
-  AttackSound: {fileID: 0}
+  AttackSound: {fileID: 8300000, guid: abece1eb12596ea45af1d6da4d21dfcf, type: 3}
   IsPicked: 0
   IsInRange: 0
   Animator: {fileID: 0}
@@ -272,7 +272,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

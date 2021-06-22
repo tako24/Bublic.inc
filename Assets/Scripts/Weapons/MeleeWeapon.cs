@@ -29,7 +29,7 @@ public class MeleeWeapon : MonoBehaviour
 
     void Update()
     {
-        if (IsPicked)
+        if (IsPicked && Time.timeScale > 0)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -83,23 +83,6 @@ public class MeleeWeapon : MonoBehaviour
     public void DoDamage()
     {
         Animator.SetTrigger("Attacked");
-
-        //var enemysCollider = new List<Collider2D>();
-        //var filter = new ContactFilter2D();
-        //Physics2D.OverlapCollider(AttackArea, filter, enemysCollider);
-
-        //if (enemysCollider.Count == 0)
-        //{
-        //    print("Никого нет в радиусе аттаки");
-        //    return;
-        //}
-
-        //foreach (Collider2D enemyCollider in enemysCollider)
-        //{
-        //    if (!enemyCollider.CompareTag("Enemy")
-        //        && !enemyCollider.CompareTag("Destroyable")) continue;
-        //    enemyCollider.GetComponent<HP>().TakeDamage(Damage + GameController.DamageBonus);
-        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
