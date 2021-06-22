@@ -930,8 +930,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ce86d83a071ee49bb074e487459814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WithRepetitions: 1
-  RoomsCount: 4
+  WithRepetitions: 0
+  RoomsCount: 10
   RoomsDensity: 4
   BossSpawnDelay: 1
   AstarPath: {fileID: 416381125}

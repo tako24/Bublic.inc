@@ -193,8 +193,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slider: {fileID: 0}
   _fill: {fileID: 0}
-  _currentHP: 1000
-  _maxHP: 1000
+  _currentHP: 100
+  _maxHP: 100
   TextColor: {r: 1, g: 1, b: 1, a: 1}
   TextHeight: 0.8
   ShadowColor: {r: 0, g: 0, b: 0, a: 0.5}
