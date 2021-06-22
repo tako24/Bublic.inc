@@ -39,6 +39,5 @@ public class InventoryController : MonoBehaviour
         {
             inv.Use(3);
         }
-
     }
 }

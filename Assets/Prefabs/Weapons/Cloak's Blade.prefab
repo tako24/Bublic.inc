@@ -82,7 +82,7 @@ Transform:
   m_GameObject: {fileID: 2491308433627876336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 4}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4554239432560408990}
   - {fileID: 4225569072146291097}
@@ -156,9 +156,12 @@ MonoBehaviour:
   AttackCooldown: 0.5
   AttackArea: {fileID: 0}
   WeaponSprite: {fileID: 0}
+  DistanceOffset: 0.5
+  AngleOffset: 90
   AttackSound: {fileID: 0}
   IsPicked: 0
   IsInRange: 0
+  Animator: {fileID: 0}
 --- !u!50 &5001247942593523166
 Rigidbody2D:
   serializedVersion: 4
@@ -262,9 +265,9 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.75, y: 0}
-      - {x: 0.5, y: 0.25}
+      - {x: 0.5, y: 0.3}
       - {x: 0, y: 0.5}
-      - {x: -0.5, y: 0.25}
+      - {x: -0.5, y: 0.3}
       - {x: -0.75, y: 0}
 --- !u!66 &848162992070420383
 CompositeCollider2D:
@@ -279,7 +282,7 @@ CompositeCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.1}
+  m_Offset: {x: 0, y: 0}
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
@@ -397,7 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventoryItem:
-    id: 0
+    id: 100
     mainObject: {fileID: 2491308433627876336}
     icon: {fileID: 21300000, guid: 83311d422cdc29b4aaefc3a815d51009, type: 3}
     isModule: 0

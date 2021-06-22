@@ -10,16 +10,21 @@ public class MeleeWeapon : MonoBehaviour
 
     public Collider2D AttackArea;
     public SpriteRenderer WeaponSprite;
+    public float DistanceOffset;
+    public float AngleOffset;
 
     public AudioClip AttackSound;
 
     public bool IsPicked;
     public bool IsInRange;
 
+    public Animator Animator;
+
     void Start()
     {
-        AttackArea = GetComponent<CompositeCollider2D>();
+        AttackArea = GetComponent<Collider2D>();
         WeaponSprite = GetComponent<SpriteRenderer>();
+        Animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -42,6 +47,10 @@ public class MeleeWeapon : MonoBehaviour
                 if (KD <= 0)
                     StartCoroutine(Blink());
             }
+            if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+                AttackArea.enabled = true;
+            else
+                AttackArea.enabled = false;
         }
 
         if (Input.GetKeyDown(KeyCode.E) && IsInRange && !IsPicked)
@@ -63,7 +72,7 @@ public class MeleeWeapon : MonoBehaviour
         GetComponent<ObjectNameView>().enabled = false;
 
         GetComponent<SpriteRenderer>().enabled = true;
-        GetComponent<PolygonCollider2D>().enabled = true;
+        //GetComponent<Collider2D>().enabled = true;
 
         for (int i = 0; i < transform.childCount; i++)
             transform.GetChild(i).gameObject.SetActive(false);
@@ -73,30 +82,32 @@ public class MeleeWeapon : MonoBehaviour
 
     public void DoDamage()
     {
-        var anim = GetComponent<Animator>();
-        anim.SetTrigger("Attacked");
+        Animator.SetTrigger("Attacked");
 
-        var enemysCollider = new List<Collider2D>();
-        var filter = new ContactFilter2D();
-        Physics2D.OverlapCollider(AttackArea, filter, enemysCollider);
+        //var enemysCollider = new List<Collider2D>();
+        //var filter = new ContactFilter2D();
+        //Physics2D.OverlapCollider(AttackArea, filter, enemysCollider);
 
-        if (enemysCollider.Count == 0)
-        {
-            print("Никого нет в радиусе аттаки");
-            return;
-        }
+        //if (enemysCollider.Count == 0)
+        //{
+        //    print("Никого нет в радиусе аттаки");
+        //    return;
+        //}
 
-        foreach (Collider2D enemyCollider in enemysCollider)
-        {
-            if (!enemyCollider.CompareTag("Enemy")
-                && !enemyCollider.CompareTag("Destroyable")) continue;
-            enemyCollider.GetComponent<HP>().TakeDamage(Damage + GameController.DamageBonus);
-        }
+        //foreach (Collider2D enemyCollider in enemysCollider)
+        //{
+        //    if (!enemyCollider.CompareTag("Enemy")
+        //        && !enemyCollider.CompareTag("Destroyable")) continue;
+        //    enemyCollider.GetComponent<HP>().TakeDamage(Damage + GameController.DamageBonus);
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!IsPicked) IsInRange = true;
+        if (!IsPicked && collision.CompareTag("Player")) 
+            IsInRange = true;
+        else if (collision.CompareTag("Enemy") || collision.CompareTag("Destroyable"))
+            collision.GetComponent<HP>().TakeDamage(Damage + GameController.DamageBonus);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

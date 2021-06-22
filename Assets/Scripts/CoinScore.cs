@@ -7,20 +7,26 @@ public class CoinScore : MonoBehaviour
 {
     [SerializeField] Text _score;
     private static PlayerController _player;
-    private int _coinCount;
+    public int CoinCount;
 
     private void Start()
     {
-        _coinCount = 0;
+        CoinCount = 0;
         _player = GameObject.Find("Player").GetComponent<PlayerController>();
         _player.onCoinTake += ChangeScore;
-        _score.text = _coinCount.ToString();
+        _score.text = CoinCount.ToString();
      }
 
     public void ChangeScore()
     {
-        _coinCount++;
-        _score.text = _coinCount.ToString(); 
+        CoinCount++;
+        _score.text = CoinCount.ToString(); 
+    }
+
+    public void SpendCoins(int coins)
+    {
+        CoinCount -= coins;
+        _score.text = CoinCount.ToString();
     }
 }
 

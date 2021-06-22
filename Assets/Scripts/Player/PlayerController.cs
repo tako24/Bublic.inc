@@ -13,9 +13,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 	private float _currentCD = 0;
 	private Animator animator;
-	public GameObject Weapon;
+	public MeleeWeapon Weapon;
 	private bool _isDashing;
-	public int _score;
+	public int Score;
 	public AudioClip coinsSound;
 
 	void Start()
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
-		if (_isDashing) return;
+		if (Time.timeScale == 0f || _isDashing) return;
 
 		movementVector.x = Input.GetAxis("Horizontal");
 		movementVector.y = Input.GetAxis("Vertical");
@@ -79,8 +79,8 @@ public class PlayerController : MonoBehaviour
 		lookPos.z = 0;
 
 		float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
-		Weapon.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-		var desiredPosition = transform.position + lookPos.normalized * 0.5f;
+		Weapon.transform.rotation = Quaternion.AngleAxis(angle - Weapon.AngleOffset, Vector3.forward);
+		var desiredPosition = transform.position + lookPos.normalized * Weapon.DistanceOffset;
 		Weapon.transform.position = Vector3.MoveTowards(Weapon.transform.position, desiredPosition, Time.deltaTime * 80f);
 	}
 

@@ -930,16 +930,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ce86d83a071ee49bb074e487459814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WithRepetitions: 0
+  WithRepetitions: 1
   RoomsCount: 8
   RoomsDensity: 4
-  BossSpawnDelay: 4
+  BossSpawnDelay: 2
   AstarPath: {fileID: 416381125}
   BossRoom: {fileID: 4822536661245823284, guid: f7597abf680778b4687968e27c5ea871, type: 3}
   ShopRoom: {fileID: 993279460741580353, guid: 2c2ff88ebb71f2c4b8bafc771ff12c2d, type: 3}
   RoomsPrefabs:
   - {fileID: 4775367763622412229, guid: 62035ea45df93fc4c9e62a9e5537da1b, type: 3}
-  - {fileID: 4822536661245823284, guid: f7597abf680778b4687968e27c5ea871, type: 3}
+  - {fileID: 2056128660655614085, guid: f5325815d8cf5f841a25720902a3f17a, type: 3}
+  - {fileID: 5613451579417198142, guid: 0e8ecf42baa15c944b81ad0e145245e1, type: 3}
+  - {fileID: 3776062353319405992, guid: e62fc69ebe7d3b447b8e2bd5e16998ea, type: 3}
+  - {fileID: 1600601898161026596, guid: 1ad1b98a89a7b3d4da1b29551b4c59a5, type: 3}
+  - {fileID: 3704335237431623603, guid: 61f058b31c2d85845baf6f8532f6b336, type: 3}
+  - {fileID: 2944712546005077068, guid: cbb6f3f8ea8e0054b9076531fb82452f, type: 3}
+  - {fileID: 7813578406557119136, guid: b27102956c0225a42a9aefeaafa9bfab, type: 3}
+  - {fileID: 36272373745141177, guid: f08409cd12dc52444a843eb5cbb6c856, type: 3}
+  - {fileID: 6901415512645258803, guid: 919ac25b82f3faa418aaec6198b4e7cf, type: 3}
+  - {fileID: 30310379584779109, guid: b7f44852963c1f143a6c1484a4d4bd94, type: 3}
   LeftConnection: {fileID: 612248389032828558, guid: 69913bb43fccb3a4a916b91c31f9ecf1, type: 3}
   RightConnection: {fileID: 1432570714763670303, guid: 5dcf2a7101673574abbc7c1cdc425dc6, type: 3}
 --- !u!114 &1323187307
@@ -963,11 +972,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 744125661679518177, guid: 6d811437d40b6674eb526f0c0a8240b0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1061049363450611331, guid: 6d811437d40b6674eb526f0c0a8240b0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3140781518998326386, guid: 6d811437d40b6674eb526f0c0a8240b0, type: 3}
       propertyPath: m_Name
@@ -1019,11 +1028,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4177646334073443696, guid: 6d811437d40b6674eb526f0c0a8240b0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5534319930877459989, guid: 6d811437d40b6674eb526f0c0a8240b0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7820502127783287010, guid: 6d811437d40b6674eb526f0c0a8240b0, type: 3}
       propertyPath: m_Enabled

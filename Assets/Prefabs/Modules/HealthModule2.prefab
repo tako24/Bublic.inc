@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 295421697688918588}
   - component: {fileID: 51216978704005240}
   - component: {fileID: 765294535970800370}
+  - component: {fileID: 5587329175843012087}
   m_Layer: 0
   m_Name: HealthModule2
   m_TagString: Untagged
@@ -132,3 +133,20 @@ MonoBehaviour:
     isModule: 1
     isWeapon: 0
     isHeal: 0
+--- !u!114 &5587329175843012087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4644282675002417808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702734aad0cf4694a84da61eb056d47b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
+  amp: 0.05
+  freq: 2
+  offset: 0
+  isPicked: 0

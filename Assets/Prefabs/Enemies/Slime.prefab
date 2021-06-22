@@ -210,6 +210,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentHP: 45
   _maxHP: 45
+  InvFrames: 0.5
+  enemySprite: {fileID: 0}
   textColor: {r: 1, g: 1, b: 1, a: 1}
   textHeight: 0.8
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}

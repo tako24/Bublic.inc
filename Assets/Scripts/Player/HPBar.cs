@@ -59,7 +59,14 @@ public class HPBar : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (_currentInvTime == 0f)
+        if (Time.timeScale == 0f)
+        {
+            _currentHP -= damage;
+            if (_currentHP <= 1)
+                _currentHP = 1;
+            _slider.value = _currentHP;
+        }
+        else if (_currentInvTime == 0f)
         {
             _currentInvTime = InvFrames;
             PlayerSprite.color = Color.red;

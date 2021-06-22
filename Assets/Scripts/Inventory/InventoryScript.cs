@@ -45,17 +45,20 @@ public class InventoryScript : MonoBehaviour
                     var buffer = weaponSlot;
                     weaponSlot = item;
                     matrix[0, number] = buffer;
+                    buffer.mainObject.SetActive(false);
                     UpdateInv();
                 }
+                item.mainObject.SetActive(true);
+                GameController.Player.GetComponent<PlayerController>().Weapon = item.mainObject.GetComponent<MeleeWeapon>();
             }
             if (item.isHeal)
             {
-                if(item.mainObject!=null)
+                if (item.mainObject != null)
                 {
-                    var heal = item.mainObject.GetComponent<Heal>();
+                    var heal = item.mainObject.GetComponent<HealScript>();
                     if (heal != null)
                     {
-                        heal.HealPlayer();
+                        heal.Heal();
                         matrix[0, number] = null;
                     }
                 }
@@ -97,7 +100,7 @@ public class InventoryScript : MonoBehaviour
         RemoveMoved();
         weaponSlot = movingItem;
         movingItem.mainObject.SetActive(true);
-        GameController.Player.GetComponent<PlayerController>().Weapon = movingItem.mainObject;
+        GameController.Player.GetComponent<PlayerController>().Weapon = movingItem.mainObject.GetComponent<MeleeWeapon>();
     }
 
     public void MoveToModuleSlot(int i)
