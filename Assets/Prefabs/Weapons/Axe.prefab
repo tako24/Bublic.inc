@@ -151,8 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69490386dcb2ca4eb8b974b5bbafaa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 20
-  AttackCooldown: 2
+  Damage: 23
+  AttackCooldown: 1.5
   AttackArea: {fileID: 0}
   WeaponSprite: {fileID: 0}
   DistanceOffset: 0

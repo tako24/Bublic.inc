@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c31564edca095c48b598094359efecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LuckIncrease: 20
+  LuckIncrease: 6
 --- !u!114 &8552585271301570594
 MonoBehaviour:
   m_ObjectHideFlags: 0
