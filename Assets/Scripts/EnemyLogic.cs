@@ -16,7 +16,8 @@ public enum LogicType
 {
     flyingMob,
     distanceMob,
-    commonMob
+    commonMob,
+    jager
 }
 public class EnemyLogic : MonoBehaviour
 {
@@ -128,22 +129,34 @@ public class EnemyLogic : MonoBehaviour
             AIDestinationSetter.target = point.transform;
             AIPath.endReachedDistance = baseDistance;
         }
-        if (state == State.MoveToPoint && LogicType == LogicType.distanceMob && (player.transform.position - gameObject.transform.position).sqrMagnitude > (runningAwayDistance+ stoprunAwatDelta) * (runningAwayDistance+ stoprunAwatDelta))
+        if ( LogicType == LogicType.distanceMob && state == State.MoveToPoint && (player.transform.position - gameObject.transform.position).sqrMagnitude > (runningAwayDistance+ stoprunAwatDelta) * (runningAwayDistance+ stoprunAwatDelta))
         {
             AIDestinationSetter.target = player.transform;
             state = State.Atack;
             AIPath.endReachedDistance = distanceToPlayer;
         }
-        if(state==State.Atack&&LogicType==LogicType.flyingMob&& (player.transform.position - gameObject.transform.position).sqrMagnitude <= runningAwayDistance * runningAwayDistance)
+        if(LogicType==LogicType.flyingMob&& state == State.Atack && (player.transform.position - gameObject.transform.position).sqrMagnitude <= runningAwayDistance * runningAwayDistance)
         {
             if (flyingPoints.Length != 0)
                 AIDestinationSetter.target = flyingPoints[UnityEngine.Random.Range(0, flyingPoints.Length)].transform;
             state = State.MoveToPoint;
         }
-        if (state == State.MoveToPoint && LogicType == LogicType.flyingMob && AIPath.reachedEndOfPath)
+        if ( LogicType == LogicType.flyingMob && state == State.MoveToPoint && AIPath.reachedEndOfPath)
         {
             AIDestinationSetter.target = player.transform;
             state = State.Atack;
+        }
+        if (LogicType == LogicType.jager)
+        {
+            var stats = gameObject.GetComponent<Rotator>();
+            if (stats.IsRotating)
+            {
+                state = State.Stop;
+            }
+            else
+            {
+                state = State.Patrooling;
+            }
         }
     }
 }
