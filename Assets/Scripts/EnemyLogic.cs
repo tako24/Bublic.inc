@@ -17,7 +17,8 @@ public enum LogicType
     flyingMob,
     distanceMob,
     commonMob,
-    jager
+    jager,
+    moskito
 }
 public class EnemyLogic : MonoBehaviour
 {
