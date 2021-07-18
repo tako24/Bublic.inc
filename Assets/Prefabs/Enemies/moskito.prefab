@@ -174,13 +174,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640b942240a1b854b9bb4c4489381328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
+  HP: 25
   flyRange: 1
-  flyingSpeed: 15
-  atackRange: 2
-  fastAtackSpeed: 5
+  flyingSpeed: 50
+  atackRange: 1
+  fastAtackSpeed: 15
   damage: 5
-  KD: 0
+  KD: 1
   MoveToPositionSpeed: 15
   AtackStageTime: 0.7
 --- !u!50 &1752838397961504036
