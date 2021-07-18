@@ -12,7 +12,7 @@ public class Rotator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var stats = gameObject.GetComponent<JagerStats>();
+        var stats = gameObject.GetComponentInParent<JagerStats>();
         if (IsRotating)
         {
             if (RotateTimer <= 0)
@@ -37,7 +37,7 @@ public class Rotator : MonoBehaviour
     {
         if (CanRotate)
         {
-            var stats = gameObject.GetComponent<JagerStats>();
+            var stats = gameObject.GetComponentInParent<JagerStats>();
             RotateTimer = stats.atackTime;
             IsRotating = true;
             CanRotate = false;

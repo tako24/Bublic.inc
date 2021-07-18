@@ -7,7 +7,7 @@ public class RotateTriger : MonoBehaviour
     private Rotator rotator;
     private void Start()
     {
-        rotator = gameObject.transform.parent.gameObject.GetComponent<Rotator>();
+        rotator = gameObject.transform.parent.gameObject.GetComponentInChildren<Rotator>();
     }
     void OnTriggerStay2D(Collider2D collision)
     {
