@@ -149,7 +149,7 @@ public class EnemyLogic : MonoBehaviour
         }
         if (LogicType == LogicType.jager)
         {
-            var stats = gameObject.GetComponent<Rotator>();
+            var stats = gameObject.GetComponentInChildren<Rotator>();
             if (stats.IsRotating)
             {
                 state = State.Stop;
