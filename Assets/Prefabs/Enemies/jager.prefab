@@ -446,7 +446,7 @@ MonoBehaviour:
   AIPath: {fileID: 7339377353517240633}
   AIDestinationSetter: {fileID: 3323994600093031363}
   state: 0
-  LogicType: 2
+  LogicType: 3
   distanceToPlayer: 1.5
   baseDistance: 0.2
   runningAwayDistance: 3.2
