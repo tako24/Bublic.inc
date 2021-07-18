@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 3323994600093031363}
   - component: {fileID: 8212834458087734462}
   - component: {fileID: 5387815070482161760}
-  - component: {fileID: 1752838397961504036}
   m_Layer: 2
   m_Name: moskito
   m_TagString: Enemy
@@ -183,27 +182,6 @@ MonoBehaviour:
   KD: 1
   MoveToPositionSpeed: 15
   AtackStageTime: 0.7
---- !u!50 &1752838397961504036
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3465465622681761255}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!1 &4693919767935565673
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +197,6 @@ GameObject:
   - component: {fileID: 1138363643138675074}
   - component: {fileID: 5635891609820406987}
   - component: {fileID: 9146539097393535623}
-  - component: {fileID: 4304392097909435150}
   - component: {fileID: 4020751482422638967}
   - component: {fileID: 5090911949163832624}
   - component: {fileID: 4291114337971317062}
@@ -398,22 +375,6 @@ MonoBehaviour:
   shadowOffset: {x: 1, y: 1}
   damageSound: {fileID: 8300000, guid: a058ae1763be41d4482bb19d580194ee, type: 3}
 --- !u!58 &9146539097393535623
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4693919767935565673}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1
---- !u!58 &4304392097909435150
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

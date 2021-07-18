@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 8724591117899197654}
   m_Layer: 0
   m_Name: Top
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 8709748704422275958}
   m_Layer: 0
   m_Name: Right
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -705,7 +705,7 @@ GameObject:
   - component: {fileID: 1101900948895262621}
   m_Layer: 0
   m_Name: RightWall
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -943,7 +943,7 @@ GameObject:
   - component: {fileID: 3967690418455080151}
   m_Layer: 0
   m_Name: RoomLayout
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3530,7 +3530,7 @@ GameObject:
   - component: {fileID: 141167089212626715}
   m_Layer: 0
   m_Name: BottomWall
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4499,7 +4499,7 @@ GameObject:
   - component: {fileID: 2008775554040184337}
   m_Layer: 0
   m_Name: TopWall
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4804,7 +4804,7 @@ GameObject:
   - component: {fileID: 5013194618123208155}
   m_Layer: 0
   m_Name: LeftWall
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5170,7 +5170,7 @@ GameObject:
   - component: {fileID: 3087573940896844082}
   m_Layer: 0
   m_Name: Left
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5414,7 +5414,7 @@ GameObject:
   - component: {fileID: 2686054353802382356}
   m_Layer: 0
   m_Name: Bottom
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

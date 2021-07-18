@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") || collision.CompareTag("Room") || collision.CompareTag("Exit"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Room") || collision.CompareTag("Exit")||collision.CompareTag("wall"))
         {
             var hpBar = collision.gameObject.GetComponent<HPBar>();
 
