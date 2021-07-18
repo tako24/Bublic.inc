@@ -87,7 +87,7 @@ public class EnemyLogic : MonoBehaviour
     public void Atack()
     {
         state = State.Atack;
-        if(LogicType!=LogicType.distanceMob)
+        if(LogicType!=LogicType.distanceMob&& LogicType != LogicType.moskito)
             AIDestinationSetter.target = player.transform;
         if (LogicType == LogicType.distanceMob)
         {

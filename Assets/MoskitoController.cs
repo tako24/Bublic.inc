@@ -1,6 +1,7 @@
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum MoskitoStages
@@ -31,7 +32,7 @@ public class MoskitoController : MonoBehaviour
     private Vector3 Vel;
     private float KDTimer;
     private bool CanAtack=true;
-    // Start is called before the first frame update
+    private GameObject[] positions;        // Start is called before the first frame update
     void Start()
     {
         gameObject.GetComponentInChildren<HP>()._maxHP = HP;
@@ -41,6 +42,7 @@ public class MoskitoController : MonoBehaviour
         AIPath = gameObject.GetComponentInChildren<AIPath>();
         AIDestinationSetter = gameObject.GetComponentInChildren<AIDestinationSetter>();
         Player = GameObject.Find("Player");
+        positions = GameObject.FindGameObjectsWithTag("position").Where(x => x.transform.parent.gameObject.GetHashCode() == gameObject.transform.parent.gameObject.GetHashCode()).ToArray();
         gameObject.GetComponent<CircleCollider2D>().radius = atackRange;
     }
 
@@ -79,6 +81,7 @@ public class MoskitoController : MonoBehaviour
                 Stages = MoskitoStages.Five;
                 moveToTargetTimer = 0;
                 atackTimer = 0;
+                MoveToPosition();
             }
             else atackTimer -= Time.deltaTime;
         }
@@ -89,14 +92,18 @@ public class MoskitoController : MonoBehaviour
             {
                 moveToTargetTimer = 0;
                 Stages = MoskitoStages.Five;
+                MoveToPosition();
             }
             else moveToTargetTimer -= Time.deltaTime;
         }
         if (Stages == MoskitoStages.Five)
         {
-            gameObject.transform.GetChild(0).localPosition = new Vector3(0, flyRange, 0);
-            Stages = MoskitoStages.One;
-            KDTimer = KD;
+            if (AIPath.reachedEndOfPath)
+            {
+                gameObject.transform.GetChild(0).localPosition = new Vector3(0, flyRange, 0);
+                Stages = MoskitoStages.One;
+                KDTimer = KD;
+            }
         }
     }
     void StartAtack()
@@ -116,9 +123,21 @@ public class MoskitoController : MonoBehaviour
         }
     }
 
+    void MoveToPosition()
+    {
+        var position = positions.OrderBy(x => (x.transform.position - gameObject.transform.position).sqrMagnitude).First();
+        AIDestinationSetter.target = position.transform;
+    }
+
     void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
             StartAtack();
+        if (collision.CompareTag("wall"))
+        {
+            Stages = MoskitoStages.Five;
+            atackTimer = 0;
+            moveToTargetTimer = 0;
+        }
     }
 }

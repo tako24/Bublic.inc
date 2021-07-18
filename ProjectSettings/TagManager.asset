@@ -15,6 +15,11 @@ TagManager:
   - Coin
   - invSlot
   - item
+  - bossMovingPoints
+  - center
+  - flyspawn
+  - wall
+  - position
   layers:
   - Default
   - TransparentFX
