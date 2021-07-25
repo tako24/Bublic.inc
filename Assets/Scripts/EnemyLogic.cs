@@ -32,7 +32,6 @@ public class EnemyLogic : MonoBehaviour
     public float distanceToPlayer;
     public float baseDistance;
     public float runningAwayDistance=3.2f;
-    public float stoprunAwatDelta = 0.2f;
     private GameObject[] flyingPoints;
     
 
@@ -41,6 +40,10 @@ public class EnemyLogic : MonoBehaviour
         patroolPoints = GameObject.FindGameObjectsWithTag("patrol").Where(x=>x.transform.parent.gameObject.GetHashCode()==gameObject.transform.parent.gameObject.GetHashCode()).ToArray();
         flyingPoints= GameObject.FindGameObjectsWithTag("flypoint").Where(x => x.transform.parent.gameObject.GetHashCode() == gameObject.transform.parent.gameObject.GetHashCode()).ToArray();
         player = GameObject.Find("Player");
+        if (LogicType == LogicType.distanceMob)
+        {
+            gameObject.transform.GetChild(1).localScale = Vector2.one * runningAwayDistance;
+        }
         if (LogicType == LogicType.flyingMob)
         {
             state = State.Stop;
@@ -113,6 +116,11 @@ public class EnemyLogic : MonoBehaviour
         var target = patroolPoints[UnityEngine.Random.Range(0, patroolPoints.Length - 1)];
         AIDestinationSetter.target = target.transform;
     }
+
+    public void RunAway()
+    {
+
+    }
     // Update is called once per frame
     void Update()
     {
@@ -123,29 +131,37 @@ public class EnemyLogic : MonoBehaviour
             LookAtPlayer();
         }
         else AIPath.enableRotation = true;
-        if (LogicType == LogicType.distanceMob && state == State.Atack && (player.transform.position - gameObject.transform.position).sqrMagnitude <= runningAwayDistance* runningAwayDistance)
+        if (LogicType == LogicType.distanceMob)
         {
-            state = State.MoveToPoint;
-            var point = patroolPoints.Where(x=>(x.transform.position - player.transform.position).sqrMagnitude> runningAwayDistance * runningAwayDistance).OrderBy(x => Math.Abs((x.transform.position - gameObject.transform.position).magnitude)).First();
-            AIDestinationSetter.target = point.transform;
-            AIPath.endReachedDistance = baseDistance;
+            var collider = gameObject.GetComponentInChildren<PolygonCollider2D>();
+            var playerCollider = player.GetComponent<Collider2D>();
+            if (state == State.Atack && collider.IsTouching(playerCollider))
+            {
+                state = State.MoveToPoint;
+                var point = patroolPoints.Where(x => (x.transform.position - player.transform.position).sqrMagnitude > runningAwayDistance * runningAwayDistance).OrderBy(x => Math.Abs((x.transform.position - gameObject.transform.position).magnitude)).First();
+                AIDestinationSetter.target = point.transform;
+                AIPath.endReachedDistance = baseDistance;
+            }
+            else if ( state == State.MoveToPoint && !collider.IsTouching(playerCollider))
+            {
+                AIDestinationSetter.target = player.transform;
+                state = State.Atack;
+                AIPath.endReachedDistance = distanceToPlayer;
+            }
         }
-        if ( LogicType == LogicType.distanceMob && state == State.MoveToPoint && (player.transform.position - gameObject.transform.position).sqrMagnitude > (runningAwayDistance+ stoprunAwatDelta) * (runningAwayDistance+ stoprunAwatDelta))
+        if (LogicType == LogicType.flyingMob)
         {
-            AIDestinationSetter.target = player.transform;
-            state = State.Atack;
-            AIPath.endReachedDistance = distanceToPlayer;
-        }
-        if(LogicType==LogicType.flyingMob&& state == State.Atack && (player.transform.position - gameObject.transform.position).sqrMagnitude <= runningAwayDistance * runningAwayDistance)
-        {
-            if (flyingPoints.Length != 0)
-                AIDestinationSetter.target = flyingPoints[UnityEngine.Random.Range(0, flyingPoints.Length)].transform;
-            state = State.MoveToPoint;
-        }
-        if ( LogicType == LogicType.flyingMob && state == State.MoveToPoint && AIPath.reachedEndOfPath)
-        {
-            AIDestinationSetter.target = player.transform;
-            state = State.Atack;
+            if (state == State.Atack && gameObject.GetComponent<Collider2D>().IsTouching(player.GetComponent<Collider2D>()))
+            {
+                if (flyingPoints.Length != 0)
+                    AIDestinationSetter.target = flyingPoints[UnityEngine.Random.Range(0, flyingPoints.Length)].transform;
+                state = State.MoveToPoint;
+            }
+            else if (state == State.MoveToPoint && AIPath.reachedEndOfPath)
+            {
+                AIDestinationSetter.target = player.transform;
+                state = State.Atack;
+            }
         }
         if (LogicType == LogicType.jager)
         {
