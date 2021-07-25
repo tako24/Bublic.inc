@@ -264,7 +264,6 @@ MonoBehaviour:
   distanceToPlayer: 1.5
   baseDistance: 0.2
   runningAwayDistance: 3.2
-  stoprunAwatDelta: 0.2
 --- !u!114 &4829918315771419889
 MonoBehaviour:
   m_ObjectHideFlags: 0

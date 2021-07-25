@@ -14,12 +14,12 @@ GameObject:
   - component: {fileID: 7339377353517240633}
   - component: {fileID: 3323994600093031363}
   - component: {fileID: 9130131586955718070}
-  - component: {fileID: 5279564307001922339}
-  - component: {fileID: 7273148503825278042}
   - component: {fileID: 1886721334217518303}
   - component: {fileID: 4829918315771419889}
   - component: {fileID: 8780152454300037106}
   - component: {fileID: 6481130071450535594}
+  - component: {fileID: 9064230169353994035}
+  - component: {fileID: 984408676863001735}
   m_Layer: 6
   m_Name: EnemyFly
   m_TagString: Enemy
@@ -191,38 +191,6 @@ MonoBehaviour:
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
   shadowOffset: {x: 1, y: 1}
   damageSound: {fileID: 8300000, guid: a058ae1763be41d4482bb19d580194ee, type: 3}
---- !u!58 &5279564307001922339
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3465465622681761255}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1
---- !u!58 &7273148503825278042
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3465465622681761255}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1
 --- !u!114 &1886721334217518303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,7 +211,6 @@ MonoBehaviour:
   distanceToPlayer: 1.5
   baseDistance: 0.2
   runningAwayDistance: 1.5
-  stoprunAwatDelta: 0.2
 --- !u!114 &4829918315771419889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,3 +339,63 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!50 &9064230169353994035
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3465465622681761255}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!60 &984408676863001735
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3465465622681761255}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.25, y: 0.1953125}
+      - {x: 0.1640625, y: 0.1953125}
+      - {x: 0.125, y: 0.1875}
+      - {x: -0.0625, y: 0.140625}
+      - {x: -0.15625, y: 0.1953125}
+      - {x: -0.2578125, y: 0.1953125}
+      - {x: -0.2734375, y: 0.15625}
+      - {x: -0.2734375, y: 0.0390625}
+      - {x: -0.09375, y: -0.125}
+      - {x: -0.03125, y: -0.140625}
+      - {x: 0.078125, y: -0.140625}
+      - {x: 0.09375, y: -0.1328125}
+      - {x: 0.2734375, y: 0.015625}
+      - {x: 0.2734375, y: 0.1796875}
