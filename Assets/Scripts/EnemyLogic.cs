@@ -32,14 +32,21 @@ public class EnemyLogic : MonoBehaviour
     public float distanceToPlayer;
     public float baseDistance;
     public float runningAwayDistance=3.2f;
+    public float ObstacleWT;
     private GameObject[] flyingPoints;
+    private Collider2D Collider2D;
+    private float obstacleWTTimer;
+    private float timerStopTimer=7;
     
 
     void Start()
     {
-        patroolPoints = GameObject.FindGameObjectsWithTag("patrol").Where(x=>x.transform.parent.gameObject.GetHashCode()==gameObject.transform.parent.gameObject.GetHashCode()).ToArray();
-        flyingPoints= GameObject.FindGameObjectsWithTag("flypoint").Where(x => x.transform.parent.gameObject.GetHashCode() == gameObject.transform.parent.gameObject.GetHashCode()).ToArray();
+        if(LogicType!=LogicType.distanceMob)
+            patroolPoints = GameObject.FindGameObjectsWithTag("patrol").Where(x=>x.transform.parent.gameObject.GetHashCode()==gameObject.transform.parent.gameObject.GetHashCode()).ToArray();
+        else patroolPoints = GameObject.FindGameObjectsWithTag("patrol").Where(x => x.transform.parent.gameObject.GetHashCode() == gameObject.transform.parent.parent.gameObject.GetHashCode()).ToArray();
+        flyingPoints = GameObject.FindGameObjectsWithTag("flypoint").Where(x => x.transform.parent.gameObject.GetHashCode() == gameObject.transform.parent.gameObject.GetHashCode()).ToArray();
         player = GameObject.Find("Player");
+        Collider2D = gameObject.GetComponent<Collider2D>();
         if (LogicType == LogicType.distanceMob)
         {
             gameObject.transform.GetChild(1).localScale = Vector2.one * runningAwayDistance;
@@ -124,6 +131,32 @@ public class EnemyLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (timerStopTimer <= 0)
+        //{
+        //    obstacleWTTimer = ObstacleWT;
+        //    timerStopTimer = 30;
+        //}timerStopTimer -= Time.deltaTime;
+        //if (state == State.Patrooling && Collider2D.IsTouchingLayers(LayerMask.GetMask("column")))
+        //{
+        //    if (obstacleWTTimer <= 0)
+        //    {
+        //        Patroling();
+        //        obstacleWTTimer = ObstacleWT;
+        //    }
+        //    else obstacleWTTimer -= Time.deltaTime;
+        //}
+        if (LogicType != LogicType.jager && LogicType != LogicType.moskito && LogicType != LogicType.distanceMob)
+            if (Collider2D.IsTouchingLayers(LayerMask.GetMask("Enemy")))
+            {
+                if (timerStopTimer <= 0)
+                    Collider2D.isTrigger = true;
+                else timerStopTimer -= Time.deltaTime;
+            }
+            else
+            {
+                timerStopTimer = 7;
+                Collider2D.isTrigger = false;
+            }
         if (state == State.Patrooling && AIPath.reachedDestination)
             Patroling();
         if (LogicType == LogicType.distanceMob && (state == State.Atack||state==State.MoveToPoint))

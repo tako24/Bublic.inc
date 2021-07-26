@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5924672783871558775}
   - component: {fileID: 8198453686285259955}
   - component: {fileID: -8092817912450253175}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vase
   m_TagString: Destroyable
   m_Icon: {fileID: 0}
@@ -119,9 +119,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.4, y: 0.64}
-  m_Direction: 0
+  m_Offset: {x: 0.008102835, y: -0.33676273}
+  m_Size: {x: 0.39595044, y: 0.23388523}
+  m_Direction: 1
 --- !u!114 &5924672783871558775
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -329,7 +329,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   centerOffsetCompatibility: NaN
   orientation: 1
-  enableRotation: 1
+  enableRotation: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 0
@@ -395,7 +395,7 @@ MonoBehaviour:
   distanceToPlayer: 1.5
   baseDistance: 0.2
   runningAwayDistance: 3.2
-  stoprunAwatDelta: 0.2
+  ObstacleWT: 2
 --- !u!114 &4829918315771419889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,8 +518,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.007812509, y: -0.066472955}
-  m_Size: {x: 1.5624585, y: 0.86707294}
+  m_Offset: {x: -0.007812184, y: -0.3402923}
+  m_Size: {x: 1.2886413, y: 0.31943503}
   m_Direction: 1
 --- !u!114 &1679699594520455873
 MonoBehaviour:
