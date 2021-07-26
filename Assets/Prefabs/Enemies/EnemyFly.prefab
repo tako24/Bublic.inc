@@ -145,7 +145,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   centerOffsetCompatibility: NaN
   orientation: 1
-  enableRotation: 1
+  enableRotation: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 0
@@ -211,6 +211,7 @@ MonoBehaviour:
   distanceToPlayer: 1.5
   baseDistance: 0.2
   runningAwayDistance: 1.5
+  ObstacleWT: 2
 --- !u!114 &4829918315771419889
 MonoBehaviour:
   m_ObjectHideFlags: 0
